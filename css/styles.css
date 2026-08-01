@@ -1516,12 +1516,17 @@ section{
 
 
 
-<p class="copyright">
+.nav-links a.active-link{
 
-    © 2026 Seenivasan R.
-    All Rights Reserved.
+    color: var(--primary-color);
 
-</p>
+}
+
+.nav-links a.active-link::after{
+
+    width:100%;
+
+}
 
 /* =========================================================
    END OF FILE
