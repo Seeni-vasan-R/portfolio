@@ -1,55 +1,56 @@
 /* ===========================================
-   THEME VARIABLES
+   THEME VARIABLES – Black + Green + Red + Yellow
 =========================================== */
 
 :root {
 
     /* =======================================
-       COLORS
+       CORE COLORS
     ======================================= */
 
-    /* Primary brand color (teal) */
-    --primary-color: #0d9488;
-    --primary-dark:  #0f766e;
-    --primary-light: #5eead4;
+    /* Main accent: green (success/growth) */
+    --primary-color: #22c55e;   /* green-500 */
+    --primary-dark:  #16a34a;   /* green-600 */
+    --primary-light: #86efac;   /* green-300 */
 
-    /* Deep background / footer color */
-    --secondary-color: #020617;
+    /* Deep background / footer color (black-ish) */
+    --secondary-color: #020617; /* near-black */
 
-    /* Accent (for small highlights) */
-    --accent-color: #22c55e;
+    /* Secondary accent (yellow for highlights) */
+    --accent-color: #facc15;    /* yellow-400 */
 
     /* Status colors */
-    --success-color: #16a34a;
-    --warning-color: #f97316;
-    --danger-color:  #ef4444;
+    --success-color: #22c55e;   /* success/OK */
+    --warning-color: #facc15;   /* warnings, highlights */
+    --danger-color:  #ef4444;   /* errors, danger */
 
     /* =======================================
        BACKGROUND
     ======================================= */
 
-    /* Overall page background */
-    --background-color: #0b1120;
+    /* Overall page background (dark) */
+    --background-color: #0b1120;   /* slate-950 */
 
     /* Card / section surfaces */
-    --surface-color: #0f172a;
-    --surface-light: #1e293b;
-    --surface-dark:  #020617;
+    --surface-color: #020617;      /* header/footer, deep panels */
+    --surface-light: #0f172a;      /* cards, main sections */
+    --surface-dark:  #000000;      /* optional very dark areas */
 
     /* =======================================
        TEXT
     ======================================= */
 
-    --text-primary:   #e2e8f0;
-    --text-secondary: #94a3b8;
-    --text-light:     #64748b;
-    --text-white:     #ffffff;
+    /* Use light text on dark background */
+    --text-primary:   #e5e7eb;   /* main body text */
+    --text-secondary: #9ca3af;   /* subdued text */
+    --text-light:     #6b7280;   /* lighter descriptions */
+    --text-white:     #ffffff;   /* pure white */
 
     /* =======================================
        BORDER
     ======================================= */
 
-    --border-color: #1f2937;
+    --border-color: #1f2933;     /* subtle dark border */
 
     /* =======================================
        FONT
@@ -110,17 +111,18 @@
        SHADOWS
     ======================================= */
 
+    /* darker, softer shadows for dark theme */
     --shadow-sm:
-        0 2px 8px rgba(15,23,42,.35);
+        0 2px 8px rgba(15,23,42,.45);
 
     --shadow-md:
-        0 10px 25px rgba(15,23,42,.55);
+        0 10px 25px rgba(15,23,42,.65);
 
     --shadow-lg:
-        0 15px 40px rgba(15,23,42,.65);
+        0 15px 40px rgba(15,23,42,.75);
 
     --shadow-xl:
-        0 20px 60px rgba(15,23,42,.75);
+        0 20px 60px rgba(15,23,42,.85);
 
     /* =======================================
        TRANSITIONS
