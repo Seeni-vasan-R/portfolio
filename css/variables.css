@@ -1,5 +1,5 @@
 /* ===========================================
-   THEME VARIABLES – High-contrast Black + Green
+   THEME VARIABLES – Grey + Green + Yellow + Red
 =========================================== */
 
 :root {
@@ -13,44 +13,44 @@
     --primary-dark:  #15803d;   /* green-700 */
     --primary-light: #4ade80;   /* green-400 */
 
-    /* Deep background / footer color */
-    --secondary-color: #020617; /* very dark blue/black */
+    /* Secondary color (header/footer background) */
+    --secondary-color: #111827; /* dark grey, not black */
 
-    /* Accent (for small highlights, badges) */
+    /* Accent (for highlights, badges, warnings) */
     --accent-color: #facc15;    /* yellow-400 */
 
     /* Status colors */
     --success-color: #22c55e;   /* success/OK */
-    --warning-color: #facc15;   /* warnings, highlights */
-    --danger-color:  #ef4444;   /* errors, danger */
+    --warning-color: #facc15;   /* warnings/highlights */
+    --danger-color:  #ef4444;   /* errors/danger */
 
     /* =======================================
        BACKGROUND
     ======================================= */
 
-    /* Overall page background (dark but not pitch-black) */
-    --background-color: #0f172a;   /* slate-900 */
+    /* Overall page background (medium grey, not very dark) */
+    --background-color: #e5e7eb;   /* light grey */
 
     /* Card / section surfaces */
-    --surface-color: #020617;      /* header/footer, deep panels */
-    --surface-light: #111827;      /* cards, main sections */
-    --surface-dark:  #000000;      /* optional very dark areas */
+    --surface-color: #ffffff;      /* white cards/sections */
+    --surface-light: #f3f4f6;      /* slightly tinted panels */
+    --surface-dark:  #d1d5db;      /* grey blocks if needed */
 
     /* =======================================
        TEXT
     ======================================= */
 
-    /* Light text on dark background */
-    --text-primary:   #e5e7eb;   /* main body text */
-    --text-secondary: #9ca3af;   /* subdued text */
+    /* Dark text on light backgrounds */
+    --text-primary:   #111827;   /* main body text (very dark grey) */
+    --text-secondary: #4b5563;   /* subdued text */
     --text-light:     #6b7280;   /* lighter descriptions */
-    --text-white:     #ffffff;   /* pure white */
+    --text-white:     #ffffff;   /* pure white (for buttons, dark areas) */
 
     /* =======================================
        BORDER
     ======================================= */
 
-    --border-color: #1f2937;     /* subtle dark border */
+    --border-color: #d1d5db;     /* light grey border */
 
     /* =======================================
        FONT
@@ -111,18 +111,17 @@
        SHADOWS
     ======================================= */
 
-    /* stronger shadows for dark theme */
     --shadow-sm:
-        0 2px 8px rgba(15,23,42,.35);
+        0 2px 8px rgba(15,23,42,.12);
 
     --shadow-md:
-        0 10px 25px rgba(15,23,42,.55);
+        0 10px 25px rgba(15,23,42,.15);
 
     --shadow-lg:
-        0 15px 40px rgba(15,23,42,.65);
+        0 15px 40px rgba(15,23,42,.18);
 
     --shadow-xl:
-        0 20px 60px rgba(15,23,42,.75);
+        0 20px 60px rgba(15,23,42,.22);
 
     /* =======================================
        TRANSITIONS
