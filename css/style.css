@@ -1,4 +1,69 @@
 /* =========================================================
+   FONTS
+   Inter -> body copy (clean, highly legible at small sizes)
+   Poppins -> headings (geometric, confident, modern)
+========================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap');
+
+/* =========================================================
+   DESIGN TOKENS (CSS VARIABLES)
+   Everything below drives the entire stylesheet. Change a
+   value here and it updates site-wide — this is the only
+   place you should need to touch to re-theme the site.
+========================================================= */
+:root{
+
+    /* ---- Typography ---- */
+    --font-family:'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-heading:'Poppins', 'Inter', sans-serif;
+    --line-height:1.65;
+
+    /* ---- Core palette: blue / white / gray ---- */
+    --primary-color:#2563eb;      /* core blue — links, buttons, icons */
+    --primary-dark:#1d4ed8;       /* hover / pressed state of primary blue */
+    --primary-light:#3b82f6;      /* lighter blue for gradients / glows */
+    --secondary-color:#0f172a;    /* deep slate navy — footer, dark sections */
+
+    /* ---- Accent: teal (the "unique" signature color) ---- */
+    --accent-color:#0d9488;       /* teal — kickers, badges, highlights */
+    --accent-light:#14b8a6;       /* lighter teal for hover / gradients */
+    --accent-soft:#ccfbf1;        /* pale teal background tint */
+
+    /* ---- Neutrals / surfaces ---- */
+    --background-color:#ffffff;
+    --surface-color:#f8fafc;      /* off-white section backgrounds */
+    --border-color:#e2e8f0;
+
+    /* ---- Text ---- */
+    --text-primary:#0f172a;
+    --text-secondary:#475569;
+    --text-light:#64748b;
+    --text-white:#f8fafc;
+
+    /* ---- Status ---- */
+    --warning-color:#f59e0b;
+    --success-color:#10b981;
+
+    /* ---- Layout ---- */
+    --container-width:1180px;
+
+    /* ---- Radius scale ---- */
+    --radius-sm:6px;
+    --radius-md:12px;
+    --radius-lg:20px;
+
+    /* ---- Shadow scale (soft, bluish-tinted for cohesion) ---- */
+    --shadow-sm:0 2px 8px rgba(15,23,42,.06);
+    --shadow-md:0 8px 24px rgba(15,23,42,.08);
+    --shadow-lg:0 16px 40px rgba(37,99,235,.14);
+    --shadow-xl:0 24px 60px rgba(15,23,42,.16);
+
+    /* ---- Transitions ---- */
+    --transition-fast:.2s ease;
+    --transition-normal:.35s cubic-bezier(.4,0,.2,1);
+}
+
+/* =========================================================
    GLOBAL RESET
 ========================================================= */
 
@@ -25,6 +90,22 @@ body{
     line-height:var(--line-height);
 
     overflow-x:hidden;
+
+}
+
+h1,h2,h3,h4,
+.logo,
+.btn{
+
+    font-family:var(--font-heading);
+
+}
+
+h1,h2,h3,h4{
+
+    color:var(--text-primary);
+
+    letter-spacing:-.02em;
 
 }
 
@@ -96,13 +177,36 @@ section{
 
 .section-title span{
 
-    color:var(--primary-color);
+    display:inline-flex;
 
-    font-size:.9rem;
+    align-items:center;
 
-    font-weight:600;
+    gap:10px;
 
-    letter-spacing:2px;
+    color:var(--accent-color);
+
+    font-size:.85rem;
+
+    font-weight:700;
+
+    letter-spacing:2.5px;
+
+    text-transform:uppercase;
+
+}
+
+/* small teal dash before every kicker label — recurring brand detail */
+.section-title span::before{
+
+    content:"";
+
+    display:inline-block;
+
+    width:24px;
+
+    height:2px;
+
+    background:var(--accent-color);
 
 }
 
@@ -294,7 +398,11 @@ section{
 
     display:none;
 
-    font-size:1.7rem;
+    font-size:1.6rem;
+
+    color:var(--text-primary);
+
+    z-index:1100;
 
 }
 
@@ -336,11 +444,35 @@ section{
 
 .hero-subtitle{
 
-    color:var(--primary-color);
+    display:inline-flex;
 
-    font-weight:600;
+    align-items:center;
 
-    margin-bottom:10px;
+    gap:10px;
+
+    color:var(--accent-color);
+
+    font-weight:700;
+
+    font-size:.95rem;
+
+    letter-spacing:1px;
+
+    text-transform:uppercase;
+
+    margin-bottom:14px;
+
+}
+
+.hero-subtitle::before{
+
+    content:"";
+
+    width:24px;
+
+    height:2px;
+
+    background:var(--accent-color);
 
 }
 
@@ -1087,7 +1219,13 @@ section{
 
 .achievements .section-title span{
 
-    color:#dbeafe;
+    color:var(--accent-soft);
+
+}
+
+.achievements .section-title span::before{
+
+    background:var(--accent-soft);
 
 }
 
@@ -1577,6 +1715,188 @@ section{
 
     color:white;
 
+}
+
+/* =========================================================
+   RESPONSIVE BREAKPOINTS
+   Mobile-first content still reads top-to-bottom without
+   these rules, but grids/nav collapse gracefully with them.
+   Breakpoints: 1100px (small desktop/large tablet),
+   900px (tablet), 600px (mobile), 400px (small mobile)
+========================================================= */
+
+/* ---------- Small desktop / large tablet ---------- */
+@media (max-width:1100px){
+
+    .hero h1{ font-size:3.2rem; }
+
+    .hero-container{ gap:45px; }
+
+    .about-content{ gap:40px; }
+
+    .contact-container{ gap:35px; }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width:900px){
+
+    section{ padding:70px 0; }
+
+    .section-title h2{ font-size:2rem; }
+
+    /* stack the two-column layouts */
+    .hero-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .hero-subtitle,
+    .hero-buttons{
+        justify-content:center;
+    }
+
+    .hero-description{ margin-inline:auto; }
+
+    .hero-image{ order:-1; }
+
+    .hero-image img{ width:260px; }
+
+    .about-content{
+        grid-template-columns:1fr;
+    }
+
+    .about-text p{ text-align:left; }
+
+    .contact-container{
+        grid-template-columns:1fr;
+    }
+
+    /* ---- mobile nav ---- */
+    .menu-btn{ display:block; }
+
+    .nav-links{
+        position:fixed;
+        top:80px;
+        left:0;
+        width:100%;
+        flex-direction:column;
+        align-items:center;
+        gap:0;
+        background:rgba(255,255,255,.98);
+        backdrop-filter:blur(12px);
+        border-bottom:1px solid var(--border-color);
+        max-height:0;
+        overflow:hidden;
+        opacity:0;
+        transition:var(--transition-normal);
+    }
+
+    .nav-links.active{
+        max-height:400px;
+        opacity:1;
+    }
+
+    .nav-links a{
+        width:100%;
+        padding:18px 0;
+        text-align:center;
+    }
+
+    .nav-links a::after{ display:none; }
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width:600px){
+
+    .container{ width:92%; }
+
+    section{ padding:56px 0; }
+
+    .section-title{ margin-bottom:40px; }
+
+    .section-title h2{ font-size:1.7rem; }
+
+    .hero{ padding-top:70px; }
+
+    .hero h1{ font-size:2.3rem; }
+
+    .hero h2{ font-size:1.3rem; }
+
+    .hero-description{ font-size:1rem; }
+
+    .hero-buttons{
+        flex-direction:column;
+        width:100%;
+    }
+
+    .hero-buttons .btn{
+        width:100%;
+        justify-content:center;
+    }
+
+    .hero-image img{ width:200px; }
+
+    .about-cards{
+        grid-template-columns:1fr;
+    }
+
+    .skills-container,
+    .certificate-grid,
+    .achievement-grid,
+    .projects-grid{
+        grid-template-columns:1fr;
+    }
+
+    .project-buttons{
+        flex-direction:column;
+    }
+
+    .contact-item{
+        align-items:center;
+    }
+
+    #backToTop{
+        right:18px;
+        bottom:18px;
+        width:46px;
+        height:46px;
+        font-size:1rem;
+    }
+}
+
+/* ---------- Small mobile ---------- */
+@media (max-width:400px){
+
+    .logo{ font-size:1.5rem; }
+
+    .hero h1{ font-size:1.9rem; }
+
+    .btn{
+        padding:12px 20px;
+        font-size:.9rem;
+    }
+
+    .about-card,
+    .skill-category,
+    .education-card,
+    .certificate-card{
+        padding:22px;
+    }
+
+    .project-content{ padding:20px; }
+}
+
+/* ---------- Reduced motion (accessibility) ---------- */
+@media (prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
+    }
 }
 
 /* =========================================================
