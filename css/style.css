@@ -172,6 +172,8 @@ section{
 
     transform:translateY(-4px);
 
+    box-shadow:var(--shadow-md);
+
 }
 
 /* =========================================================
@@ -195,6 +197,8 @@ section{
     backdrop-filter:blur(12px);
 
     border-bottom:1px solid #eee;
+
+    transition:box-shadow .25s ease;
 
 }
 
@@ -274,6 +278,18 @@ section{
 
 }
 
+.nav-links a.active-link{
+
+    color:var(--primary-color);
+
+}
+
+.nav-links a.active-link::after{
+
+    width:100%;
+
+}
+
 .menu-btn{
 
     display:none;
@@ -296,6 +312,8 @@ section{
 
     padding-top:80px;
 
+    background:radial-gradient(circle at top left, #e0f2fe 0, #f8fafc 45%, #ffffff 100%);
+
 }
 
 .hero-container{
@@ -307,6 +325,12 @@ section{
     align-items:center;
 
     gap:70px;
+
+}
+
+.hero-content{
+
+    animation:fadeIn .9s ease forwards;
 
 }
 
@@ -364,49 +388,15 @@ section{
 
 }
 
-/* =========================================================
-   SOCIAL ICONS
-========================================================= */
+.hero-buttons .btn{
 
-.social-icons{
-
-    display:flex;
-
-    gap:20px;
+    box-shadow:var(--shadow-sm);
 
 }
 
-.social-icons a{
+.hero-buttons .btn:hover{
 
-    width:52px;
-
-    height:52px;
-
-    display:flex;
-
-    justify-content:center;
-
-    align-items:center;
-
-    border-radius:50%;
-
-    background:white;
-
-    box-shadow:var(--shadow-md);
-
-    font-size:1.2rem;
-
-    transition:.3s;
-
-}
-
-.social-icons a:hover{
-
-    background:var(--primary-color);
-
-    color:white;
-
-    transform:translateY(-6px);
+    box-shadow:var(--shadow-lg);
 
 }
 
@@ -433,6 +423,10 @@ section{
     box-shadow:var(--shadow-xl);
 
     transition:.4s;
+
+    animation:fadeUp .9s ease both;
+
+    animation-delay:.15s;
 
 }
 
@@ -558,6 +552,26 @@ section{
 
     border:1px solid var(--border-color);
 
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.about-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(135deg, rgba(37,99,235,.12), transparent);
+
+    opacity:0;
+
+    transition:var(--transition-normal);
+
 }
 
 .about-card:hover{
@@ -565,6 +579,12 @@ section{
     transform:translateY(-10px);
 
     box-shadow:var(--shadow-xl);
+
+}
+
+.about-card:hover::before{
+
+    opacity:1;
 
 }
 
@@ -718,6 +738,21 @@ section{
 
 }
 
+/* little accent line after titles */
+.skill-category h3::after{
+
+    content:"";
+
+    flex:1;
+
+    height:2px;
+
+    background:linear-gradient(90deg,var(--primary-color),transparent);
+
+    opacity:.4;
+
+}
+
 /* =========================================================
    SKILL TAGS
 ========================================================= */
@@ -828,13 +863,37 @@ section{
 
     border:1px solid var(--border-color);
 
+    position:relative;
+
+}
+
+.project-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:linear-gradient(135deg, rgba(37,99,235,.12), transparent);
+
+    opacity:0;
+
+    transition:var(--transition-normal);
+
 }
 
 .project-card:hover{
 
-    transform:translateY(-12px);
+    transform:translateY(-12px) scale(1.02);
 
     box-shadow:var(--shadow-xl);
+
+}
+
+.project-card:hover::before{
+
+    opacity:1;
 
 }
 
@@ -1076,11 +1135,13 @@ section{
 
 .achievement-card h2{
 
-    font-size:2.8rem;
+    font-size:3rem;
 
     margin-bottom:10px;
 
     color:white;
+
+    letter-spacing:.04em;
 
 }
 
@@ -1089,6 +1150,10 @@ section{
     color:#f1f5f9;
 
     font-weight:500;
+
+    font-size:.95rem;
+
+    text-transform:uppercase;
 
 }
 
@@ -1110,7 +1175,7 @@ section{
 
 .contact{
 
-    background:var(--surface-color);
+    background:linear-gradient(180deg,#f1f5f9,#ffffff);
 
 }
 
@@ -1200,7 +1265,7 @@ section{
 
 .contact-card{
 
-    background:var(--surface-color);
+    background:#ffffff;
 
     padding:35px;
 
@@ -1511,20 +1576,6 @@ section{
     background:var(--primary-color);
 
     color:white;
-
-}
-
-
-
-.nav-links a.active-link{
-
-    color: var(--primary-color);
-
-}
-
-.nav-links a.active-link::after{
-
-    width:100%;
 
 }
 
