@@ -1,5 +1,5 @@
 /* ===========================================
-   GOOGLE FONT
+   THEME VARIABLES
 =========================================== */
 
 :root {
@@ -8,47 +8,48 @@
        COLORS
     ======================================= */
 
-    --primary-color: #2563eb;
-    --primary-dark: #1d4ed8;
-    --primary-light: #60a5fa;
+    /* Primary brand color (teal) */
+    --primary-color: #0d9488;
+    --primary-dark:  #0f766e;
+    --primary-light: #5eead4;
 
-    --secondary-color: #0f172a;
+    /* Deep background / footer color */
+    --secondary-color: #020617;
 
-    --accent-color: #06b6d4;
+    /* Accent (for small highlights) */
+    --accent-color: #22c55e;
 
-    --success-color: #10b981;
-    --warning-color: #f59e0b;
-    --danger-color: #ef4444;
+    /* Status colors */
+    --success-color: #16a34a;
+    --warning-color: #f97316;
+    --danger-color:  #ef4444;
 
     /* =======================================
        BACKGROUND
     ======================================= */
 
-    --background-color: #f8fafc;
+    /* Overall page background */
+    --background-color: #0b1120;
 
-    --surface-color: #ffffff;
-
-    --surface-light: #f1f5f9;
-
-    --surface-dark: #e2e8f0;
+    /* Card / section surfaces */
+    --surface-color: #0f172a;
+    --surface-light: #1e293b;
+    --surface-dark:  #020617;
 
     /* =======================================
        TEXT
     ======================================= */
 
-    --text-primary: #0f172a;
-
-    --text-secondary: #475569;
-
-    --text-light: #64748b;
-
-    --text-white: #ffffff;
+    --text-primary:   #e2e8f0;
+    --text-secondary: #94a3b8;
+    --text-light:     #64748b;
+    --text-white:     #ffffff;
 
     /* =======================================
        BORDER
     ======================================= */
 
-    --border-color: #e2e8f0;
+    --border-color: #1f2937;
 
     /* =======================================
        FONT
@@ -100,13 +101,9 @@
     ======================================= */
 
     --radius-sm: 6px;
-
     --radius-md: 10px;
-
     --radius-lg: 16px;
-
     --radius-xl: 24px;
-
     --radius-round: 999px;
 
     /* =======================================
@@ -114,25 +111,23 @@
     ======================================= */
 
     --shadow-sm:
-        0 2px 8px rgba(0,0,0,.05);
+        0 2px 8px rgba(15,23,42,.35);
 
     --shadow-md:
-        0 10px 25px rgba(0,0,0,.08);
+        0 10px 25px rgba(15,23,42,.55);
 
     --shadow-lg:
-        0 15px 40px rgba(0,0,0,.12);
+        0 15px 40px rgba(15,23,42,.65);
 
     --shadow-xl:
-        0 20px 60px rgba(0,0,0,.15);
+        0 20px 60px rgba(15,23,42,.75);
 
     /* =======================================
        TRANSITIONS
     ======================================= */
 
     --transition-fast: .2s ease;
-
     --transition-normal: .35s ease;
-
     --transition-slow: .5s ease;
 
     /* =======================================
