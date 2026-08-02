@@ -1,8 +1,68 @@
-/* ==========================================
-   LARGE LAPTOPS
-========================================== */
+/* =========================================================================
+   RESPONSIVE.CSS
+   Breakpoint ladder: 1200 (small desktop) -> 1024 (tablet landscape)
+   -> 768 (tablet) -> 480 (mobile) -> 375 (small mobile)
 
-@media (max-width: 1200px) {
+   NOTE: assumes the same CSS variables (--primary-color, --shadow-*,
+   --radius-*, --transition-*, etc.) defined in :root in styles.css.
+   Load styles.css BEFORE this file so those tokens are available.
+========================================================================= */
+
+/* =========================================================================
+   FOUNDATIONAL RULES (apply at every screen size)
+   These aren't breakpoint-specific, but they're what actually stops
+   images and cards from distorting as the viewport changes — worth
+   keeping in the "responsive" file since that's their whole job.
+========================================================================= */
+
+img,
+picture,
+video{
+
+    max-width:100%;
+    height:auto;
+    display:block;
+
+}
+
+/* project/certificate thumbnails: crop to fill instead of stretching */
+.project-card img{
+
+    width:100%;
+    object-fit:cover;
+
+}
+
+/* grids collapse safely instead of overflowing on very narrow viewports */
+.projects-grid,
+.certificate-grid,
+.about-cards,
+.skills-container,
+.achievement-grid{
+
+    min-width:0;
+
+}
+
+.project-card,
+.certificate-card,
+.about-card,
+.skill-category,
+.education-card{
+
+    min-width:0;
+    word-wrap:break-word;
+
+}
+
+
+/* =========================================================================
+   1. LARGE DESKTOP / SMALL LAPTOPS  (<= 1200px)
+   Text and container width start easing down before any layout
+   actually needs to change.
+========================================================================= */
+
+@media (max-width:1200px){
 
     .container{
         width:92%;
@@ -18,319 +78,253 @@
 
 }
 
-/* ==========================================
-   LAPTOP
-========================================== */
 
-@media (max-width: 992px){
+/* =========================================================================
+   2. LAPTOP / TABLET LANDSCAPE  (<= 1024px)
+   First real structural change: two-column sections (hero, about,
+   contact) drop to a single column. Grids go from 3-up to 2-up.
+========================================================================= */
+
+@media (max-width:1024px){
 
     section{
         padding:80px 0;
     }
 
+    /* --- hero: stack image above content, center everything --- */
     .hero-container{
-
         grid-template-columns:1fr;
         text-align:center;
         gap:50px;
-
     }
 
     .hero-content{
-
         order:2;
-
     }
 
     .hero-image{
-
         order:1;
-
     }
 
     .hero-description{
-
         margin:0 auto 40px;
-
     }
 
-    .hero-buttons{
-
-        justify-content:center;
-
-    }
-
+    .hero-buttons,
     .social-icons{
-
         justify-content:center;
-
     }
 
     .hero-image img{
-
         width:320px;
-
     }
 
+    /* --- about / contact: stack the two-column layouts --- */
     .about-content{
-
         grid-template-columns:1fr;
-
     }
 
     .contact-container{
-
         grid-template-columns:1fr;
-
     }
 
+    /* --- grids: 3-up becomes 2-up so cards keep breathing room --- */
     .projects-grid{
-
         grid-template-columns:repeat(2,1fr);
-
     }
 
     .certificate-grid{
-
         grid-template-columns:repeat(2,1fr);
-
     }
 
 }
 
-/* ==========================================
-   TABLET
-========================================== */
+
+/* =========================================================================
+   3. TABLET  (<= 768px)
+   Navigation switches to a hamburger menu. Remaining 2-column grids
+   drop to a single column since card content no longer fits comfortably
+   side-by-side at this width.
+========================================================================= */
 
 @media (max-width:768px){
 
+    /* --- mobile navigation --- */
     .menu-btn{
-
         display:block;
-        z-index:1001;
-
+        z-index:1100; /* stay above the fixed header (z-index:1000) */
     }
 
     .nav-links{
-
         position:fixed;
-
         top:80px;
-
-        left:-100%;
-
+        left:-100%;              /* off-screen until toggled open */
         width:100%;
-
-        background:white;
-
+        background:var(--background-color, #fff);
         flex-direction:column;
-
         align-items:center;
-
         padding:40px 0;
-
         gap:30px;
-
-        transition:.35s;
-
-        box-shadow:0 10px 20px rgba(0,0,0,.08);
-
+        transition:var(--transition-normal, .35s ease);
+        box-shadow:var(--shadow-lg, 0 10px 20px rgba(0,0,0,.08));
     }
 
+    /* toggled by JS: adding/removing "active" on .nav-links */
     .nav-links.active{
-
         left:0;
-
     }
 
+    /* underline hover animation doesn't read well in a stacked list */
+    .nav-links a::after{
+        display:none;
+    }
+
+    /* generous tap target for touch devices */
+    .nav-links a{
+        width:100%;
+        padding:10px 0;
+        text-align:center;
+    }
+
+    /* --- hero --- */
     .hero{
-
-        padding-top:120px;
-
+        padding-top:120px; /* clear the taller mobile header + open menu */
     }
 
     .hero h1{
-
         font-size:2.8rem;
-
     }
 
     .hero h2{
-
         font-size:1.5rem;
-
     }
 
     .hero-description{
-
         font-size:1rem;
-
     }
 
-    .about-cards{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .skills-container{
-
-        grid-template-columns:1fr;
-
-    }
-
-    .projects-grid{
-
-        grid-template-columns:1fr;
-
-    }
-
+    /* --- single-column card grids --- */
+    .about-cards,
+    .skills-container,
+    .projects-grid,
     .certificate-grid{
-
         grid-template-columns:1fr;
-
     }
 
     .achievement-grid{
-
         grid-template-columns:repeat(2,1fr);
-
     }
 
     .footer-social{
-
         flex-wrap:wrap;
-
     }
 
 }
 
-/* ==========================================
-   MOBILE
-========================================== */
 
-@media (max-width:576px){
+/* =========================================================================
+   4. MOBILE  (<= 480px)
+   Buttons and multi-item rows stack vertically; typography drops to
+   its smallest comfortable size for one-handed phone use.
+========================================================================= */
+
+@media (max-width:480px){
 
     section{
+        padding:64px 0;
+    }
 
-        padding:70px 0;
-
+    .section-title{
+        margin-bottom:36px;
     }
 
     .section-title h2{
-
-        font-size:2rem;
-
+        font-size:1.9rem;
     }
 
     .hero h1{
-
         font-size:2.2rem;
-
     }
 
     .hero h2{
-
         font-size:1.2rem;
-
     }
 
     .hero-image img{
-
-        width:260px;
-
+        width:240px;
     }
 
+    /* full-width, stacked call-to-actions read better than a cramped row */
     .btn{
-
         width:100%;
         justify-content:center;
-
     }
 
-    .hero-buttons{
-
-        flex-direction:column;
-
-    }
-
+    .hero-buttons,
     .project-buttons{
-
         flex-direction:column;
-
     }
 
     .contact-item{
-
         align-items:flex-start;
-
     }
 
     .contact-item i{
-
         width:48px;
         height:48px;
-
+        font-size:1rem;
     }
 
     .achievement-grid{
-
         grid-template-columns:1fr;
-
     }
 
     .footer h2{
-
         font-size:1.6rem;
-
     }
 
     #backToTop{
-
-        right:20px;
-        bottom:20px;
-
-        width:48px;
-        height:48px;
-
+        right:18px;
+        bottom:18px;
+        width:46px;
+        height:46px;
+        font-size:1rem;
     }
 
 }
 
-/* ==========================================
-   SMALL MOBILE
-========================================== */
 
-@media (max-width:400px){
+/* =========================================================================
+   5. SMALL MOBILE  (<= 375px)
+   Older/compact phones (iPhone SE and similar). Tightens padding and
+   font sizes one more notch so nothing clips or wraps awkwardly.
+========================================================================= */
+
+@media (max-width:375px){
 
     .container{
-
         width:94%;
-
     }
 
     .logo{
-
-        font-size:1.5rem;
-
+        font-size:1.4rem;
     }
 
     .hero h1{
-
         font-size:1.9rem;
-
     }
 
     .hero-image img{
-
-        width:220px;
-
+        width:200px;
     }
 
     .section-title h2{
+        font-size:1.6rem;
+    }
 
-        font-size:1.7rem;
-
+    .btn{
+        padding:12px 18px;
+        font-size:.9rem;
     }
 
     .about-card,
@@ -340,9 +334,31 @@
     .achievement-card,
     .education-card,
     .contact-card{
-
         padding:20px;
+    }
 
+    .project-content{
+        padding:18px;
+    }
+
+}
+
+
+/* =========================================================================
+   ACCESSIBILITY: respect the OS-level "reduce motion" setting
+   Card lift/hover animations, fades, and the scroll-down bounce all
+   get disabled — not just shortened — for anyone who has this on.
+========================================================================= */
+
+@media (prefers-reduced-motion:reduce){
+
+    *,
+    *::before,
+    *::after{
+        animation-duration:.01ms !important;
+        animation-iteration-count:1 !important;
+        transition-duration:.01ms !important;
+        scroll-behavior:auto !important;
     }
 
 }
