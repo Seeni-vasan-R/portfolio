@@ -1,5 +1,5 @@
 /* ===========================================
-   THEME VARIABLES – Black + Green + Red + Yellow
+   THEME VARIABLES – High-contrast Black + Green
 =========================================== */
 
 :root {
@@ -8,15 +8,15 @@
        CORE COLORS
     ======================================= */
 
-    /* Main accent: green (success/growth) */
-    --primary-color: #22c55e;   /* green-500 */
-    --primary-dark:  #16a34a;   /* green-600 */
-    --primary-light: #86efac;   /* green-300 */
+    /* Primary brand color (green) */
+    --primary-color: #16a34a;   /* green-600 */
+    --primary-dark:  #15803d;   /* green-700 */
+    --primary-light: #4ade80;   /* green-400 */
 
-    /* Deep background / footer color (black-ish) */
-    --secondary-color: #020617; /* near-black */
+    /* Deep background / footer color */
+    --secondary-color: #020617; /* very dark blue/black */
 
-    /* Secondary accent (yellow for highlights) */
+    /* Accent (for small highlights, badges) */
     --accent-color: #facc15;    /* yellow-400 */
 
     /* Status colors */
@@ -28,19 +28,19 @@
        BACKGROUND
     ======================================= */
 
-    /* Overall page background (dark) */
-    --background-color: #0b1120;   /* slate-950 */
+    /* Overall page background (dark but not pitch-black) */
+    --background-color: #0f172a;   /* slate-900 */
 
     /* Card / section surfaces */
     --surface-color: #020617;      /* header/footer, deep panels */
-    --surface-light: #0f172a;      /* cards, main sections */
+    --surface-light: #111827;      /* cards, main sections */
     --surface-dark:  #000000;      /* optional very dark areas */
 
     /* =======================================
        TEXT
     ======================================= */
 
-    /* Use light text on dark background */
+    /* Light text on dark background */
     --text-primary:   #e5e7eb;   /* main body text */
     --text-secondary: #9ca3af;   /* subdued text */
     --text-light:     #6b7280;   /* lighter descriptions */
@@ -50,7 +50,7 @@
        BORDER
     ======================================= */
 
-    --border-color: #1f2933;     /* subtle dark border */
+    --border-color: #1f2937;     /* subtle dark border */
 
     /* =======================================
        FONT
@@ -111,18 +111,18 @@
        SHADOWS
     ======================================= */
 
-    /* darker, softer shadows for dark theme */
+    /* stronger shadows for dark theme */
     --shadow-sm:
-        0 2px 8px rgba(15,23,42,.45);
+        0 2px 8px rgba(15,23,42,.35);
 
     --shadow-md:
-        0 10px 25px rgba(15,23,42,.65);
+        0 10px 25px rgba(15,23,42,.55);
 
     --shadow-lg:
-        0 15px 40px rgba(15,23,42,.75);
+        0 15px 40px rgba(15,23,42,.65);
 
     --shadow-xl:
-        0 20px 60px rgba(15,23,42,.85);
+        0 20px 60px rgba(15,23,42,.75);
 
     /* =======================================
        TRANSITIONS
