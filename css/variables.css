@@ -1,56 +1,102 @@
 /* ===========================================
-   THEME VARIABLES – Grey + Green + Yellow + Red
+   THEME VARIABLES – Plum + Terracotta + Warm Neutrals
+   A distinctive palette built deliberately WITHOUT blue,
+   white, or grey — every "neutral" below is warm-toned
+   (cream / espresso / tan) instead of true grey/white.
+
+   Light theme lives on :root. Dark theme overrides live in
+   [data-theme="dark"] — toggle it in JS with:
+       document.documentElement.setAttribute('data-theme','dark')
+   A prefers-color-scheme fallback is included at the bottom
+   for users who haven't toggled anything yet.
 =========================================== */
 
 :root {
 
     /* =======================================
-       CORE COLORS
+       PRIMARY COLORS (brand / CTAs / links)
+       Deep plum — confident and distinctive without
+       reaching for the "default tech blue".
     ======================================= */
 
-    /* Primary brand color (green) */
-    --primary-color: #16a34a;   /* green-600 */
-    --primary-dark:  #15803d;   /* green-700 */
-    --primary-light: #4ade80;   /* green-400 */
+    --primary-color:  #6D28D9;   /* plum-700 — buttons, links, icons */
+    --primary-dark:   #55189E;   /* plum-800 — hover/active state */
+    --primary-darker: #3E1173;   /* plum-900 — pressed state */
+    --primary-light:  #9F5FEF;   /* plum-400 — subtle fills, badges */
+    --primary-soft:   #F0E4FC;   /* plum-50  — pale tint backgrounds */
 
-    /* Secondary color (header/footer background) */
-    --secondary-color: #111827; /* dark grey, not black */
+    /* =======================================
+       SECONDARY COLOR (header / footer / dark blocks)
+       Warm espresso-black instead of grey/near-black —
+       keeps dark sections feeling warm, not cold/techy.
+    ======================================= */
 
-    /* Accent (for highlights, badges, warnings) */
-    --accent-color: #facc15;    /* yellow-400 */
+    --secondary-color: #241A2E;  /* deep aubergine-espresso */
+    --secondary-light: #3B2A47;  /* lighter panel on dark sections */
 
-    /* Status colors */
-    --success-color: #22c55e;   /* success/OK */
-    --warning-color: #facc15;   /* warnings/highlights */
-    --danger-color:  #ef4444;   /* errors/danger */
+    /* =======================================
+       ACCENT COLORS (highlights, badges, kickers)
+       Burnt terracotta — the "signature" color that shows
+       up on small labels, underlines, and hover accents.
+    ======================================= */
+
+    --accent-color:   #C2662D;   /* burnt terracotta */
+    --accent-dark:    #9C4E20;   /* hover state for accent elements */
+    --accent-light:   #E08F53;   /* lighter terracotta for gradients */
+    --accent-soft:    #FBE7D6;   /* pale terracotta background tint */
+
+    --accent-gold:    #C99A2E;   /* muted gold — secondary highlight */
+
+    /* =======================================
+       STATUS COLORS
+       Muted, earthy versions rather than saturated
+       "system" red/green — stays inside the palette.
+    ======================================= */
+
+    --success-color: #5C7A4F;    /* muted sage green */
+    --warning-color: #C99A2E;    /* muted gold */
+    --danger-color:  #A83C32;    /* muted brick red */
 
     /* =======================================
        BACKGROUND
+       Warm ivory instead of white — softer, easier on
+       the eyes, and consistent with the earthy palette.
     ======================================= */
 
-    /* Overall page background (medium grey, not very dark) */
-    --background-color: #e5e7eb;   /* light grey */
+    --background-color: #F7F1E8; /* warm ivory page background */
 
-    /* Card / section surfaces */
-    --surface-color: #ffffff;      /* white cards/sections */
-    --surface-light: #f3f4f6;      /* slightly tinted panels */
-    --surface-dark:  #d1d5db;      /* grey blocks if needed */
+    /* =======================================
+       SURFACE (cards / sections)
+    ======================================= */
+
+    --surface-color: #FDFAF4;    /* warm off-white — card surfaces */
+    --surface-light: #F1E9DB;    /* tinted panel / alternating section bg */
+    --surface-dark:  #E4D7C2;    /* deeper warm block, dividers */
 
     /* =======================================
        TEXT
+       Warm espresso-brown instead of grey/black.
     ======================================= */
 
-    /* Dark text on light backgrounds */
-    --text-primary:   #111827;   /* main body text (very dark grey) */
-    --text-secondary: #4b5563;   /* subdued text */
-    --text-light:     #6b7280;   /* lighter descriptions */
-    --text-white:     #ffffff;   /* pure white (for buttons, dark areas) */
+    --text-primary:   #2B2118;   /* main body text — warm near-black */
+    --text-secondary: #5C4E3F;   /* subdued text — warm taupe */
+    --text-light:     #8A7A66;   /* lightest descriptive text */
+    --text-white:     #FDFAF4;   /* warm off-white for use on dark bg */
+
+    /* =======================================
+       LINKS (explicit states — buttons reuse --primary-*)
+    ======================================= */
+
+    --link-color:        var(--primary-color);
+    --link-hover-color:  var(--primary-dark);
+    --link-visited-color:var(--primary-darker);
 
     /* =======================================
        BORDER
     ======================================= */
 
-    --border-color: #d1d5db;     /* light grey border */
+    --border-color:  #E4D7C2;    /* warm tan border */
+    --border-strong: #D3BE9C;    /* higher-contrast border, e.g. inputs */
 
     /* =======================================
        FONT
@@ -58,11 +104,11 @@
 
     --font-family: 'Poppins', sans-serif;
 
-    --font-size-xs: .75rem;
-    --font-size-sm: .875rem;
-    --font-size-md: 1rem;
-    --font-size-lg: 1.125rem;
-    --font-size-xl: 1.5rem;
+    --font-size-xs:  .75rem;
+    --font-size-sm:  .875rem;
+    --font-size-md:  1rem;
+    --font-size-lg:  1.125rem;
+    --font-size-xl:  1.5rem;
     --font-size-2xl: 2rem;
     --font-size-3xl: 3rem;
     --font-size-4xl: 4rem;
@@ -71,11 +117,11 @@
        FONT WEIGHT
     ======================================= */
 
-    --font-light: 300;
-    --font-normal: 400;
-    --font-medium: 500;
-    --font-semibold: 600;
-    --font-bold: 700;
+    --font-light:      300;
+    --font-normal:     400;
+    --font-medium:     500;
+    --font-semibold:   600;
+    --font-bold:       700;
     --font-extra-bold: 800;
 
     /* =======================================
@@ -88,11 +134,11 @@
        SPACING
     ======================================= */
 
-    --space-xs: .25rem;
-    --space-sm: .5rem;
-    --space-md: 1rem;
-    --space-lg: 1.5rem;
-    --space-xl: 2rem;
+    --space-xs:  .25rem;
+    --space-sm:  .5rem;
+    --space-md:  1rem;
+    --space-lg:  1.5rem;
+    --space-xl:  2rem;
     --space-2xl: 3rem;
     --space-3xl: 4rem;
     --space-4xl: 5rem;
@@ -101,35 +147,30 @@
        BORDER RADIUS
     ======================================= */
 
-    --radius-sm: 6px;
-    --radius-md: 10px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
+    --radius-sm:    6px;
+    --radius-md:    10px;
+    --radius-lg:    16px;
+    --radius-xl:    24px;
     --radius-round: 999px;
 
     /* =======================================
        SHADOWS
+       Warm brown-tinted shadows (instead of cool slate)
+       so cards feel cohesive with the rest of the palette.
     ======================================= */
 
-    --shadow-sm:
-        0 2px 8px rgba(15,23,42,.12);
-
-    --shadow-md:
-        0 10px 25px rgba(15,23,42,.15);
-
-    --shadow-lg:
-        0 15px 40px rgba(15,23,42,.18);
-
-    --shadow-xl:
-        0 20px 60px rgba(15,23,42,.22);
+    --shadow-sm: 0 2px 8px rgba(43,33,24,.12);
+    --shadow-md: 0 10px 25px rgba(43,33,24,.15);
+    --shadow-lg: 0 15px 40px rgba(43,33,24,.18);
+    --shadow-xl: 0 20px 60px rgba(43,33,24,.22);
 
     /* =======================================
        TRANSITIONS
     ======================================= */
 
-    --transition-fast: .2s ease;
+    --transition-fast:   .2s ease;
     --transition-normal: .35s ease;
-    --transition-slow: .5s ease;
+    --transition-slow:   .5s ease;
 
     /* =======================================
        CONTAINER
@@ -142,5 +183,120 @@
     ======================================= */
 
     --header-height: 80px;
+
+}
+
+/* ===========================================
+   DARK THEME
+   Toggle via JS: <html data-theme="dark">
+   Every token above is redefined here so components
+   never need dark-mode-specific selectors of their own —
+   they just keep reading the same variable names.
+=========================================== */
+
+[data-theme="dark"] {
+
+    /* ---- Primary: brighter plum so it still pops on dark bg ---- */
+    --primary-color:  #A855F7;   /* plum-400 */
+    --primary-dark:   #C084FC;   /* lighter on hover, inverted for dark UI */
+    --primary-darker: #D8B4FE;
+    --primary-light:  #7C3AED;
+    --primary-soft:   #2E1F45;
+
+    /* ---- Secondary: near-black warm surface for header/footer ---- */
+    --secondary-color: #120C17;
+    --secondary-light: #1F1626;
+
+    /* ---- Accent: brighter terracotta/gold for dark-mode contrast ---- */
+    --accent-color:  #E08F53;
+    --accent-dark:   #C2662D;
+    --accent-light:  #F0B37E;
+    --accent-soft:   #3B2A1D;
+    --accent-gold:   #E0B84A;
+
+    /* ---- Status ---- */
+    --success-color: #86A876;
+    --warning-color: #E0B84A;
+    --danger-color:  #D9695D;
+
+    /* ---- Background / surfaces: warm espresso, not grey-black ---- */
+    --background-color: #17111C;
+    --surface-color:     #201A26;
+    --surface-light:     #2A2230;
+    --surface-dark:      #362B3D;
+
+    /* ---- Text: warm cream, not pure white ---- */
+    --text-primary:   #F3EAD8;
+    --text-secondary: #C9B8A8;
+    --text-light:     #9C8A78;
+    --text-white:     #17111C;   /* for text placed on light chips in dark mode */
+
+    /* ---- Links ---- */
+    --link-color:         var(--primary-color);
+    --link-hover-color:   var(--primary-dark);
+    --link-visited-color: var(--primary-darker);
+
+    /* ---- Border ---- */
+    --border-color:  #3B2E42;
+    --border-strong: #4E3E56;
+
+    /* ---- Shadows: deepen for dark backgrounds ---- */
+    --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
+    --shadow-md: 0 10px 25px rgba(0,0,0,.4);
+    --shadow-lg: 0 15px 40px rgba(0,0,0,.45);
+    --shadow-xl: 0 20px 60px rgba(0,0,0,.5);
+
+}
+
+/* ===========================================
+   SYSTEM PREFERENCE FALLBACK
+   For visitors who land before ever toggling the switch,
+   respect their OS dark-mode setting automatically —
+   but only when they haven't made an explicit choice
+   (i.e. no data-theme attribute is set on <html>).
+=========================================== */
+
+@media (prefers-color-scheme: dark) {
+
+    :root:not([data-theme="light"]) {
+
+        --primary-color:  #A855F7;
+        --primary-dark:   #C084FC;
+        --primary-darker: #D8B4FE;
+        --primary-light:  #7C3AED;
+        --primary-soft:   #2E1F45;
+
+        --secondary-color: #120C17;
+        --secondary-light: #1F1626;
+
+        --accent-color:  #E08F53;
+        --accent-dark:   #C2662D;
+        --accent-light:  #F0B37E;
+        --accent-soft:   #3B2A1D;
+        --accent-gold:   #E0B84A;
+
+        --success-color: #86A876;
+        --warning-color: #E0B84A;
+        --danger-color:  #D9695D;
+
+        --background-color: #17111C;
+        --surface-color:     #201A26;
+        --surface-light:     #2A2230;
+        --surface-dark:      #362B3D;
+
+        --text-primary:   #F3EAD8;
+        --text-secondary: #C9B8A8;
+        --text-light:     #9C8A78;
+        --text-white:     #17111C;
+
+        --border-color:  #3B2E42;
+        --border-strong: #4E3E56;
+
+        --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
+        --shadow-md: 0 10px 25px rgba(0,0,0,.4);
+        --shadow-lg: 0 15px 40px rgba(0,0,0,.45);
+        --shadow-xl: 0 20px 60px rgba(0,0,0,.5);
+
+    }
 
 }
