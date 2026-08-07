@@ -8,7 +8,7 @@
 
 
 /* =========================================================================
-   GLOBAL RESET
+   RESET
 ========================================================================= */
 
 *,
@@ -184,8 +184,6 @@ section {
     background: var(--header-bg);
     border-bottom: 1px solid var(--header-border);
     backdrop-filter: blur(12px);
-
-    transition: box-shadow var(--transition-fast);
 }
 
 .navbar {
@@ -549,7 +547,13 @@ section {
     max-width: 760px;
 }
 
+
+/* PROJECT CARD */
+
 .project-card {
+    position: relative;
+    z-index: 1;
+
     overflow: hidden;
 
     border: 1px solid var(--border-color);
@@ -558,7 +562,9 @@ section {
     background: var(--surface-color);
     box-shadow: var(--shadow-md);
 
-    transition: var(--transition-normal);
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal);
 }
 
 .project-card:hover {
@@ -609,6 +615,68 @@ section {
     transform: rotate(90deg);
 }
 
+
+/* =========================================================================
+   PROJECT POPUP
+========================================================================= */
+
+/* Dark background behind the popup */
+body.project-modal-open::before {
+    position: fixed;
+    z-index: 2000;
+    inset: 0;
+
+    background: rgba(18, 18, 18, .72);
+    content: "";
+    backdrop-filter: blur(5px);
+}
+
+/* Prevent background scrolling while popup is open */
+body.project-modal-open {
+    overflow: hidden;
+}
+
+/* Popup card */
+.project-card[open] {
+    position: fixed;
+    z-index: 2100;
+    top: 50%;
+    left: 50%;
+
+    width: min(900px, calc(100vw - 32px));
+    max-height: calc(100vh - 40px);
+
+    overflow-y: auto;
+
+    border-color: var(--accent-color);
+    box-shadow: var(--shadow-xl);
+
+    transform: translate(-50%, -50%);
+    animation: popupOpen .3s ease both;
+}
+
+/* Remove the main preview image while popup is open */
+.project-card[open] .project-summary img {
+    display: none;
+}
+
+/* Keep the title at the top of the popup */
+.project-card[open] .project-summary-content {
+    padding: var(--space-lg) var(--space-xl);
+    border-bottom: 1px solid var(--border-color);
+    background: var(--surface-color);
+}
+
+.project-card[open] .project-summary-content h3 {
+    margin-bottom: 0;
+    font-size: clamp(1.3rem, 3vw, 2rem);
+}
+
+.project-card[open] .project-expand-label {
+    margin-top: var(--space-sm);
+}
+
+/* Expanded popup content */
 .project-expanded {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
@@ -616,8 +684,6 @@ section {
     gap: var(--space-lg);
 
     padding: var(--space-lg);
-    border-top: 1px solid var(--border-color);
-
     background: var(--surface-light);
 }
 
@@ -638,7 +704,9 @@ section {
 }
 
 
-/* PROJECT IMAGE SLIDER */
+/* =========================================================================
+   PROJECT IMAGE SLIDER
+========================================================================= */
 
 .project-gallery {
     position: relative;
@@ -969,10 +1037,6 @@ section {
    UTILITIES
 ========================================================================= */
 
-body.menu-open {
-    overflow: hidden;
-}
-
 .text-center {
     text-align: center;
 }
@@ -1020,15 +1084,15 @@ body.menu-open {
     }
 }
 
-@keyframes fadeUp {
+@keyframes popupOpen {
     from {
         opacity: 0;
-        transform: translateY(30px);
+        transform: translate(-50%, -47%) scale(.96);
     }
 
     to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translate(-50%, -50%) scale(1);
     }
 }
 
@@ -1044,3 +1108,35 @@ body.menu-open {
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* =========================================================================
+   TABLET
+========================================================================= */
+
+@media (max-width: 1024px) {
+    .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .hero-content {
+        order: 2;
+    }
+
+    .hero-image {
+        order: 1;
+    }
+
+    .hero-description {
+        margin-inline: auto;
+    }
+
+    .hero-buttons {
+        justify-content: center;
+    }
+
+    .hero-image img
