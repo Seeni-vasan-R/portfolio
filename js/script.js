@@ -18,6 +18,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const sections = document.querySelectorAll("section");
 
+    const themeToggle = document.getElementById("theme-toggle");
+    const root = document.documentElement;
+
+
+    /* ======================================================
+   THEME TOGGLE
+====================================================== */
+
+// Load saved theme on page load
+if (themeToggle) {
+
+    if (localStorage.getItem("theme") === "dark") {
+
+        root.setAttribute("data-theme", "dark");
+
+    }
+
+    themeToggle.addEventListener("click", () => {
+
+        const isDark = root.getAttribute("data-theme") === "dark";
+
+        if (isDark) {
+
+            root.removeAttribute("data-theme");
+
+            localStorage.setItem("theme", "light");
+
+        } else {
+
+            root.setAttribute("data-theme", "dark");
+
+            localStorage.setItem("theme", "dark");
+
+        }
+
+    });
+
+}
+
+
     /* ======================================================
        MOBILE MENU
     ====================================================== */
