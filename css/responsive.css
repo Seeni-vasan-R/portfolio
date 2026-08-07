@@ -1,5 +1,54 @@
 /* =========================================================================
-   RESPONSIVE STYLES
+   RESPONSIVE.CSS
+========================================================================= */
+
+
+/* =========================================================================
+   GLOBAL RESPONSIVE RULES
+========================================================================= */
+
+img,
+picture,
+video {
+    display: block;
+    max-width: 100%;
+}
+
+img,
+video {
+    height: auto;
+}
+
+.project-card,
+.certificate-card,
+.about-card,
+.skill-category,
+.education-card,
+.contact-card {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
+
+
+/* =========================================================================
+   PROJECTS: ALWAYS STACK VERTICALLY
+========================================================================= */
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 900px);
+    justify-content: center;
+    gap: var(--space-2xl);
+    width: 100%;
+}
+
+.project-card {
+    width: 100%;
+}
+
+
+/* =========================================================================
+   LARGE DESKTOP
 ========================================================================= */
 
 @media (max-width: 1200px) {
@@ -12,14 +61,14 @@
     }
 }
 
+
+/* =========================================================================
+   TABLET LANDSCAPE
+========================================================================= */
+
 @media (max-width: 1024px) {
     section {
         padding: var(--space-4xl) 0;
-    }
-
-    .about-content,
-    .contact-container {
-        grid-template-columns: 1fr;
     }
 
     .hero-container {
@@ -47,7 +96,17 @@
         width: 300px;
         height: 380px;
     }
+
+    .about-content,
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
 }
+
+
+/* =========================================================================
+   TABLET
+========================================================================= */
 
 @media (max-width: 768px) {
     section {
@@ -114,7 +173,6 @@
 
     .about-cards,
     .skills-container,
-    .projects-grid,
     .certificate-grid {
         grid-template-columns: 1fr;
     }
@@ -127,6 +185,11 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* =========================================================================
+   MOBILE
+========================================================================= */
 
 @media (max-width: 480px) {
     .container {
@@ -179,6 +242,11 @@
     }
 }
 
+
+/* =========================================================================
+   SMALL MOBILE
+========================================================================= */
+
 @media (max-width: 375px) {
     .logo {
         font-size: 1.5rem;
@@ -199,5 +267,21 @@
     .certificate-card,
     .contact-card {
         padding: var(--space-lg);
+    }
+}
+
+
+/* =========================================================================
+   REDUCED MOTION
+========================================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
     }
 }
