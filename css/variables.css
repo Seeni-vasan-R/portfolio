@@ -1,128 +1,118 @@
 /* ===========================================
-   THEME VARIABLES – Plum + Copper (Warm Neutrals)
-   No blue, white, or grey. Every neutral below is warm
-   (ivory / espresso / tan). Text colors carry a subtle
-   plum undertone so text and buttons read as one family
-   instead of two unrelated palettes stitched together.
+   THEME VARIABLES – Beige + Charcoal (Editorial)
+   Warm beige surfaces against a confident dark charcoal —
+   a quiet, magazine/editorial palette instead of a bright
+   "startup" one. One muted camel accent carries all the
+   highlight/hover work so the rest stays monochrome.
 
    Dark mode is MANUAL ONLY via [data-theme="dark"] on
-   <html>, toggled by JS. There is deliberately no
-   prefers-color-scheme auto-switch — this site currently
-   has sections (header, hero) with backgrounds that are
-   NOT wired to swap automatically, so an OS-level dark
-   preference was flipping text to a pale color on top of
-   backgrounds that stayed light. Manual toggle avoids that
-   mismatch entirely.
+   <html> (toggled from script.js) — no automatic OS-based
+   switch, so a hardcoded section can never silently break.
 =========================================== */
 
 :root {
 
     /* =======================================
-       PRIMARY COLORS (brand / CTAs / links)
-       One confident plum, used consistently — not diluted
-       by a second "accent purple" elsewhere in the file.
+       PRIMARY COLORS (headings / buttons / icons)
+       Charcoal instead of black — softer, warmer.
     ======================================= */
 
-    --primary-color:  #6D28D9;   /* plum-700 — buttons, links, icons */
-    --primary-dark:   #4C1D95;   /* plum-900 — hover/active state */
-    --primary-darker: #3B1670;   /* pressed state */
-    --primary-light:  #8B5CF6;   /* plum-500 — subtle fills, icon accents */
-    --primary-soft:   #F1E9FB;   /* pale lavender tint — chip/badge backgrounds ONLY, never text */
+    --primary-color:  #323232;   /* charcoal — CTAs, headings, icons */
+    --primary-dark:   #1F1F1F;   /* hover / active state */
+    --primary-darker: #121212;   /* pressed state */
+    --primary-light:  #545454;   /* lighter charcoal, subtle fills */
+    --primary-soft:   #E5E0DA;   /* pale charcoal-beige tint */
 
     /* =======================================
-       SECONDARY COLOR (header-on-dark / footer / dark blocks)
-       Warm aubergine-black. Any section using this as a
-       background MUST pair it with --text-on-dark below,
-       not --text-primary.
+       SECONDARY COLOR (large dark blocks / footer)
     ======================================= */
 
-    --secondary-color: #1E1523;
-    --secondary-light: #2E2135;
+    --secondary-color: #232323;  /* near-black panel, e.g. dark image overlays */
+    --secondary-light: #3A3A3A;
 
     /* =======================================
-       ACCENT (the one signature highlight color)
-       Burnt copper — used for kickers, active-state
-       underlines, and badges. Deliberately ONE hue instead
-       of splitting attention between orange and gold.
+       ACCENT (the one spot color — links, badges, hover)
+       Muted camel/tan, matched to the warm beige family
+       rather than an unrelated bright color.
     ======================================= */
 
-    --accent-color: #B8622C;
-    --accent-dark:  #94501F;
-    --accent-light: #D98A54;
-    --accent-soft:  #F7E4D3;     /* background tint only, never text on light surfaces */
+    --accent-color:  #A47551;    /* muted camel */
+    --accent-dark:   #8A5F3F;    /* hover state */
+    --accent-light:  #C09872;    /* lighter camel, gradients */
+    --accent-soft:   #F0E4D8;    /* pale camel tint */
 
     /* =======================================
        STATUS COLORS
-       Kept functionally separate from --accent-color so a
-       "warning" badge is never confused with a decorative
-       kicker label.
+       Kept muted/earthy so they don't fight the palette.
     ======================================= */
 
-    --success-color: #5C7A4F;    /* muted sage green */
-    --warning-color: #C99A2E;    /* muted amber */
-    --danger-color:  #A83C32;    /* muted brick red */
+    --success-color: #6B7A5E;    /* muted olive-sage */
+    --warning-color: #B8894F;    /* muted amber */
+    --danger-color:  #A34A3C;    /* muted brick red */
 
     /* =======================================
-       BACKGROUND / SURFACE (light sections — header, hero, cards)
+       BACKGROUND
     ======================================= */
 
-    --background-color: #F8F3EC; /* warm ivory page background */
-    --surface-color:    #FFFDF9; /* card surfaces, near-white but warm */
-    --surface-light:    #F0E8DC; /* alternating section tint */
-    --surface-dark:     #E3D6C2; /* deeper warm block, dividers */
+    --background-color: #DDD0C8; /* signature warm beige */
 
     /* =======================================
-       TEXT — FOR USE ON LIGHT SURFACES
-       (background-color / surface-color / surface-light)
+       SURFACE (cards / sections)
     ======================================= */
 
-    --text-primary:   #241A2C;   /* near-black with a plum undertone — main body text */
-    --text-secondary: #5B4E63;   /* muted plum-taupe — subheadings, descriptions */
-    --text-light:     #8A7D91;   /* lightest supporting text */
+    --surface-color: #F6F1EA;    /* warm off-white — card surfaces */
+    --surface-light: #EDE4DA;    /* tinted alternating section bg */
+    --surface-dark:  #C9BAAE;    /* deeper beige block, dividers */
 
     /* =======================================
-       TEXT — FOR USE ON DARK SURFACES
-       (secondary-color / secondary-light / any dark hero
-       or footer block). Keep these two token sets separate
-       — this is what prevents text from silently becoming
-       unreadable when it lands on the wrong background.
+       TEXT
     ======================================= */
 
-    --text-on-dark:           #FAF5EC; /* warm ivory — headings on dark backgrounds */
-    --text-on-dark-secondary: #C9BBD1; /* muted lavender-tan — body text on dark backgrounds */
-
-    /* kept for any existing code still referencing --text-white */
-    --text-white: #FAF5EC;
+    --text-primary:   #232323;   /* main body text — near-black charcoal */
+    --text-secondary: #5C5650;   /* subdued warm-grey text */
+    --text-light:     #8C8279;   /* lightest descriptive text */
+    --text-white:     #F6F1EA;   /* warm off-white, for use on dark surfaces */
 
     /* =======================================
        LINKS
     ======================================= */
 
     --link-color:         var(--primary-color);
-    --link-hover-color:   var(--primary-dark);
-    --link-visited-color: var(--primary-darker);
+    --link-hover-color:   var(--accent-color);
+    --link-visited-color: var(--primary-dark);
 
     /* =======================================
        SEMANTIC ALIASES
-       Point specific UI roles at a color explicitly
-       instead of letting headings/nav text silently
-       inherit whatever --text-primary happens to be —
-       this is what prevents "invisible text" bugs when
-       one section's background changes independently
-       of another (e.g. a light header over a dark hero).
+       Explicit roles instead of ambiguous generic tokens —
+       prevents text silently inheriting the wrong tone when
+       a section's background doesn't follow the page theme.
     ======================================= */
 
     --heading-color:          var(--text-primary);
     --nav-text-color:         var(--text-primary);
-    --nav-text-active:        var(--primary-color);
+    --nav-text-active:        var(--accent-color);
     --button-text-on-primary: var(--surface-color);
+
+    /* =======================================
+       HEADER (theme-independent)
+       Fixed frosted-beige bar — stays the same in both
+       light and dark mode, so its text uses its own
+       always-dark tokens rather than --text-primary,
+       which does flip.
+    ======================================= */
+
+    --header-bg:         rgba(246,241,234,.92);  /* frosted warm-beige, constant in both themes */
+    --header-border:     rgba(35,35,35,.08);
+    --header-text:       #232323;                /* always dark */
+    --header-text-muted: #6B645C;
+    --header-text-hover: #A47551;                /* always the light-theme accent camel */
 
     /* =======================================
        BORDER
     ======================================= */
 
-    --border-color:  #E3D6C2;
-    --border-strong: #D0C2AE;
+    --border-color:  #C9BAAE;
+    --border-strong: #B3A192;
 
     /* =======================================
        FONT
@@ -180,13 +170,13 @@
     --radius-round: 999px;
 
     /* =======================================
-       SHADOWS (warm-tinted, matches the palette)
+       SHADOWS (warm charcoal tint, not cool slate)
     ======================================= */
 
-    --shadow-sm: 0 2px 8px rgba(36,26,44,.12);
-    --shadow-md: 0 10px 25px rgba(36,26,44,.15);
-    --shadow-lg: 0 15px 40px rgba(36,26,44,.18);
-    --shadow-xl: 0 20px 60px rgba(36,26,44,.22);
+    --shadow-sm: 0 2px 8px rgba(35,35,35,.10);
+    --shadow-md: 0 10px 25px rgba(35,35,35,.13);
+    --shadow-lg: 0 15px 40px rgba(35,35,35,.16);
+    --shadow-xl: 0 20px 60px rgba(35,35,35,.20);
 
     /* =======================================
        TRANSITIONS
@@ -203,81 +193,72 @@
     --container-width: 1200px;
 
     /* =======================================
-       HEADER
+       HEADER HEIGHT
     ======================================= */
-
-    /* =======================================
-       HEADER (theme-independent)
-       The header is a fixed frosted-glass bar that stays
-       light in BOTH light and dark mode — it does not flip
-       with the rest of the page. Its text therefore gets its
-       own dedicated always-dark tokens instead of reading
-       --text-primary, which does flip. This is what was
-       causing the logo/nav to vanish in dark mode: the
-       background stayed light, but the text color kept
-       trying to follow the (now light-on-light) theme text.
-    ======================================= */
-
-    --header-bg:         rgba(255,253,249,.9);   /* frosted warm-white, constant in both themes */
-    --header-border:     rgba(36,26,44,.08);
-    --header-text:       #241A2C;                /* always dark — matches light-theme --text-primary */
-    --header-text-muted: #5B4E63;
-    --header-text-hover: #6D28D9;                /* always the light-theme --primary-color */
 
     --header-height: 80px;
 
 }
 
 /* ===========================================
-   DARK THEME — manual toggle only
-   Set via JS: document.documentElement.setAttribute('data-theme','dark')
-   Every light-surface token gets redefined; the "on-dark"
-   text tokens stay the same since dark-surface text doesn't
-   need to change when the whole site goes dark.
+   DARK THEME
+   Toggle via JS: <html data-theme="dark">
+   Charcoal becomes the background instead of an accent —
+   beige becomes the light/text color instead of the base.
 =========================================== */
 
 [data-theme="dark"] {
 
-    --primary-color:  #A855F7;
-    --primary-dark:   #C084FC;
-    --primary-darker: #D8B4FE;
-    --primary-light:  #7C3AED;
-    --primary-soft:   #2E1F45;
+    /* ---- Primary: warm beige reads as the "bright" color now ---- */
+    --primary-color:  #DDD0C8;
+    --primary-dark:   #C9BAAE;
+    --primary-darker: #B3A192;
+    --primary-light:  #EDE4DA;
+    --primary-soft:   #3A342E;
 
-    --secondary-color: #120C17;
-    --secondary-light: #1F1626;
+    /* ---- Secondary: deep warm block for panels ---- */
+    --secondary-color: #141414;
+    --secondary-light: #1F1F1F;
 
-    --accent-color: #D98A54;
-    --accent-dark:  #B8622C;
-    --accent-light: #E8AC80;
-    --accent-soft:  #3B2A1D;
+    /* ---- Accent: brighter camel for dark-mode contrast ---- */
+    --accent-color:  #C09872;
+    --accent-dark:   #A47551;
+    --accent-light:  #D8B694;
+    --accent-soft:   #33291F;
 
-    --success-color: #86A876;
-    --warning-color: #E0B84A;
-    --danger-color:  #D9695D;
+    /* ---- Status ---- */
+    --success-color: #8B9A7C;
+    --warning-color: #D0A365;
+    --danger-color:  #C06A5A;
 
-    --background-color: #17111C;
-    --surface-color:     #201A26;
-    --surface-light:     #2A2230;
-    --surface-dark:      #362B3D;
+    /* ---- Background / surfaces: warm near-black, not cool grey ---- */
+    --background-color: #1A1A1A;
+    --surface-color:     #232323;
+    --surface-light:     #2C2C2C;
+    --surface-dark:      #383838;
 
-    /* on a dark-mode page, "light surfaces" and "dark surfaces"
-       converge — both text token sets point to the same values
-       so every element stays legible without special-casing */
-    --text-primary:   #F3EAD8;
-    --text-secondary: #C9B8A8;
-    --text-light:     #9C8A78;
+    /* ---- Text: warm beige, not pure white ---- */
+    --text-primary:   #EDE4DA;
+    --text-secondary: #B3A192;
+    --text-light:     #8C8279;
+    --text-white:     #1A1A1A;   /* for text placed on light chips in dark mode */
 
-    --text-on-dark:           #F3EAD8;
-    --text-on-dark-secondary: #C9B8A8;
-    --text-white:             #17111C;
+    /* ---- Links ---- */
+    --link-color:         var(--primary-color);
+    --link-hover-color:   var(--accent-color);
+    --link-visited-color: var(--primary-dark);
 
-    --border-color:  #3B2E42;
-    --border-strong: #4E3E56;
+    /* ---- Border ---- */
+    --border-color:  #3A3A3A;
+    --border-strong: #4A4A4A;
 
+    /* ---- Shadows: deepen for dark backgrounds ---- */
     --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
     --shadow-md: 0 10px 25px rgba(0,0,0,.4);
     --shadow-lg: 0 15px 40px rgba(0,0,0,.45);
     --shadow-xl: 0 20px 60px rgba(0,0,0,.5);
+
+    /* header-* tokens intentionally NOT overridden here —
+       the header stays fixed warm-beige in both themes. */
 
 }
