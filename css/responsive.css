@@ -1,330 +1,320 @@
 /* =========================================================================
    RESPONSIVE.CSS
-   Breakpoint ladder: 1200 (small desktop) -> 1024 (tablet landscape)
-   -> 768 (tablet) -> 480 (mobile) -> 375 (small mobile)
+   Breakpoint ladder:
+   1200px -> 1024px -> 768px -> 480px -> 375px
 
-   NOTE: assumes the same CSS variables (--primary-color, --shadow-*,
-   --radius-*, --transition-*, etc.) defined in :root in styles.css.
-   Load styles.css BEFORE this file so those tokens are available.
+   Load variables.css and styles.css before this file.
 ========================================================================= */
 
+
 /* =========================================================================
-   FOUNDATIONAL RULES (apply at every screen size)
-   These aren't breakpoint-specific, but they're what actually stops
-   images and cards from distorting as the viewport changes — worth
-   keeping in the "responsive" file since that's their whole job.
+   FOUNDATIONAL RESPONSIVE RULES
 ========================================================================= */
 
 img,
 picture,
-video{
-
-    max-width:100%;
-    height:auto;
-    display:block;
-
+video {
+    display: block;
+    max-width: 100%;
 }
 
-/* project/certificate thumbnails: crop to fill instead of stretching */
-.project-card img{
-
-    width:100%;
-    object-fit:cover;
-
+img,
+video {
+    height: auto;
 }
 
-/* grids collapse safely instead of overflowing on very narrow viewports */
+.project-card img,
+.certificate-card img {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+}
+
 .projects-grid,
 .certificate-grid,
 .about-cards,
 .skills-container,
-.achievement-grid{
-
-    min-width:0;
-
+.achievement-grid {
+    min-width: 0;
 }
 
 .project-card,
 .certificate-card,
 .about-card,
 .skill-category,
-.education-card{
+.education-card {
+    min-width: 0;
+    overflow-wrap: anywhere;
+}
 
-    min-width:0;
-    word-wrap:break-word;
+button,
+a {
+    -webkit-tap-highlight-color: transparent;
+}
 
+:focus-visible {
+    outline: 3px solid var(--accent-color);
+    outline-offset: 3px;
 }
 
 
 /* =========================================================================
-   1. LARGE DESKTOP / SMALL LAPTOPS  (<= 1200px)
-   Text and container width start easing down before any layout
-   actually needs to change.
+   LARGE DESKTOP / SMALL LAPTOPS
 ========================================================================= */
 
-@media (max-width:1200px){
-
-    .container{
-        width:92%;
+@media (max-width: 1200px) {
+    .container {
+        width: min(92%, var(--container-width));
     }
 
-    .hero h1{
-        font-size:3.5rem;
+    .hero h1 {
+        font-size: clamp(3rem, 5vw, 3.5rem);
     }
 
-    .hero h2{
-        font-size:1.8rem;
+    .hero h2 {
+        font-size: clamp(1.5rem, 3vw, 1.8rem);
     }
-
 }
 
 
 /* =========================================================================
-   2. LAPTOP / TABLET LANDSCAPE  (<= 1024px)
-   First real structural change: two-column sections (hero, about,
-   contact) drop to a single column. Grids go from 3-up to 2-up.
+   LAPTOP / TABLET LANDSCAPE
 ========================================================================= */
 
-@media (max-width:1024px){
-
-    section{
-        padding:80px 0;
+@media (max-width: 1024px) {
+    section {
+        padding: var(--space-4xl) 0;
     }
 
-    /* --- hero: stack image above content, center everything --- */
-    .hero-container{
-        grid-template-columns:1fr;
-        text-align:center;
-        gap:50px;
+    .hero-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-3xl);
+        text-align: center;
     }
 
-    .hero-content{
-        order:2;
+    .hero-content {
+        order: 2;
     }
 
-    .hero-image{
-        order:1;
+    .hero-image {
+        order: 1;
     }
 
-    .hero-description{
-        margin:0 auto 40px;
+    .hero-description {
+        margin: 0 auto var(--space-xl);
     }
 
     .hero-buttons,
-    .social-icons{
-        justify-content:center;
+    .social-icons {
+        justify-content: center;
     }
 
-    .hero-image img{
-        width:320px;
+    .hero-image img {
+        width: 320px;
+        margin-inline: auto;
     }
 
-    /* --- about / contact: stack the two-column layouts --- */
-    .about-content{
-        grid-template-columns:1fr;
+    .about-content,
+    .contact-container {
+        grid-template-columns: 1fr;
     }
 
-    .contact-container{
-        grid-template-columns:1fr;
+    .projects-grid,
+    .certificate-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-
-    /* --- grids: 3-up becomes 2-up so cards keep breathing room --- */
-    .projects-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
-    .certificate-grid{
-        grid-template-columns:repeat(2,1fr);
-    }
-
 }
 
 
 /* =========================================================================
-   3. TABLET  (<= 768px)
-   Navigation switches to a hamburger menu. Remaining 2-column grids
-   drop to a single column since card content no longer fits comfortably
-   side-by-side at this width.
+   TABLET
 ========================================================================= */
 
-@media (max-width:768px){
-
-    /* --- mobile navigation --- */
-    .menu-btn{
-        display:block;
-        z-index:1100; /* stay above the fixed header (z-index:1000) */
+@media (max-width: 768px) {
+    .menu-btn {
+        display: block;
+        position: relative;
+        z-index: 1100;
     }
 
-    .nav-links{
-        position:fixed;
-        top:80px;
-        left:-100%;              /* off-screen until toggled open */
-        width:100%;
-        background:var(--background-color, #fff);
-        flex-direction:column;
-        align-items:center;
-        padding:40px 0;
-        gap:30px;
-        transition:var(--transition-normal, .35s ease);
-        box-shadow:var(--shadow-lg, 0 10px 20px rgba(0,0,0,.08));
+    .nav-links {
+        position: fixed;
+        z-index: 1050;
+        top: var(--header-height);
+        left: 0;
+        width: 100%;
+        min-height: calc(100dvh - var(--header-height));
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+
+        padding: calc(var(--space-2xl) + env(safe-area-inset-top))
+                 var(--container-padding)
+                 calc(var(--space-2xl) + env(safe-area-inset-bottom));
+
+        gap: var(--space-lg);
+        background: var(--background-color);
+        box-shadow: var(--shadow-lg);
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transform: translateX(-100%);
+        transition:
+            opacity var(--transition-normal),
+            transform var(--transition-normal),
+            visibility var(--transition-normal);
     }
 
-    /* toggled by JS: adding/removing "active" on .nav-links */
-    .nav-links.active{
-        left:0;
+    .nav-links.active {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translateX(0);
     }
 
-    /* underline hover animation doesn't read well in a stacked list */
-    .nav-links a::after{
-        display:none;
+    .nav-links a::after {
+        display: none;
     }
 
-    /* generous tap target for touch devices */
-    .nav-links a{
-        width:100%;
-        padding:10px 0;
-        text-align:center;
+    .nav-links a {
+        width: min(100%, 20rem);
+        padding: var(--space-sm) 0;
+        text-align: center;
     }
 
-    /* --- hero --- */
-    .hero{
-        padding-top:120px; /* clear the taller mobile header + open menu */
+    .hero {
+        padding-top: calc(var(--header-height) + var(--space-3xl));
     }
 
-    .hero h1{
-        font-size:2.8rem;
+    .hero h1 {
+        font-size: clamp(2.4rem, 8vw, 2.8rem);
     }
 
-    .hero h2{
-        font-size:1.5rem;
+    .hero h2 {
+        font-size: clamp(1.3rem, 4vw, 1.5rem);
     }
 
-    .hero-description{
-        font-size:1rem;
+    .hero-description {
+        font-size: var(--font-size-md);
     }
 
-    /* --- single-column card grids --- */
     .about-cards,
     .skills-container,
     .projects-grid,
-    .certificate-grid{
-        grid-template-columns:1fr;
+    .certificate-grid {
+        grid-template-columns: 1fr;
     }
 
-    .achievement-grid{
-        grid-template-columns:repeat(2,1fr);
+    .achievement-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .footer-social{
-        flex-wrap:wrap;
+    .footer-social {
+        flex-wrap: wrap;
     }
-
 }
 
 
 /* =========================================================================
-   4. MOBILE  (<= 480px)
-   Buttons and multi-item rows stack vertically; typography drops to
-   its smallest comfortable size for one-handed phone use.
+   MOBILE
 ========================================================================= */
 
-@media (max-width:480px){
-
-    section{
-        padding:64px 0;
+@media (max-width: 480px) {
+    section {
+        padding: var(--space-3xl) 0;
     }
 
-    .section-title{
-        margin-bottom:36px;
+    .section-title {
+        margin-bottom: var(--space-2xl);
     }
 
-    .section-title h2{
-        font-size:1.9rem;
+    .section-title h2 {
+        font-size: clamp(1.7rem, 7vw, 1.9rem);
     }
 
-    .hero h1{
-        font-size:2.2rem;
+    .hero h1 {
+        font-size: clamp(2rem, 10vw, 2.2rem);
     }
 
-    .hero h2{
-        font-size:1.2rem;
+    .hero h2 {
+        font-size: 1.2rem;
     }
 
-    .hero-image img{
-        width:240px;
+    .hero-image img {
+        width: 240px;
     }
 
-    /* full-width, stacked call-to-actions read better than a cramped row */
-    .btn{
-        width:100%;
-        justify-content:center;
+    .btn {
+        width: min(100%, 22rem);
+        justify-content: center;
     }
 
     .hero-buttons,
-    .project-buttons{
-        flex-direction:column;
+    .project-buttons {
+        flex-direction: column;
+        align-items: center;
     }
 
-    .contact-item{
-        align-items:flex-start;
+    .contact-item {
+        align-items: flex-start;
     }
 
-    .contact-item i{
-        width:48px;
-        height:48px;
-        font-size:1rem;
+    .contact-item i {
+        width: 48px;
+        height: 48px;
+        font-size: 1rem;
+        flex-shrink: 0;
     }
 
-    .achievement-grid{
-        grid-template-columns:1fr;
+    .achievement-grid {
+        grid-template-columns: 1fr;
     }
 
-    .footer h2{
-        font-size:1.6rem;
+    .footer h2 {
+        font-size: 1.6rem;
     }
 
-    #backToTop{
-        right:18px;
-        bottom:18px;
-        width:46px;
-        height:46px;
-        font-size:1rem;
+    #backToTop {
+        right: calc(18px + env(safe-area-inset-right));
+        bottom: calc(18px + env(safe-area-inset-bottom));
+        width: 46px;
+        height: 46px;
+        font-size: 1rem;
     }
-
 }
 
 
 /* =========================================================================
-   5. SMALL MOBILE  (<= 375px)
-   Older/compact phones (iPhone SE and similar). Tightens padding and
-   font sizes one more notch so nothing clips or wraps awkwardly.
+   SMALL MOBILE
 ========================================================================= */
 
-@media (max-width:375px){
-
-    .container{
-        width:94%;
+@media (max-width: 375px) {
+    .container {
+        width: 94%;
     }
 
-    .logo{
-        font-size:1.4rem;
+    .logo {
+        font-size: 1.4rem;
     }
 
-    .hero h1{
-        font-size:1.9rem;
+    .hero h1 {
+        font-size: 1.9rem;
     }
 
-    .hero-image img{
-        width:200px;
+    .hero-image img {
+        width: 200px;
     }
 
-    .section-title h2{
-        font-size:1.6rem;
+    .section-title h2 {
+        font-size: 1.6rem;
     }
 
-    .btn{
-        padding:12px 18px;
-        font-size:.9rem;
+    .btn {
+        padding: 12px 18px;
+        font-size: .9rem;
     }
 
     .about-card,
@@ -333,32 +323,27 @@ video{
     .certificate-card,
     .achievement-card,
     .education-card,
-    .contact-card{
-        padding:20px;
+    .contact-card {
+        padding: 20px;
     }
 
-    .project-content{
-        padding:18px;
+    .project-content {
+        padding: 18px;
     }
-
 }
 
 
 /* =========================================================================
-   ACCESSIBILITY: respect the OS-level "reduce motion" setting
-   Card lift/hover animations, fades, and the scroll-down bounce all
-   get disabled — not just shortened — for anyone who has this on.
+   REDUCED MOTION
 ========================================================================= */
 
-@media (prefers-reduced-motion:reduce){
-
+@media (prefers-reduced-motion: reduce) {
     *,
     *::before,
-    *::after{
-        animation-duration:.01ms !important;
-        animation-iteration-count:1 !important;
-        transition-duration:.01ms !important;
-        scroll-behavior:auto !important;
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
     }
-
 }
