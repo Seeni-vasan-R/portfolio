@@ -296,7 +296,7 @@ section{
 
     z-index:1000;
 
-    background:rgba(255,255,255,.92);
+    background:color-mix(in srgb, var(--surface-color) 92%, transparent);
 
     backdrop-filter:blur(12px);
 
@@ -324,6 +324,8 @@ section{
 
     font-weight:700;
 
+    color:var(--text-primary);
+
 }
 
 .logo span{
@@ -343,6 +345,8 @@ section{
 .nav-links a{
 
     font-weight:500;
+
+    color:var(--text-primary);
 
     transition:.3s;
 
@@ -420,7 +424,7 @@ section{
 
     padding-top:80px;
 
-    background:radial-gradient(circle at top left, #e0f2fe 0, #f8fafc 45%, #ffffff 100%);
+    background:radial-gradient(circle at top left, var(--primary-soft) 0, var(--background-color) 45%, var(--surface-color) 100%);
 
 }
 
@@ -481,6 +485,8 @@ section{
     font-size:4rem;
 
     line-height:1.1;
+
+    color:var(--text-primary);
 
     margin-bottom:15px;
 
