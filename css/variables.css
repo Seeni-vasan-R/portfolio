@@ -1,102 +1,128 @@
 /* ===========================================
-   THEME VARIABLES – Plum + Terracotta + Warm Neutrals
-   A distinctive palette built deliberately WITHOUT blue,
-   white, or grey — every "neutral" below is warm-toned
-   (cream / espresso / tan) instead of true grey/white.
+   THEME VARIABLES – Plum + Copper (Warm Neutrals)
+   No blue, white, or grey. Every neutral below is warm
+   (ivory / espresso / tan). Text colors carry a subtle
+   plum undertone so text and buttons read as one family
+   instead of two unrelated palettes stitched together.
 
-   Light theme lives on :root. Dark theme overrides live in
-   [data-theme="dark"] — toggle it in JS with:
-       document.documentElement.setAttribute('data-theme','dark')
-   A prefers-color-scheme fallback is included at the bottom
-   for users who haven't toggled anything yet.
+   Dark mode is MANUAL ONLY via [data-theme="dark"] on
+   <html>, toggled by JS. There is deliberately no
+   prefers-color-scheme auto-switch — this site currently
+   has sections (header, hero) with backgrounds that are
+   NOT wired to swap automatically, so an OS-level dark
+   preference was flipping text to a pale color on top of
+   backgrounds that stayed light. Manual toggle avoids that
+   mismatch entirely.
 =========================================== */
 
 :root {
 
     /* =======================================
        PRIMARY COLORS (brand / CTAs / links)
-       Deep plum — confident and distinctive without
-       reaching for the "default tech blue".
+       One confident plum, used consistently — not diluted
+       by a second "accent purple" elsewhere in the file.
     ======================================= */
 
     --primary-color:  #6D28D9;   /* plum-700 — buttons, links, icons */
-    --primary-dark:   #55189E;   /* plum-800 — hover/active state */
-    --primary-darker: #3E1173;   /* plum-900 — pressed state */
-    --primary-light:  #9F5FEF;   /* plum-400 — subtle fills, badges */
-    --primary-soft:   #F0E4FC;   /* plum-50  — pale tint backgrounds */
+    --primary-dark:   #4C1D95;   /* plum-900 — hover/active state */
+    --primary-darker: #3B1670;   /* pressed state */
+    --primary-light:  #8B5CF6;   /* plum-500 — subtle fills, icon accents */
+    --primary-soft:   #F1E9FB;   /* pale lavender tint — chip/badge backgrounds ONLY, never text */
 
     /* =======================================
-       SECONDARY COLOR (header / footer / dark blocks)
-       Warm espresso-black instead of grey/near-black —
-       keeps dark sections feeling warm, not cold/techy.
+       SECONDARY COLOR (header-on-dark / footer / dark blocks)
+       Warm aubergine-black. Any section using this as a
+       background MUST pair it with --text-on-dark below,
+       not --text-primary.
     ======================================= */
 
-    --secondary-color: #241A2E;  /* deep aubergine-espresso */
-    --secondary-light: #3B2A47;  /* lighter panel on dark sections */
+    --secondary-color: #1E1523;
+    --secondary-light: #2E2135;
 
     /* =======================================
-       ACCENT COLORS (highlights, badges, kickers)
-       Burnt terracotta — the "signature" color that shows
-       up on small labels, underlines, and hover accents.
+       ACCENT (the one signature highlight color)
+       Burnt copper — used for kickers, active-state
+       underlines, and badges. Deliberately ONE hue instead
+       of splitting attention between orange and gold.
     ======================================= */
 
-    --accent-color:   #C2662D;   /* burnt terracotta */
-    --accent-dark:    #9C4E20;   /* hover state for accent elements */
-    --accent-light:   #E08F53;   /* lighter terracotta for gradients */
-    --accent-soft:    #FBE7D6;   /* pale terracotta background tint */
-
-    --accent-gold:    #C99A2E;   /* muted gold — secondary highlight */
+    --accent-color: #B8622C;
+    --accent-dark:  #94501F;
+    --accent-light: #D98A54;
+    --accent-soft:  #F7E4D3;     /* background tint only, never text on light surfaces */
 
     /* =======================================
        STATUS COLORS
-       Muted, earthy versions rather than saturated
-       "system" red/green — stays inside the palette.
+       Kept functionally separate from --accent-color so a
+       "warning" badge is never confused with a decorative
+       kicker label.
     ======================================= */
 
     --success-color: #5C7A4F;    /* muted sage green */
-    --warning-color: #C99A2E;    /* muted gold */
+    --warning-color: #C99A2E;    /* muted amber */
     --danger-color:  #A83C32;    /* muted brick red */
 
     /* =======================================
-       BACKGROUND
-       Warm ivory instead of white — softer, easier on
-       the eyes, and consistent with the earthy palette.
+       BACKGROUND / SURFACE (light sections — header, hero, cards)
     ======================================= */
 
-    --background-color: #F7F1E8; /* warm ivory page background */
+    --background-color: #F8F3EC; /* warm ivory page background */
+    --surface-color:    #FFFDF9; /* card surfaces, near-white but warm */
+    --surface-light:    #F0E8DC; /* alternating section tint */
+    --surface-dark:     #E3D6C2; /* deeper warm block, dividers */
 
     /* =======================================
-       SURFACE (cards / sections)
+       TEXT — FOR USE ON LIGHT SURFACES
+       (background-color / surface-color / surface-light)
     ======================================= */
 
-    --surface-color: #FDFAF4;    /* warm off-white — card surfaces */
-    --surface-light: #F1E9DB;    /* tinted panel / alternating section bg */
-    --surface-dark:  #E4D7C2;    /* deeper warm block, dividers */
+    --text-primary:   #241A2C;   /* near-black with a plum undertone — main body text */
+    --text-secondary: #5B4E63;   /* muted plum-taupe — subheadings, descriptions */
+    --text-light:     #8A7D91;   /* lightest supporting text */
 
     /* =======================================
-       TEXT
-       Warm espresso-brown instead of grey/black.
+       TEXT — FOR USE ON DARK SURFACES
+       (secondary-color / secondary-light / any dark hero
+       or footer block). Keep these two token sets separate
+       — this is what prevents text from silently becoming
+       unreadable when it lands on the wrong background.
     ======================================= */
 
-    --text-primary:   #2B2118;   /* main body text — warm near-black */
-    --text-secondary: #5C4E3F;   /* subdued text — warm taupe */
-    --text-light:     #8A7A66;   /* lightest descriptive text */
-    --text-white:     #FDFAF4;   /* warm off-white for use on dark bg */
+    --text-on-dark:           #FAF5EC; /* warm ivory — headings on dark backgrounds */
+    --text-on-dark-secondary: #C9BBD1; /* muted lavender-tan — body text on dark backgrounds */
+
+    /* kept for any existing code still referencing --text-white */
+    --text-white: #FAF5EC;
 
     /* =======================================
-       LINKS (explicit states — buttons reuse --primary-*)
+       LINKS
     ======================================= */
 
-    --link-color:        var(--primary-color);
-    --link-hover-color:  var(--primary-dark);
-    --link-visited-color:var(--primary-darker);
+    --link-color:         var(--primary-color);
+    --link-hover-color:   var(--primary-dark);
+    --link-visited-color: var(--primary-darker);
+
+    /* =======================================
+       SEMANTIC ALIASES
+       Point specific UI roles at a color explicitly
+       instead of letting headings/nav text silently
+       inherit whatever --text-primary happens to be —
+       this is what prevents "invisible text" bugs when
+       one section's background changes independently
+       of another (e.g. a light header over a dark hero).
+    ======================================= */
+
+    --heading-color:          var(--text-primary);
+    --nav-text-color:         var(--text-primary);
+    --nav-text-active:        var(--primary-color);
+    --button-text-on-primary: var(--surface-color);
 
     /* =======================================
        BORDER
     ======================================= */
 
-    --border-color:  #E4D7C2;    /* warm tan border */
-    --border-strong: #D3BE9C;    /* higher-contrast border, e.g. inputs */
+    --border-color:  #E3D6C2;
+    --border-strong: #D0C2AE;
 
     /* =======================================
        FONT
@@ -154,15 +180,13 @@
     --radius-round: 999px;
 
     /* =======================================
-       SHADOWS
-       Warm brown-tinted shadows (instead of cool slate)
-       so cards feel cohesive with the rest of the palette.
+       SHADOWS (warm-tinted, matches the palette)
     ======================================= */
 
-    --shadow-sm: 0 2px 8px rgba(43,33,24,.12);
-    --shadow-md: 0 10px 25px rgba(43,33,24,.15);
-    --shadow-lg: 0 15px 40px rgba(43,33,24,.18);
-    --shadow-xl: 0 20px 60px rgba(43,33,24,.22);
+    --shadow-sm: 0 2px 8px rgba(36,26,44,.12);
+    --shadow-md: 0 10px 25px rgba(36,26,44,.15);
+    --shadow-lg: 0 15px 40px rgba(36,26,44,.18);
+    --shadow-xl: 0 20px 60px rgba(36,26,44,.22);
 
     /* =======================================
        TRANSITIONS
@@ -187,116 +211,55 @@
 }
 
 /* ===========================================
-   DARK THEME
-   Toggle via JS: <html data-theme="dark">
-   Every token above is redefined here so components
-   never need dark-mode-specific selectors of their own —
-   they just keep reading the same variable names.
+   DARK THEME — manual toggle only
+   Set via JS: document.documentElement.setAttribute('data-theme','dark')
+   Every light-surface token gets redefined; the "on-dark"
+   text tokens stay the same since dark-surface text doesn't
+   need to change when the whole site goes dark.
 =========================================== */
 
 [data-theme="dark"] {
 
-    /* ---- Primary: brighter plum so it still pops on dark bg ---- */
-    --primary-color:  #A855F7;   /* plum-400 */
-    --primary-dark:   #C084FC;   /* lighter on hover, inverted for dark UI */
+    --primary-color:  #A855F7;
+    --primary-dark:   #C084FC;
     --primary-darker: #D8B4FE;
     --primary-light:  #7C3AED;
     --primary-soft:   #2E1F45;
 
-    /* ---- Secondary: near-black warm surface for header/footer ---- */
     --secondary-color: #120C17;
     --secondary-light: #1F1626;
 
-    /* ---- Accent: brighter terracotta/gold for dark-mode contrast ---- */
-    --accent-color:  #E08F53;
-    --accent-dark:   #C2662D;
-    --accent-light:  #F0B37E;
-    --accent-soft:   #3B2A1D;
-    --accent-gold:   #E0B84A;
+    --accent-color: #D98A54;
+    --accent-dark:  #B8622C;
+    --accent-light: #E8AC80;
+    --accent-soft:  #3B2A1D;
 
-    /* ---- Status ---- */
     --success-color: #86A876;
     --warning-color: #E0B84A;
     --danger-color:  #D9695D;
 
-    /* ---- Background / surfaces: warm espresso, not grey-black ---- */
     --background-color: #17111C;
     --surface-color:     #201A26;
     --surface-light:     #2A2230;
     --surface-dark:      #362B3D;
 
-    /* ---- Text: warm cream, not pure white ---- */
+    /* on a dark-mode page, "light surfaces" and "dark surfaces"
+       converge — both text token sets point to the same values
+       so every element stays legible without special-casing */
     --text-primary:   #F3EAD8;
     --text-secondary: #C9B8A8;
     --text-light:     #9C8A78;
-    --text-white:     #17111C;   /* for text placed on light chips in dark mode */
 
-    /* ---- Links ---- */
-    --link-color:         var(--primary-color);
-    --link-hover-color:   var(--primary-dark);
-    --link-visited-color: var(--primary-darker);
+    --text-on-dark:           #F3EAD8;
+    --text-on-dark-secondary: #C9B8A8;
+    --text-white:             #17111C;
 
-    /* ---- Border ---- */
     --border-color:  #3B2E42;
     --border-strong: #4E3E56;
 
-    /* ---- Shadows: deepen for dark backgrounds ---- */
     --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
     --shadow-md: 0 10px 25px rgba(0,0,0,.4);
     --shadow-lg: 0 15px 40px rgba(0,0,0,.45);
     --shadow-xl: 0 20px 60px rgba(0,0,0,.5);
-
-}
-
-/* ===========================================
-   SYSTEM PREFERENCE FALLBACK
-   For visitors who land before ever toggling the switch,
-   respect their OS dark-mode setting automatically —
-   but only when they haven't made an explicit choice
-   (i.e. no data-theme attribute is set on <html>).
-=========================================== */
-
-@media (prefers-color-scheme: dark) {
-
-    :root:not([data-theme="light"]) {
-
-        --primary-color:  #A855F7;
-        --primary-dark:   #C084FC;
-        --primary-darker: #D8B4FE;
-        --primary-light:  #7C3AED;
-        --primary-soft:   #2E1F45;
-
-        --secondary-color: #120C17;
-        --secondary-light: #1F1626;
-
-        --accent-color:  #E08F53;
-        --accent-dark:   #C2662D;
-        --accent-light:  #F0B37E;
-        --accent-soft:   #3B2A1D;
-        --accent-gold:   #E0B84A;
-
-        --success-color: #86A876;
-        --warning-color: #E0B84A;
-        --danger-color:  #D9695D;
-
-        --background-color: #17111C;
-        --surface-color:     #201A26;
-        --surface-light:     #2A2230;
-        --surface-dark:      #362B3D;
-
-        --text-primary:   #F3EAD8;
-        --text-secondary: #C9B8A8;
-        --text-light:     #9C8A78;
-        --text-white:     #17111C;
-
-        --border-color:  #3B2E42;
-        --border-strong: #4E3E56;
-
-        --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
-        --shadow-md: 0 10px 25px rgba(0,0,0,.4);
-        --shadow-lg: 0 15px 40px rgba(0,0,0,.45);
-        --shadow-xl: 0 20px 60px rgba(0,0,0,.5);
-
-    }
 
 }
