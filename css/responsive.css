@@ -1,94 +1,29 @@
 /* =========================================================================
-   RESPONSIVE.CSS
-   Breakpoint ladder:
-   1200px -> 1024px -> 768px -> 480px -> 375px
-
-   Load variables.css and styles.css before this file.
-========================================================================= */
-
-
-/* =========================================================================
-   FOUNDATIONAL RESPONSIVE RULES
-========================================================================= */
-
-img,
-picture,
-video {
-    display: block;
-    max-width: 100%;
-}
-
-img,
-video {
-    height: auto;
-}
-
-.project-card img,
-.certificate-card img {
-    width: 100%;
-    aspect-ratio: 16 / 10;
-    object-fit: cover;
-}
-
-.projects-grid,
-.certificate-grid,
-.about-cards,
-.skills-container,
-.achievement-grid {
-    min-width: 0;
-}
-
-.project-card,
-.certificate-card,
-.about-card,
-.skill-category,
-.education-card {
-    min-width: 0;
-    overflow-wrap: anywhere;
-}
-
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-}
-
-
-/* =========================================================================
-   LARGE DESKTOP / SMALL LAPTOPS
+   RESPONSIVE STYLES
 ========================================================================= */
 
 @media (max-width: 1200px) {
     .container {
-        width: min(92%, var(--container-width));
+        width: 92%;
     }
 
-    .hero h1 {
-        font-size: clamp(3rem, 5vw, 3.5rem);
-    }
-
-    .hero h2 {
-        font-size: clamp(1.5rem, 3vw, 1.8rem);
+    .hero-container {
+        gap: var(--space-2xl);
     }
 }
-
-
-/* =========================================================================
-   LAPTOP / TABLET LANDSCAPE
-========================================================================= */
 
 @media (max-width: 1024px) {
     section {
         padding: var(--space-4xl) 0;
     }
 
+    .about-content,
+    .contact-container {
+        grid-template-columns: 1fr;
+    }
+
     .hero-container {
         grid-template-columns: 1fr;
-        gap: var(--space-3xl);
         text-align: center;
     }
 
@@ -101,40 +36,26 @@ a {
     }
 
     .hero-description {
-        margin: 0 auto var(--space-xl);
+        margin-inline: auto;
     }
 
-    .hero-buttons,
-    .social-icons {
+    .hero-buttons {
         justify-content: center;
     }
 
     .hero-image img {
-        width: 320px;
-        margin-inline: auto;
-    }
-
-    .about-content,
-    .contact-container {
-        grid-template-columns: 1fr;
-    }
-
-    .projects-grid,
-    .certificate-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        width: 300px;
+        height: 380px;
     }
 }
 
-
-/* =========================================================================
-   TABLET
-========================================================================= */
-
 @media (max-width: 768px) {
+    section {
+        padding: var(--space-3xl) 0;
+    }
+
     .menu-btn {
         display: block;
-        position: relative;
-        z-index: 1100;
     }
 
     .nav-links {
@@ -142,30 +63,30 @@ a {
         z-index: 1050;
         top: var(--header-height);
         left: 0;
-        width: 100%;
-        min-height: calc(100dvh - var(--header-height));
 
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
 
-        padding: calc(var(--space-2xl) + env(safe-area-inset-top))
-                 var(--container-padding)
-                 calc(var(--space-2xl) + env(safe-area-inset-bottom));
+        width: 100%;
+        min-height: calc(100dvh - var(--header-height));
+        padding: var(--space-2xl) var(--container-padding);
 
-        gap: var(--space-lg);
-        background: var(--background-color);
+        gap: var(--space-md);
+
+        background: var(--header-bg);
         box-shadow: var(--shadow-lg);
+        backdrop-filter: blur(12px);
 
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
         transform: translateX(-100%);
+
         transition:
             opacity var(--transition-normal),
-            transform var(--transition-normal),
-            visibility var(--transition-normal);
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
     }
 
     .nav-links.active {
@@ -175,30 +96,20 @@ a {
         transform: translateX(0);
     }
 
+    .nav-links a {
+        width: 100%;
+        padding: var(--space-sm);
+        text-align: center;
+    }
+
     .nav-links a::after {
         display: none;
     }
 
-    .nav-links a {
-        width: min(100%, 20rem);
-        padding: var(--space-sm) 0;
-        text-align: center;
-    }
-
     .hero {
+        min-height: auto;
         padding-top: calc(var(--header-height) + var(--space-3xl));
-    }
-
-    .hero h1 {
-        font-size: clamp(2.4rem, 8vw, 2.8rem);
-    }
-
-    .hero h2 {
-        font-size: clamp(1.3rem, 4vw, 1.5rem);
-    }
-
-    .hero-description {
-        font-size: var(--font-size-md);
+        padding-bottom: var(--space-3xl);
     }
 
     .about-cards,
@@ -209,47 +120,30 @@ a {
     }
 
     .achievement-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        grid-template-columns: repeat(2, 1fr);
     }
 
-    .footer-social {
-        flex-wrap: wrap;
+    .project-expanded {
+        grid-template-columns: 1fr;
     }
 }
 
-
-/* =========================================================================
-   MOBILE
-========================================================================= */
-
 @media (max-width: 480px) {
-    section {
-        padding: var(--space-3xl) 0;
-    }
-
-    .section-title {
-        margin-bottom: var(--space-2xl);
-    }
-
-    .section-title h2 {
-        font-size: clamp(1.7rem, 7vw, 1.9rem);
+    .container {
+        width: 92%;
     }
 
     .hero h1 {
-        font-size: clamp(2rem, 10vw, 2.2rem);
+        font-size: 2.8rem;
     }
 
     .hero h2 {
-        font-size: 1.2rem;
+        font-size: 1.3rem;
     }
 
     .hero-image img {
         width: 240px;
-    }
-
-    .btn {
-        width: min(100%, 22rem);
-        justify-content: center;
+        height: 310px;
     }
 
     .hero-buttons,
@@ -258,92 +152,52 @@ a {
         align-items: center;
     }
 
-    .contact-item {
-        align-items: flex-start;
+    .hero-buttons .btn,
+    .project-buttons .btn {
+        width: min(100%, 22rem);
     }
 
-    .contact-item i {
-        width: 48px;
-        height: 48px;
-        font-size: 1rem;
-        flex-shrink: 0;
+    .project-expanded {
+        padding: var(--space-lg);
+    }
+
+    .gallery-btn {
+        width: 32px;
+        height: 32px;
+        font-size: .75rem;
     }
 
     .achievement-grid {
         grid-template-columns: 1fr;
     }
 
-    .footer h2 {
-        font-size: 1.6rem;
-    }
-
     #backToTop {
-        right: calc(18px + env(safe-area-inset-right));
-        bottom: calc(18px + env(safe-area-inset-bottom));
+        right: 18px;
+        bottom: 18px;
         width: 46px;
         height: 46px;
-        font-size: 1rem;
     }
 }
 
-
-/* =========================================================================
-   SMALL MOBILE
-========================================================================= */
-
 @media (max-width: 375px) {
-    .container {
-        width: 94%;
-    }
-
     .logo {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
     }
 
     .hero h1 {
-        font-size: 1.9rem;
+        font-size: 2.3rem;
     }
 
     .hero-image img {
-        width: 200px;
-    }
-
-    .section-title h2 {
-        font-size: 1.6rem;
-    }
-
-    .btn {
-        padding: 12px 18px;
-        font-size: .9rem;
+        width: 210px;
+        height: 275px;
     }
 
     .about-card,
     .skill-category,
-    .project-card,
-    .certificate-card,
-    .achievement-card,
     .education-card,
+    .certificate-card,
     .contact-card {
-        padding: 20px;
-    }
-
-    .project-content {
-        padding: 18px;
-    }
-}
-
-
-/* =========================================================================
-   REDUCED MOTION
-========================================================================= */
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
+        padding: var(--space-lg);
     }
 }
