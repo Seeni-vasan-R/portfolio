@@ -1,7 +1,3 @@
-/* =========================================================================
-   PORTFOLIO JAVASCRIPT
-========================================================================= */
-
 document.addEventListener("DOMContentLoaded", () => {
     const menuBtn = document.querySelector(".menu-btn");
     const navLinks = document.querySelector(".nav-links");
@@ -11,17 +7,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".header");
     const sections = document.querySelectorAll("section");
 
-    const projectTriggers = document.querySelectorAll(".project-trigger");
-    const projectModals = document.querySelectorAll(".project-modal");
-
     const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
     ).matches;
 
 
-    /* =========================================================================
-       MOBILE NAVIGATION
-    ========================================================================= */
+    /* MOBILE MENU */
 
     function setMenuState(isOpen) {
         if (!menuBtn || !navLinks) {
@@ -59,6 +50,22 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
+        document.addEventListener("click", (event) => {
+            if (
+                navLinks.classList.contains("active") &&
+                !navLinks.contains(event.target) &&
+                !menuBtn.contains(event.target)
+            ) {
+                setMenuState(false);
+            }
+        });
+
+        document.addEventListener("keydown", (event) => {
+            if (event.key === "Escape") {
+                setMenuState(false);
+            }
+        });
+
         window.addEventListener("resize", () => {
             if (window.innerWidth > 768) {
                 setMenuState(false);
@@ -67,108 +74,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================================
-       PROJECT MODALS
-    ========================================================================= */
-
-    function closeAllProjectModals() {
-        projectModals.forEach((modal) => {
-            modal.classList.remove("active");
-            modal.setAttribute("aria-hidden", "true");
-        });
-
-        document.body.classList.remove("project-modal-open");
-    }
-
-    function openProjectModal(modalId) {
-        const modal = document.getElementById(modalId);
-
-        if (!modal) {
-            return;
-        }
-
-        closeAllProjectModals();
-
-        modal.classList.add("active");
-        modal.setAttribute("aria-hidden", "false");
-        document.body.classList.add("project-modal-open");
-
-        const closeButton = modal.querySelector(".project-modal-close");
-
-        if (closeButton) {
-            closeButton.focus();
-        }
-    }
-
-    projectTriggers.forEach((trigger) => {
-        trigger.addEventListener("click", () => {
-            const modalId = trigger.getAttribute("data-project");
-            openProjectModal(modalId);
-        });
-    });
-
-    projectModals.forEach((modal) => {
-        const closeButton = modal.querySelector(".project-modal-close");
-        const modalBox = modal.querySelector(".project-modal-box");
-
-        closeButton?.addEventListener("click", () => {
-            closeAllProjectModals();
-        });
-
-        modal.addEventListener("click", (event) => {
-            if (!modalBox.contains(event.target)) {
-                closeAllProjectModals();
-            }
-        });
-    });
-
-    document.addEventListener("keydown", (event) => {
-        if (event.key === "Escape") {
-            closeAllProjectModals();
-        }
-    });
-
-
-    /* =========================================================================
-       PROJECT IMAGE THUMBNAILS
-    ========================================================================= */
-
-    document.querySelectorAll(".project-modal").forEach((modal) => {
-        const mainImage = modal.querySelector(
-            ".project-modal-image > img"
-        );
-
-        const thumbnails = modal.querySelectorAll(
-            ".project-thumbnail"
-        );
-
-        if (!mainImage || thumbnails.length === 0) {
-            return;
-        }
-
-        thumbnails.forEach((thumbnail) => {
-            thumbnail.addEventListener("click", () => {
-                const newImage = thumbnail.getAttribute("data-image");
-
-                if (!newImage) {
-                    return;
-                }
-
-                mainImage.src = newImage;
-
-                thumbnails.forEach((item) => {
-                    item.classList.remove("active");
-                });
-
-                thumbnail.classList.add("active");
-            });
-        });
-    });
-
-
-    /* =========================================================================
-       HEADER SHADOW
-    ========================================================================= */
+    /* HEADER SHADOW */
 
     function updateHeaderShadow() {
         if (!header) {
@@ -188,9 +94,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateHeaderShadow();
 
 
-    /* =========================================================================
-       BACK TO TOP
-    ========================================================================= */
+    /* BACK TO TOP */
 
     if (backToTop) {
         function updateBackToTop() {
@@ -215,9 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================================
-       ACTIVE NAVIGATION
-    ========================================================================= */
+    /* ACTIVE NAVIGATION */
 
     function updateActiveSection() {
         let currentSection = "";
@@ -245,9 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
     updateActiveSection();
 
 
-    /* =========================================================================
-       SCROLL REVEAL
-    ========================================================================= */
+    /* SCROLL REVEAL */
 
     const revealItems = document.querySelectorAll(
         ".about-card, " +
@@ -255,6 +155,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ".education-card, " +
         ".certificate-card, " +
         ".achievement-card, " +
+        ".project-card, " +
         ".contact-card"
     );
 
@@ -283,9 +184,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================================
-       TYPING EFFECT
-    ========================================================================= */
+    /* TYPING EFFECT */
 
     const heroTitle = document.querySelector(".hero h2");
 
@@ -309,9 +208,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* =========================================================================
-       SMOOTH SCROLL
-    ========================================================================= */
+    /* SMOOTH SCROLL */
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", (event) => {
@@ -335,9 +232,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* =========================================================================
-       CURRENT YEAR
-    ========================================================================= */
+    /* CURRENT YEAR */
 
     const yearElement = document.getElementById("year");
 
