@@ -11,13 +11,16 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".header");
     const sections = document.querySelectorAll("section");
 
+    const projectTriggers = document.querySelectorAll(".project-trigger");
+    const projectModals = document.querySelectorAll(".project-modal");
+
     const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
     ).matches;
 
 
     /* =========================================================================
-       MOBILE MENU
+       MOBILE NAVIGATION
     ========================================================================= */
 
     function setMenuState(isOpen) {
@@ -56,22 +59,6 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        document.addEventListener("click", (event) => {
-            if (
-                navLinks.classList.contains("active") &&
-                !navLinks.contains(event.target) &&
-                !menuBtn.contains(event.target)
-            ) {
-                setMenuState(false);
-            }
-        });
-
-        document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                setMenuState(false);
-            }
-        });
-
         window.addEventListener("resize", () => {
             if (window.innerWidth > 768) {
                 setMenuState(false);
@@ -81,151 +68,101 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =========================================================================
-       PROJECT POPUP
+       PROJECT MODALS
     ========================================================================= */
 
-    const projectCards = document.querySelectorAll(
-        ".project-card"
-    );
-
-    function closeProjectPopups() {
-        projectCards.forEach((card) => {
-            card.removeAttribute("open");
+    function closeAllProjectModals() {
+        projectModals.forEach((modal) => {
+            modal.classList.remove("active");
+            modal.setAttribute("aria-hidden", "true");
         });
 
         document.body.classList.remove("project-modal-open");
     }
 
-    projectCards.forEach((card) => {
-        card.addEventListener("toggle", () => {
-            const isOpen = card.hasAttribute("open");
+    function openProjectModal(modalId) {
+        const modal = document.getElementById(modalId);
 
-            if (isOpen) {
-                projectCards.forEach((otherCard) => {
-                    if (otherCard !== card) {
-                        otherCard.removeAttribute("open");
-                    }
-                });
+        if (!modal) {
+            return;
+        }
 
-                document.body.classList.add("project-modal-open");
-            } else {
-                const anyCardOpen = [...projectCards].some((item) =>
-                    item.hasAttribute("open")
-                );
+        closeAllProjectModals();
 
-                if (!anyCardOpen) {
-                    document.body.classList.remove("project-modal-open");
-                }
+        modal.classList.add("active");
+        modal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("project-modal-open");
+
+        const closeButton = modal.querySelector(".project-modal-close");
+
+        if (closeButton) {
+            closeButton.focus();
+        }
+    }
+
+    projectTriggers.forEach((trigger) => {
+        trigger.addEventListener("click", () => {
+            const modalId = trigger.getAttribute("data-project");
+            openProjectModal(modalId);
+        });
+    });
+
+    projectModals.forEach((modal) => {
+        const closeButton = modal.querySelector(".project-modal-close");
+        const modalBox = modal.querySelector(".project-modal-box");
+
+        closeButton?.addEventListener("click", () => {
+            closeAllProjectModals();
+        });
+
+        modal.addEventListener("click", (event) => {
+            if (!modalBox.contains(event.target)) {
+                closeAllProjectModals();
             }
         });
     });
 
-    document.addEventListener("click", (event) => {
-        const openCard = document.querySelector(
-            ".project-card[open]"
-        );
-
-        if (
-            openCard &&
-            document.body.classList.contains("project-modal-open") &&
-            !openCard.contains(event.target)
-        ) {
-            closeProjectPopups();
-        }
-    });
-
     document.addEventListener("keydown", (event) => {
         if (event.key === "Escape") {
-            closeProjectPopups();
+            closeAllProjectModals();
         }
     });
 
 
     /* =========================================================================
-       PROJECT IMAGE SLIDERS
+       PROJECT IMAGE THUMBNAILS
     ========================================================================= */
 
-    const carousels = document.querySelectorAll("[data-carousel]");
+    document.querySelectorAll(".project-modal").forEach((modal) => {
+        const mainImage = modal.querySelector(
+            ".project-modal-image > img"
+        );
 
-    carousels.forEach((carousel) => {
-        const track = carousel.querySelector(".gallery-track");
-        const slides = carousel.querySelectorAll(".gallery-slide");
-        const previousButton = carousel.querySelector(".gallery-prev");
-        const nextButton = carousel.querySelector(".gallery-next");
+        const thumbnails = modal.querySelectorAll(
+            ".project-thumbnail"
+        );
 
-        if (!track || slides.length <= 1) {
+        if (!mainImage || thumbnails.length === 0) {
             return;
         }
 
-        let currentSlide = 0;
-        let autoSlide;
-        let touchStartX = 0;
-        let touchEndX = 0;
+        thumbnails.forEach((thumbnail) => {
+            thumbnail.addEventListener("click", () => {
+                const newImage = thumbnail.getAttribute("data-image");
 
-        function showSlide(index) {
-            currentSlide = (index + slides.length) % slides.length;
-
-            track.style.transform =
-                `translateX(-${currentSlide * 100}%)`;
-        }
-
-        function startAutoSlide() {
-            if (reduceMotion) {
-                return;
-            }
-
-            clearInterval(autoSlide);
-            autoSlide = setInterval(() => {
-                showSlide(currentSlide + 1);
-            }, 4000);
-        }
-
-        function stopAutoSlide() {
-            clearInterval(autoSlide);
-        }
-
-        nextButton?.addEventListener("click", (event) => {
-            event.stopPropagation();
-            showSlide(currentSlide + 1);
-            startAutoSlide();
-        });
-
-        previousButton?.addEventListener("click", (event) => {
-            event.stopPropagation();
-            showSlide(currentSlide - 1);
-            startAutoSlide();
-        });
-
-        carousel.addEventListener("mouseenter", stopAutoSlide);
-        carousel.addEventListener("mouseleave", startAutoSlide);
-
-        carousel.addEventListener("touchstart", (event) => {
-            touchStartX = event.changedTouches[0].screenX;
-            stopAutoSlide();
-        }, {
-            passive: true
-        });
-
-        carousel.addEventListener("touchend", (event) => {
-            touchEndX = event.changedTouches[0].screenX;
-
-            const distance = touchStartX - touchEndX;
-
-            if (Math.abs(distance) > 50) {
-                if (distance > 0) {
-                    showSlide(currentSlide + 1);
-                } else {
-                    showSlide(currentSlide - 1);
+                if (!newImage) {
+                    return;
                 }
-            }
 
-            startAutoSlide();
-        }, {
-            passive: true
+                mainImage.src = newImage;
+
+                thumbnails.forEach((item) => {
+                    item.classList.remove("active");
+                });
+
+                thumbnail.classList.add("active");
+            });
         });
-
-        showSlide(0);
-        startAutoSlide();
     });
 
 
