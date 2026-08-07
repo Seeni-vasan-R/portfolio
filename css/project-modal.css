@@ -10,13 +10,14 @@
 }
 
 .project-trigger {
-    display: flex;
+    display: grid;
+    grid-template-columns: 96px 1fr auto;
     align-items: center;
-    justify-content: space-between;
     gap: var(--space-lg);
 
     width: 100%;
-    padding: 22px 26px;
+    min-height: 108px;
+    padding: 12px 18px 12px 12px;
 
     border: 1px solid var(--border-color);
     border-radius: var(--radius-md);
@@ -27,7 +28,7 @@
 
     cursor: pointer;
     font-family: var(--font-heading);
-    font-size: 1.25rem;
+    font-size: 1.2rem;
     font-weight: var(--font-semibold);
     text-align: left;
 
@@ -45,6 +46,19 @@
     color: var(--text-white);
     box-shadow: var(--shadow-md);
     transform: translateX(6px);
+}
+
+.project-trigger-image {
+    width: 96px;
+    height: 80px;
+
+    border-radius: var(--radius-sm);
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
+}
+
+.project-trigger-text {
+    line-height: 1.3;
 }
 
 .project-trigger i {
@@ -126,6 +140,7 @@
 
     width: 38px;
     height: 38px;
+
     border: 1px solid rgba(246, 241, 234, .4);
     border-radius: 50%;
 
@@ -267,8 +282,16 @@
     }
 
     .project-trigger {
-        padding: 18px 20px;
+        grid-template-columns: 78px 1fr auto;
+        gap: var(--space-md);
+        min-height: 92px;
+        padding: 10px 14px 10px 10px;
         font-size: 1.05rem;
+    }
+
+    .project-trigger-image {
+        width: 78px;
+        height: 64px;
     }
 
     .project-modal {
@@ -296,12 +319,20 @@
 
 @media (max-width: 480px) {
     .project-trigger {
-        padding: 16px;
-        font-size: 1rem;
+        grid-template-columns: 64px 1fr auto;
+        gap: var(--space-sm);
+        min-height: 78px;
+        padding: 8px 10px 8px 8px;
+        font-size: .95rem;
+    }
+
+    .project-trigger-image {
+        width: 64px;
+        height: 52px;
     }
 
     .project-trigger i {
-        font-size: .85rem;
+        font-size: .8rem;
     }
 
     .project-modal-content {
