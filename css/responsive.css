@@ -1,14 +1,10 @@
 /* =========================================================================
    RESPONSIVE.CSS
-   Breakpoint ladder:
-   1200px -> 1024px -> 768px -> 480px -> 375px
-
-   Load variables.css and styles.css before this file.
 ========================================================================= */
 
 
 /* =========================================================================
-   FOUNDATIONAL RESPONSIVE RULES
+   FOUNDATIONAL RULES
 ========================================================================= */
 
 img,
@@ -42,33 +38,24 @@ video {
 .certificate-card,
 .about-card,
 .skill-category,
-.education-card {
+.education-card,
+.contact-card {
     min-width: 0;
     overflow-wrap: anywhere;
 }
 
-button,
-a {
-    -webkit-tap-highlight-color: transparent;
-}
-
-:focus-visible {
-    outline: 3px solid var(--accent-color);
-    outline-offset: 3px;
-}
-
 
 /* =========================================================================
-   LARGE DESKTOP / SMALL LAPTOPS
+   SMALL DESKTOP
 ========================================================================= */
 
 @media (max-width: 1200px) {
     .container {
-        width: min(92%, var(--container-width));
+        width: 92%;
     }
 
     .hero h1 {
-        font-size: clamp(3rem, 5vw, 3.5rem);
+        font-size: clamp(3rem, 6vw, 3.5rem);
     }
 
     .hero h2 {
@@ -78,7 +65,7 @@ a {
 
 
 /* =========================================================================
-   LAPTOP / TABLET LANDSCAPE
+   TABLET LANDSCAPE
 ========================================================================= */
 
 @media (max-width: 1024px) {
@@ -101,7 +88,7 @@ a {
     }
 
     .hero-description {
-        margin: 0 auto var(--space-xl);
+        margin-inline: auto;
     }
 
     .hero-buttons,
@@ -127,7 +114,7 @@ a {
 
 
 /* =========================================================================
-   TABLET
+   TABLET / MOBILE NAVIGATION
 ========================================================================= */
 
 @media (max-width: 768px) {
@@ -142,30 +129,33 @@ a {
         z-index: 1050;
         top: var(--header-height);
         left: 0;
-        width: 100%;
-        min-height: calc(100dvh - var(--header-height));
 
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: flex-start;
 
-        padding: calc(var(--space-2xl) + env(safe-area-inset-top))
+        width: 100%;
+        min-height: calc(100dvh - var(--header-height));
+        padding: var(--space-2xl)
                  var(--container-padding)
                  calc(var(--space-2xl) + env(safe-area-inset-bottom));
 
-        gap: var(--space-lg);
-        background: var(--background-color);
+        gap: var(--space-md);
+
+        background: var(--header-bg);
+        border-bottom: 1px solid var(--header-border);
         box-shadow: var(--shadow-lg);
+        backdrop-filter: blur(12px);
 
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
         transform: translateX(-100%);
+
         transition:
             opacity var(--transition-normal),
-            transform var(--transition-normal),
-            visibility var(--transition-normal);
+            visibility var(--transition-normal),
+            transform var(--transition-normal);
     }
 
     .nav-links.active {
@@ -175,18 +165,20 @@ a {
         transform: translateX(0);
     }
 
-    .nav-links a::after {
-        display: none;
-    }
-
     .nav-links a {
         width: min(100%, 20rem);
         padding: var(--space-sm) 0;
         text-align: center;
     }
 
+    .nav-links a::after {
+        display: none;
+    }
+
     .hero {
+        min-height: auto;
         padding-top: calc(var(--header-height) + var(--space-3xl));
+        padding-bottom: var(--space-3xl);
     }
 
     .hero h1 {
@@ -223,6 +215,10 @@ a {
 ========================================================================= */
 
 @media (max-width: 480px) {
+    .container {
+        width: 92%;
+    }
+
     section {
         padding: var(--space-3xl) 0;
     }
@@ -235,8 +231,12 @@ a {
         font-size: clamp(1.7rem, 7vw, 1.9rem);
     }
 
+    .hero {
+        padding-top: calc(var(--header-height) + var(--space-2xl));
+    }
+
     .hero h1 {
-        font-size: clamp(2rem, 10vw, 2.2rem);
+        font-size: clamp(2rem, 10vw, 2.3rem);
     }
 
     .hero h2 {
@@ -247,15 +247,17 @@ a {
         width: 240px;
     }
 
-    .btn {
-        width: min(100%, 22rem);
-        justify-content: center;
-    }
-
     .hero-buttons,
     .project-buttons {
         flex-direction: column;
         align-items: center;
+        width: 100%;
+    }
+
+    .hero-buttons .btn,
+    .project-buttons .btn {
+        width: min(100%, 22rem);
+        justify-content: center;
     }
 
     .contact-item {
@@ -266,7 +268,6 @@ a {
         width: 48px;
         height: 48px;
         font-size: 1rem;
-        flex-shrink: 0;
     }
 
     .achievement-grid {
