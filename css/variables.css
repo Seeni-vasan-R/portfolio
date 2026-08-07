@@ -1,37 +1,31 @@
 /* =========================================================================
-   THEME VARIABLES – Beige + Charcoal Editorial
-   Light theme only
+   EDITORIAL THEME VARIABLES
 ========================================================================= */
 
 :root {
     color-scheme: light;
 
-    /* PRIMARY COLORS */
+    /* COLORS */
     --primary-color: #323232;
     --primary-dark: #1F1F1F;
     --primary-darker: #121212;
     --primary-light: #545454;
     --primary-soft: #E5E0DA;
 
-    /* SECONDARY COLORS */
     --secondary-color: #232323;
     --secondary-light: #3A3A3A;
 
-    /* ACCENT COLORS */
-    --accent-color: #875B3C;
+    --accent-color: #A47551;
     --accent-dark: #70472F;
     --accent-light: #C09872;
     --accent-soft: #F0E4D8;
 
-    /* STATUS COLORS */
     --success-color: #6B7A5E;
     --warning-color: #B8894F;
     --danger-color: #A34A3C;
 
-    /* BACKGROUND */
-    --background-color: #DDD0C8;
-
     /* SURFACES */
+    --background-color: #DDD0C8;
     --surface-color: #F6F1EA;
     --surface-light: #EDE4DA;
     --surface-dark: #C9BAAE;
@@ -43,35 +37,31 @@
     --text-white: #F6F1EA;
     --text-on-light: #232323;
 
-    /* LINKS */
+    /* SEMANTIC TOKENS */
+    --heading-color: var(--text-primary);
     --link-color: var(--primary-color);
     --link-hover-color: var(--accent-dark);
-    --link-visited-color: var(--primary-dark);
-
-    /* SEMANTIC ALIASES */
-    --heading-color: var(--text-primary);
     --nav-text-color: var(--text-primary);
     --nav-text-active: var(--accent-dark);
     --button-text-on-primary: var(--surface-color);
 
     /* HEADER */
     --header-bg: rgba(246, 241, 234, .94);
-    --header-border: rgba(35, 35, 35, .08);
+    --header-border: rgba(35, 35, 35, .10);
     --header-text: #232323;
     --header-text-muted: #6B645C;
-    --header-text-hover: #875B3C;
+    --header-text-hover: #70472F;
 
     /* BORDERS */
     --border-color: #C9BAAE;
     --border-strong: #B3A192;
-    --border-subtle: rgba(35, 35, 35, .12);
 
-    /* FOCUS */
-    --focus-ring: 0 0 0 3px rgba(135, 91, 60, .35);
+    /* FONTS */
+    --font-family: "Manrope", sans-serif;
+    --font-heading: "Fraunces", serif;
+    --font-label: "DM Mono", monospace;
 
-    /* FONT */
-    --font-family: "Poppins", sans-serif;
-
+    /* FONT SIZES */
     --font-size-xs: .75rem;
     --font-size-sm: .875rem;
     --font-size-md: 1rem;
@@ -88,9 +78,6 @@
     --font-semibold: 600;
     --font-bold: 700;
     --font-extra-bold: 800;
-
-    /* LINE HEIGHT */
-    --line-height: 1.7;
 
     /* SPACING */
     --space-xs: .25rem;
