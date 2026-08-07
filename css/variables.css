@@ -206,6 +206,24 @@
        HEADER
     ======================================= */
 
+    /* =======================================
+       HEADER (theme-independent)
+       The header is a fixed frosted-glass bar that stays
+       light in BOTH light and dark mode — it does not flip
+       with the rest of the page. Its text therefore gets its
+       own dedicated always-dark tokens instead of reading
+       --text-primary, which does flip. This is what was
+       causing the logo/nav to vanish in dark mode: the
+       background stayed light, but the text color kept
+       trying to follow the (now light-on-light) theme text.
+    ======================================= */
+
+    --header-bg:         rgba(255,253,249,.9);   /* frosted warm-white, constant in both themes */
+    --header-border:     rgba(36,26,44,.08);
+    --header-text:       #241A2C;                /* always dark — matches light-theme --text-primary */
+    --header-text-muted: #5B4E63;
+    --header-text-hover: #6D28D9;                /* always the light-theme --primary-color */
+
     --header-height: 80px;
 
 }
