@@ -1,11 +1,6 @@
-/* =========================================================================
-   EDITORIAL THEME VARIABLES
-========================================================================= */
-
 :root {
     color-scheme: light;
 
-    /* COLORS */
     --primary-color: #323232;
     --primary-dark: #1F1F1F;
     --primary-darker: #121212;
@@ -24,44 +19,33 @@
     --warning-color: #B8894F;
     --danger-color: #A34A3C;
 
-    /* SURFACES */
     --background-color: #DDD0C8;
     --surface-color: #F6F1EA;
     --surface-light: #EDE4DA;
     --surface-dark: #C9BAAE;
 
-    /* TEXT */
     --text-primary: #232323;
     --text-secondary: #5C5650;
     --text-light: #766C63;
     --text-white: #F6F1EA;
-    --text-on-light: #232323;
 
-    /* SEMANTIC TOKENS */
     --heading-color: var(--text-primary);
     --link-color: var(--primary-color);
     --link-hover-color: var(--accent-dark);
-    --nav-text-color: var(--text-primary);
-    --nav-text-active: var(--accent-dark);
     --button-text-on-primary: var(--surface-color);
 
-    /* HEADER */
     --header-bg: rgba(246, 241, 234, .94);
     --header-border: rgba(35, 35, 35, .10);
     --header-text: #232323;
-    --header-text-muted: #6B645C;
     --header-text-hover: #70472F;
 
-    /* BORDERS */
     --border-color: #C9BAAE;
     --border-strong: #B3A192;
 
-    /* FONTS */
     --font-family: "Manrope", sans-serif;
     --font-heading: "Fraunces", serif;
     --font-label: "DM Mono", monospace;
 
-    /* FONT SIZES */
     --font-size-xs: .75rem;
     --font-size-sm: .875rem;
     --font-size-md: 1rem;
@@ -71,7 +55,6 @@
     --font-size-3xl: 3rem;
     --font-size-4xl: 4rem;
 
-    /* FONT WEIGHTS */
     --font-light: 300;
     --font-normal: 400;
     --font-medium: 500;
@@ -79,7 +62,8 @@
     --font-bold: 700;
     --font-extra-bold: 800;
 
-    /* SPACING */
+    --line-height: 1.7;
+
     --space-xs: .25rem;
     --space-sm: .5rem;
     --space-md: 1rem;
@@ -89,25 +73,21 @@
     --space-3xl: 4rem;
     --space-4xl: 5rem;
 
-    /* RADII */
     --radius-sm: 6px;
     --radius-md: 10px;
     --radius-lg: 16px;
     --radius-xl: 24px;
     --radius-round: 999px;
 
-    /* SHADOWS */
     --shadow-sm: 0 2px 8px rgba(35, 35, 35, .10);
     --shadow-md: 0 10px 25px rgba(35, 35, 35, .13);
     --shadow-lg: 0 15px 40px rgba(35, 35, 35, .16);
     --shadow-xl: 0 20px 60px rgba(35, 35, 35, .20);
 
-    /* TRANSITIONS */
     --transition-fast: .2s ease;
     --transition-normal: .35s ease;
     --transition-slow: .5s ease;
 
-    /* LAYOUT */
     --container-width: 1200px;
     --container-padding: 1.25rem;
     --header-height: 80px;
