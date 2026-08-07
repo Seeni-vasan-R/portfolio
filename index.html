@@ -19,15 +19,12 @@
 
     <link rel="icon" href="assets/favicon.ico">
 
-    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
-    <!-- CSS -->
     <link rel="stylesheet" href="css/variables.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="css/project-modal.css">
 </head>
 
 <body>
@@ -45,29 +42,12 @@
 
                 <ul class="nav-links">
 
-                    <li>
-                        <a href="#home">Home</a>
-                    </li>
-
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-
-                    <li>
-                        <a href="#skills">Skills</a>
-                    </li>
-
-                    <li>
-                        <a href="#projects">Projects</a>
-                    </li>
-
-                    <li>
-                        <a href="#certifications">Certificates</a>
-                    </li>
-
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certificates</a></li>
+                    <li><a href="#contact">Contact</a></li>
 
                 </ul>
 
@@ -275,7 +255,6 @@
             <div class="skills-container">
 
                 <div class="skill-category">
-
                     <h3>
                         <i class="fa-solid fa-laptop-code"></i>
                         Programming
@@ -285,11 +264,9 @@
                         <span>Python</span>
                         <span>SQL</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
                     <h3>
                         <i class="fa-solid fa-database"></i>
                         Databases
@@ -301,11 +278,9 @@
                         <span>Relational Database Design</span>
                         <span>Query Optimization</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
                     <h3>
                         <i class="fa-solid fa-chart-line"></i>
                         Visualization & Analytics
@@ -317,11 +292,9 @@
                         <span>Matplotlib</span>
                         <span>Pandas</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
                     <h3>
                         <i class="fa-solid fa-gears"></i>
                         Data Engineering
@@ -333,11 +306,9 @@
                         <span>Data Pipelines</span>
                         <span>Batch & Streaming Data</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
                     <h3>
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                         Tools
@@ -350,11 +321,9 @@
                         <span>Excel</span>
                         <span>Docker</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
                     <h3>
                         <i class="fa-solid fa-cloud"></i>
                         Cloud
@@ -366,11 +335,9 @@
                         <span>AWS S3</span>
                         <span>AWS RDS</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
                     <h3>
                         <i class="fa-solid fa-book-open"></i>
                         Currently Learning
@@ -380,7 +347,6 @@
                         <span>Apache Kafka</span>
                         <span>Apache Spark</span>
                     </div>
-
                 </div>
 
             </div>
@@ -390,7 +356,7 @@
     </section>
 
 
-    <!-- PROJECTS -->
+    <!-- STATIC PROJECTS -->
     <section id="projects" class="projects">
 
         <div class="container">
@@ -400,101 +366,30 @@
                 <h2>Featured Projects</h2>
             </div>
 
-            <div class="project-list">
+            <div class="projects-grid">
+
 
                 <!-- PROJECT 1 -->
-                <button class="project-trigger"
-                        type="button"
-                        data-project="expense-project">
+                <article class="project-card">
 
-                    <img class="project-trigger-image"
-                         src="images/expense-tracker.png"
-                         alt="Expense Tracker project">
+                    <div class="project-media">
 
-                    <span class="project-trigger-text">
-                        AI-Assisted Personal Expense Behavior
-                        Analysis System
-                    </span>
+                        <div class="project-gallery single-image">
 
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            <img src="images/expense-tracker.png"
+                                 alt="AI-assisted expense tracker project">
 
-                </button>
-
-
-                <!-- PROJECT 2 -->
-                <button class="project-trigger"
-                        type="button"
-                        data-project="warehouse-project">
-
-                    <img class="project-trigger-image"
-                         src="images/datawarehouse.png"
-                         alt="SQL Data Warehouse project">
-
-                    <span class="project-trigger-text">
-                        SQL Data Warehouse & Power BI
-                    </span>
-
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                </button>
-
-
-                <!-- PROJECT 3 -->
-                <button class="project-trigger"
-                        type="button"
-                        data-project="stock-project">
-
-                    <img class="project-trigger-image"
-                         src="images/stock-market.png"
-                         alt="Stock Market Streaming Data Platform">
-
-                    <span class="project-trigger-text">
-                        Stock Market Streaming Data Platform
-                    </span>
-
-                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                </button>
-
-            </div>
-
-        </div>
-
-
-        <!-- PROJECT 1 POPUP -->
-        <div class="project-modal"
-             id="expense-project"
-             aria-hidden="true">
-
-            <div class="project-modal-box"
-                 role="dialog"
-                 aria-modal="true"
-                 aria-labelledby="expense-project-title">
-
-                <button class="project-modal-close"
-                        type="button"
-                        aria-label="Close project details">
-
-                    <i class="fa-solid fa-xmark"></i>
-
-                </button>
-
-                <div class="project-modal-content">
-
-                    <div class="project-modal-image">
-
-                        <img src="images/expense-tracker.png"
-                             alt="AI-assisted expense tracker project">
+                        </div>
 
                     </div>
 
-                    <div class="project-modal-info">
+                    <div class="project-content">
 
-                        <p class="project-modal-label">
+                        <p class="project-label">
                             Project 01
                         </p>
 
-                        <h3 id="expense-project-title">
+                        <h3>
                             AI-Assisted Personal Expense Behavior
                             Analysis System
                         </h3>
@@ -510,7 +405,7 @@
                             Technologies and skills
                         </h4>
 
-                        <div class="project-modal-tags">
+                        <div class="project-tech">
                             <span>Python</span>
                             <span>Django</span>
                             <span>MySQL</span>
@@ -518,90 +413,52 @@
                             <span>Full-Stack Development</span>
                         </div>
 
-                        <a href="https://github.com/Seeni-vasan-R/ExpenseTracker-AI"
-                           target="_blank"
-                           rel="noopener"
-                           class="btn primary-btn">
+                        <div class="project-buttons">
 
-                            <i class="fab fa-github"></i>
-                            View on GitHub
+                            <a href="https://github.com/Seeni-vasan-R/ExpenseTracker-AI"
+                               target="_blank"
+                               rel="noopener"
+                               class="btn primary-btn">
 
-                        </a>
+                                <i class="fab fa-github"></i>
+                                View on GitHub
 
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PROJECT 2 POPUP -->
-        <div class="project-modal"
-             id="warehouse-project"
-             aria-hidden="true">
-
-            <div class="project-modal-box"
-                 role="dialog"
-                 aria-modal="true"
-                 aria-labelledby="warehouse-project-title">
-
-                <button class="project-modal-close"
-                        type="button"
-                        aria-label="Close project details">
-
-                    <i class="fa-solid fa-xmark"></i>
-
-                </button>
-
-                <div class="project-modal-content">
-
-                    <div class="project-modal-image">
-
-                        <img src="images/datawarehouse.png"
-                             alt="SQL Data Warehouse overview">
-
-                        <div class="project-modal-thumbnails">
-
-                            <button type="button"
-                                    class="project-thumbnail active"
-                                    data-image="images/datawarehouse.png">
-
-                                <img src="images/datawarehouse.png"
-                                     alt="Data warehouse overview">
-
-                            </button>
-
-                            <button type="button"
-                                    class="project-thumbnail"
-                                    data-image="images/customer_dashboard.png">
-
-                                <img src="images/customer_dashboard.png"
-                                     alt="Customer dashboard">
-
-                            </button>
-
-                            <button type="button"
-                                    class="project-thumbnail"
-                                    data-image="images/product_dashboard.png">
-
-                                <img src="images/product_dashboard.png"
-                                     alt="Product dashboard">
-
-                            </button>
+                            </a>
 
                         </div>
 
                     </div>
 
-                    <div class="project-modal-info">
+                </article>
 
-                        <p class="project-modal-label">
+
+                <!-- PROJECT 2 -->
+                <article class="project-card">
+
+                    <div class="project-media">
+
+                        <div class="project-gallery">
+
+                            <img src="images/datawarehouse.png"
+                                 alt="SQL Data Warehouse overview">
+
+                            <img src="images/customer_dashboard.png"
+                                 alt="Customer dashboard">
+
+                            <img src="images/product_dashboard.png"
+                                 alt="Product dashboard">
+
+                        </div>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <p class="project-label">
                             Project 02
                         </p>
 
-                        <h3 id="warehouse-project-title">
+                        <h3>
                             SQL Data Warehouse & Power BI
                         </h3>
 
@@ -616,7 +473,7 @@
                             Technologies and skills
                         </h4>
 
-                        <div class="project-modal-tags">
+                        <div class="project-tech">
                             <span>SQL</span>
                             <span>MySQL</span>
                             <span>ETL</span>
@@ -624,59 +481,46 @@
                             <span>Data Warehouse</span>
                         </div>
 
-                        <a href="https://github.com/Seeni-vasan-R/sql-data-warehouse-powerbi"
-                           target="_blank"
-                           rel="noopener"
-                           class="btn primary-btn">
+                        <div class="project-buttons">
 
-                            <i class="fab fa-github"></i>
-                            View on GitHub
+                            <a href="https://github.com/Seeni-vasan-R/sql-data-warehouse-powerbi"
+                               target="_blank"
+                               rel="noopener"
+                               class="btn primary-btn">
 
-                        </a>
+                                <i class="fab fa-github"></i>
+                                View on GitHub
 
-                    </div>
+                            </a>
 
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <!-- PROJECT 3 POPUP -->
-        <div class="project-modal"
-             id="stock-project"
-             aria-hidden="true">
-
-            <div class="project-modal-box"
-                 role="dialog"
-                 aria-modal="true"
-                 aria-labelledby="stock-project-title">
-
-                <button class="project-modal-close"
-                        type="button"
-                        aria-label="Close project details">
-
-                    <i class="fa-solid fa-xmark"></i>
-
-                </button>
-
-                <div class="project-modal-content">
-
-                    <div class="project-modal-image">
-
-                        <img src="images/stock-market.png"
-                             alt="Stock Market Streaming Data Platform">
+                        </div>
 
                     </div>
 
-                    <div class="project-modal-info">
+                </article>
 
-                        <p class="project-modal-label">
+
+                <!-- PROJECT 3 -->
+                <article class="project-card">
+
+                    <div class="project-media">
+
+                        <div class="project-gallery single-image">
+
+                            <img src="images/stock-market.png"
+                                 alt="Stock Market Streaming Data Platform">
+
+                        </div>
+
+                    </div>
+
+                    <div class="project-content">
+
+                        <p class="project-label">
                             Project 03
                         </p>
 
-                        <h3 id="stock-project-title">
+                        <h3>
                             Stock Market Streaming Data Platform
                         </h3>
 
@@ -691,7 +535,7 @@
                             Technologies and skills
                         </h4>
 
-                        <div class="project-modal-tags">
+                        <div class="project-tech">
                             <span>Python</span>
                             <span>Apache Kafka</span>
                             <span>AWS</span>
@@ -699,19 +543,23 @@
                             <span>Data Engineering</span>
                         </div>
 
-                        <a href="https://github.com/Seeni-vasan-R/stockmarket-streaming-data-platform"
-                           target="_blank"
-                           rel="noopener"
-                           class="btn primary-btn">
+                        <div class="project-buttons">
 
-                            <i class="fab fa-github"></i>
-                            View on GitHub
+                            <a href="https://github.com/Seeni-vasan-R/stockmarket-streaming-data-platform"
+                               target="_blank"
+                               rel="noopener"
+                               class="btn primary-btn">
 
-                        </a>
+                                <i class="fab fa-github"></i>
+                                View on GitHub
+
+                            </a>
+
+                        </div>
 
                     </div>
 
-                </div>
+                </article>
 
             </div>
 
@@ -733,45 +581,21 @@
             <div class="certificate-grid">
 
                 <div class="certificate-card">
-
                     <i class="fa-solid fa-database"></i>
-
-                    <h3>
-                        Cisco Networking Academy
-                    </h3>
-
-                    <p>
-                        Data Analytics Essentials
-                    </p>
-
+                    <h3>Cisco Networking Academy</h3>
+                    <p>Data Analytics Essentials</p>
                 </div>
 
                 <div class="certificate-card">
-
                     <i class="fa-solid fa-chart-bar"></i>
-
-                    <h3>
-                        Wipro TalentNext
-                    </h3>
-
-                    <p>
-                        Data Science Program
-                    </p>
-
+                    <h3>Wipro TalentNext</h3>
+                    <p>Data Science Program</p>
                 </div>
 
                 <div class="certificate-card">
-
                     <i class="fa-solid fa-cloud"></i>
-
-                    <h3>
-                        Online Courses
-                    </h3>
-
-                    <p>
-                        Python, SQL & AWS Fundamentals
-                    </p>
-
+                    <h3>Online Courses</h3>
+                    <p>Python, SQL & AWS Fundamentals</p>
                 </div>
 
             </div>
@@ -850,15 +674,12 @@
                         <i class="fas fa-envelope"></i>
 
                         <div>
-
                             <h4>Email</h4>
-
                             <p>
                                 <a href="mailto:iseenivasanr@gmail.com">
                                     iseenivasanr@gmail.com
                                 </a>
                             </p>
-
                         </div>
 
                     </div>
@@ -868,9 +689,7 @@
                         <i class="fab fa-linkedin"></i>
 
                         <div>
-
                             <h4>LinkedIn</h4>
-
                             <p>
                                 <a href="https://www.linkedin.com/in/seenivasan-rajkumar/"
                                    target="_blank"
@@ -878,7 +697,6 @@
                                     linkedin.com/in/seenivasan-rajkumar
                                 </a>
                             </p>
-
                         </div>
 
                     </div>
@@ -888,9 +706,7 @@
                         <i class="fab fa-github"></i>
 
                         <div>
-
                             <h4>GitHub</h4>
-
                             <p>
                                 <a href="https://github.com/Seeni-vasan-R"
                                    target="_blank"
@@ -898,7 +714,6 @@
                                     github.com/Seeni-vasan-R
                                 </a>
                             </p>
-
                         </div>
 
                     </div>
@@ -908,10 +723,8 @@
                         <i class="fas fa-location-dot"></i>
 
                         <div>
-
                             <h4>Location</h4>
                             <p>Madurai, Tamilnadu, India</p>
-
                         </div>
 
                     </div>
