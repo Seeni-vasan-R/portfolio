@@ -1,264 +1,127 @@
-/* ===========================================
-   THEME VARIABLES – Beige + Charcoal (Editorial)
-   Warm beige surfaces against a confident dark charcoal —
-   a quiet, magazine/editorial palette instead of a bright
-   "startup" one. One muted camel accent carries all the
-   highlight/hover work so the rest stays monochrome.
-
-   Dark mode is MANUAL ONLY via [data-theme="dark"] on
-   <html> (toggled from script.js) — no automatic OS-based
-   switch, so a hardcoded section can never silently break.
-=========================================== */
+/* =========================================================================
+   THEME VARIABLES – Beige + Charcoal Editorial
+   Light theme only
+========================================================================= */
 
 :root {
+    color-scheme: light;
 
-    /* =======================================
-       PRIMARY COLORS (headings / buttons / icons)
-       Charcoal instead of black — softer, warmer.
-    ======================================= */
+    /* PRIMARY COLORS */
+    --primary-color: #323232;
+    --primary-dark: #1F1F1F;
+    --primary-darker: #121212;
+    --primary-light: #545454;
+    --primary-soft: #E5E0DA;
 
-    --primary-color:  #323232;   /* charcoal — CTAs, headings, icons */
-    --primary-dark:   #1F1F1F;   /* hover / active state */
-    --primary-darker: #121212;   /* pressed state */
-    --primary-light:  #545454;   /* lighter charcoal, subtle fills */
-    --primary-soft:   #E5E0DA;   /* pale charcoal-beige tint */
-
-    /* =======================================
-       SECONDARY COLOR (large dark blocks / footer)
-    ======================================= */
-
-    --secondary-color: #232323;  /* near-black panel, e.g. dark image overlays */
+    /* SECONDARY COLORS */
+    --secondary-color: #232323;
     --secondary-light: #3A3A3A;
 
-    /* =======================================
-       ACCENT (the one spot color — links, badges, hover)
-       Muted camel/tan, matched to the warm beige family
-       rather than an unrelated bright color.
-    ======================================= */
+    /* ACCENT COLORS */
+    --accent-color: #875B3C;
+    --accent-dark: #70472F;
+    --accent-light: #C09872;
+    --accent-soft: #F0E4D8;
 
-    --accent-color:  #A47551;    /* muted camel */
-    --accent-dark:   #8A5F3F;    /* hover state */
-    --accent-light:  #C09872;    /* lighter camel, gradients */
-    --accent-soft:   #F0E4D8;    /* pale camel tint */
+    /* STATUS COLORS */
+    --success-color: #6B7A5E;
+    --warning-color: #B8894F;
+    --danger-color: #A34A3C;
 
-    /* =======================================
-       STATUS COLORS
-       Kept muted/earthy so they don't fight the palette.
-    ======================================= */
+    /* BACKGROUND */
+    --background-color: #DDD0C8;
 
-    --success-color: #6B7A5E;    /* muted olive-sage */
-    --warning-color: #B8894F;    /* muted amber */
-    --danger-color:  #A34A3C;    /* muted brick red */
+    /* SURFACES */
+    --surface-color: #F6F1EA;
+    --surface-light: #EDE4DA;
+    --surface-dark: #C9BAAE;
 
-    /* =======================================
-       BACKGROUND
-    ======================================= */
+    /* TEXT */
+    --text-primary: #232323;
+    --text-secondary: #5C5650;
+    --text-light: #766C63;
+    --text-white: #F6F1EA;
+    --text-on-light: #232323;
 
-    --background-color: #DDD0C8; /* signature warm beige */
-
-    /* =======================================
-       SURFACE (cards / sections)
-    ======================================= */
-
-    --surface-color: #F6F1EA;    /* warm off-white — card surfaces */
-    --surface-light: #EDE4DA;    /* tinted alternating section bg */
-    --surface-dark:  #C9BAAE;    /* deeper beige block, dividers */
-
-    /* =======================================
-       TEXT
-    ======================================= */
-
-    --text-primary:   #232323;   /* main body text — near-black charcoal */
-    --text-secondary: #5C5650;   /* subdued warm-grey text */
-    --text-light:     #8C8279;   /* lightest descriptive text */
-    --text-white:     #F6F1EA;   /* warm off-white, for use on dark surfaces */
-
-    /* =======================================
-       LINKS
-    ======================================= */
-
-    --link-color:         var(--primary-color);
-    --link-hover-color:   var(--accent-color);
+    /* LINKS */
+    --link-color: var(--primary-color);
+    --link-hover-color: var(--accent-dark);
     --link-visited-color: var(--primary-dark);
 
-    /* =======================================
-       SEMANTIC ALIASES
-       Explicit roles instead of ambiguous generic tokens —
-       prevents text silently inheriting the wrong tone when
-       a section's background doesn't follow the page theme.
-    ======================================= */
-
-    --heading-color:          var(--text-primary);
-    --nav-text-color:         var(--text-primary);
-    --nav-text-active:        var(--accent-color);
+    /* SEMANTIC ALIASES */
+    --heading-color: var(--text-primary);
+    --nav-text-color: var(--text-primary);
+    --nav-text-active: var(--accent-dark);
     --button-text-on-primary: var(--surface-color);
 
-    /* =======================================
-       HEADER (theme-independent)
-       Fixed frosted-beige bar — stays the same in both
-       light and dark mode, so its text uses its own
-       always-dark tokens rather than --text-primary,
-       which does flip.
-    ======================================= */
-
-    --header-bg:         rgba(246,241,234,.92);  /* frosted warm-beige, constant in both themes */
-    --header-border:     rgba(35,35,35,.08);
-    --header-text:       #232323;                /* always dark */
+    /* HEADER */
+    --header-bg: rgba(246, 241, 234, .94);
+    --header-border: rgba(35, 35, 35, .08);
+    --header-text: #232323;
     --header-text-muted: #6B645C;
-    --header-text-hover: #A47551;                /* always the light-theme accent camel */
+    --header-text-hover: #875B3C;
 
-    /* =======================================
-       BORDER
-    ======================================= */
-
-    --border-color:  #C9BAAE;
+    /* BORDERS */
+    --border-color: #C9BAAE;
     --border-strong: #B3A192;
+    --border-subtle: rgba(35, 35, 35, .12);
 
-    /* =======================================
-       FONT
-    ======================================= */
+    /* FOCUS */
+    --focus-ring: 0 0 0 3px rgba(135, 91, 60, .35);
 
-    --font-family: 'Poppins', sans-serif;
+    /* FONT */
+    --font-family: "Poppins", sans-serif;
 
-    --font-size-xs:  .75rem;
-    --font-size-sm:  .875rem;
-    --font-size-md:  1rem;
-    --font-size-lg:  1.125rem;
-    --font-size-xl:  1.5rem;
+    --font-size-xs: .75rem;
+    --font-size-sm: .875rem;
+    --font-size-md: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.5rem;
     --font-size-2xl: 2rem;
     --font-size-3xl: 3rem;
     --font-size-4xl: 4rem;
 
-    /* =======================================
-       FONT WEIGHT
-    ======================================= */
-
-    --font-light:      300;
-    --font-normal:     400;
-    --font-medium:     500;
-    --font-semibold:   600;
-    --font-bold:       700;
+    /* FONT WEIGHTS */
+    --font-light: 300;
+    --font-normal: 400;
+    --font-medium: 500;
+    --font-semibold: 600;
+    --font-bold: 700;
     --font-extra-bold: 800;
 
-    /* =======================================
-       LINE HEIGHT
-    ======================================= */
-
+    /* LINE HEIGHT */
     --line-height: 1.7;
 
-    /* =======================================
-       SPACING
-    ======================================= */
-
-    --space-xs:  .25rem;
-    --space-sm:  .5rem;
-    --space-md:  1rem;
-    --space-lg:  1.5rem;
-    --space-xl:  2rem;
+    /* SPACING */
+    --space-xs: .25rem;
+    --space-sm: .5rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
     --space-2xl: 3rem;
     --space-3xl: 4rem;
     --space-4xl: 5rem;
 
-    /* =======================================
-       BORDER RADIUS
-    ======================================= */
-
-    --radius-sm:    6px;
-    --radius-md:    10px;
-    --radius-lg:    16px;
-    --radius-xl:    24px;
+    /* RADII */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --radius-lg: 16px;
+    --radius-xl: 24px;
     --radius-round: 999px;
 
-    /* =======================================
-       SHADOWS (warm charcoal tint, not cool slate)
-    ======================================= */
+    /* SHADOWS */
+    --shadow-sm: 0 2px 8px rgba(35, 35, 35, .10);
+    --shadow-md: 0 10px 25px rgba(35, 35, 35, .13);
+    --shadow-lg: 0 15px 40px rgba(35, 35, 35, .16);
+    --shadow-xl: 0 20px 60px rgba(35, 35, 35, .20);
 
-    --shadow-sm: 0 2px 8px rgba(35,35,35,.10);
-    --shadow-md: 0 10px 25px rgba(35,35,35,.13);
-    --shadow-lg: 0 15px 40px rgba(35,35,35,.16);
-    --shadow-xl: 0 20px 60px rgba(35,35,35,.20);
-
-    /* =======================================
-       TRANSITIONS
-    ======================================= */
-
-    --transition-fast:   .2s ease;
+    /* TRANSITIONS */
+    --transition-fast: .2s ease;
     --transition-normal: .35s ease;
-    --transition-slow:   .5s ease;
+    --transition-slow: .5s ease;
 
-    /* =======================================
-       CONTAINER
-    ======================================= */
-
+    /* LAYOUT */
     --container-width: 1200px;
-
-    /* =======================================
-       HEADER HEIGHT
-    ======================================= */
-
+    --container-padding: 1.25rem;
     --header-height: 80px;
-
-}
-
-/* ===========================================
-   DARK THEME
-   Toggle via JS: <html data-theme="dark">
-   Charcoal becomes the background instead of an accent —
-   beige becomes the light/text color instead of the base.
-=========================================== */
-
-[data-theme="dark"] {
-
-    /* ---- Primary: warm beige reads as the "bright" color now ---- */
-    --primary-color:  #DDD0C8;
-    --primary-dark:   #C9BAAE;
-    --primary-darker: #B3A192;
-    --primary-light:  #EDE4DA;
-    --primary-soft:   #3A342E;
-
-    /* ---- Secondary: deep warm block for panels ---- */
-    --secondary-color: #141414;
-    --secondary-light: #1F1F1F;
-
-    /* ---- Accent: brighter camel for dark-mode contrast ---- */
-    --accent-color:  #C09872;
-    --accent-dark:   #A47551;
-    --accent-light:  #D8B694;
-    --accent-soft:   #33291F;
-
-    /* ---- Status ---- */
-    --success-color: #8B9A7C;
-    --warning-color: #D0A365;
-    --danger-color:  #C06A5A;
-
-    /* ---- Background / surfaces: warm near-black, not cool grey ---- */
-    --background-color: #1A1A1A;
-    --surface-color:     #232323;
-    --surface-light:     #2C2C2C;
-    --surface-dark:      #383838;
-
-    /* ---- Text: warm beige, not pure white ---- */
-    --text-primary:   #EDE4DA;
-    --text-secondary: #B3A192;
-    --text-light:     #8C8279;
-    --text-white:     #1A1A1A;   /* for text placed on light chips in dark mode */
-
-    /* ---- Links ---- */
-    --link-color:         var(--primary-color);
-    --link-hover-color:   var(--accent-color);
-    --link-visited-color: var(--primary-dark);
-
-    /* ---- Border ---- */
-    --border-color:  #3A3A3A;
-    --border-strong: #4A4A4A;
-
-    /* ---- Shadows: deepen for dark backgrounds ---- */
-    --shadow-sm: 0 2px 8px rgba(0,0,0,.35);
-    --shadow-md: 0 10px 25px rgba(0,0,0,.4);
-    --shadow-lg: 0 15px 40px rgba(0,0,0,.45);
-    --shadow-xl: 0 20px 60px rgba(0,0,0,.5);
-
-    /* header-* tokens intentionally NOT overridden here —
-       the header stays fixed warm-beige in both themes. */
-
 }
