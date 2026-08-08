@@ -1,26 +1,12 @@
-/* =========================================================================
-   FONTS
-========================================================================= */
-
 @import url(
     "https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Manrope:wght@400;500;600;700;800&display=swap"
 );
-
-
-/* =========================================================================
-   FONT SETTINGS
-========================================================================= */
 
 :root {
     --font-family: "Manrope", sans-serif;
     --font-heading: "Fraunces", Georgia, serif;
     --font-label: "DM Mono", monospace;
 }
-
-
-/* =========================================================================
-   RESET
-========================================================================= */
 
 *,
 *::before,
@@ -37,10 +23,8 @@ html {
 
 body {
     overflow-x: hidden;
-
     background: var(--background-color);
     color: var(--text-primary);
-
     font-family: var(--font-family);
     font-size: var(--font-size-md);
     font-weight: var(--font-normal);
@@ -67,7 +51,6 @@ img {
     display: block;
     max-width: 100%;
     height: auto;
-
     user-select: none;
     -webkit-user-drag: none;
 }
@@ -407,7 +390,6 @@ section {
     grid-template-columns: 1.4fr 1fr;
     align-items: center;
     gap: var(--space-3xl);
-
     margin-bottom: var(--space-4xl);
 }
 
@@ -508,7 +490,6 @@ section {
         auto-fit,
         minmax(280px, 1fr)
     );
-
     gap: var(--space-xl);
 }
 
@@ -575,7 +556,7 @@ section {
 
 
 /* =========================================================================
-   PROJECT SLIDER
+   PROJECTS
 ========================================================================= */
 
 .projects {
@@ -587,7 +568,7 @@ section {
     align-items: center;
     gap: var(--space-md);
 
-    width: min(100%, 980px);
+    width: min(100%, 1120px);
     margin-inline: auto;
 }
 
@@ -600,19 +581,18 @@ section {
 .projects-track {
     display: flex;
     width: 100%;
-
     transition: transform var(--transition-normal);
 }
 
 .project-slide {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
     align-items: stretch;
-    gap: var(--space-xl);
+    gap: 0;
 
     flex: 0 0 100%;
     width: 100%;
-    min-height: 470px;
+    min-height: 390px;
 
     overflow: hidden;
 
@@ -636,7 +616,7 @@ section {
 
     width: 100%;
     min-width: 0;
-    min-height: 470px;
+    min-height: 390px;
 
     overflow: hidden;
     background: var(--surface-dark);
@@ -647,12 +627,12 @@ section {
 
     width: 100%;
     height: 100%;
-    min-height: 470px;
-    padding: var(--space-lg);
+    min-height: 390px;
+    padding: var(--space-md);
 
     background: var(--surface-dark);
 
-    object-fit: contain;
+    object-fit: contain !important;
     object-position: center;
 
     transition: transform var(--transition-normal);
@@ -668,8 +648,8 @@ section {
     justify-content: center;
 
     min-width: 0;
-    min-height: 470px;
-    padding: var(--space-2xl);
+    min-height: 390px;
+    padding: var(--space-xl);
 
     overflow: visible;
 }
@@ -740,7 +720,6 @@ section {
     display: flex;
     justify-content: center;
     gap: var(--space-sm);
-
     margin-top: var(--space-lg);
 }
 
@@ -799,7 +778,6 @@ section {
             var(--primary-color),
             var(--primary-dark)
         );
-
     color: var(--text-white);
 }
 
@@ -814,7 +792,6 @@ section {
         auto-fit,
         minmax(220px, 1fr)
     );
-
     gap: var(--space-xl);
 }
 
@@ -948,7 +925,6 @@ section {
     display: flex;
     justify-content: center;
     gap: var(--space-md);
-
     margin: var(--space-xl) 0;
 }
 
@@ -1017,7 +993,7 @@ section {
 
 
 /* =========================================================================
-   UTILITIES AND ANIMATIONS
+   UTILITIES
 ========================================================================= */
 
 ::selection {
@@ -1071,8 +1047,33 @@ section {
 
 
 /* =========================================================================
-   RESPONSIVE STYLES
+   RESPONSIVE
 ========================================================================= */
+
+@media (max-width: 1050px) {
+    .container {
+        width: min(
+            calc(100% - 3rem),
+            var(--container-width)
+        );
+    }
+
+    .nav-links {
+        gap: var(--space-lg);
+    }
+
+    .hero-container {
+        gap: var(--space-2xl);
+    }
+
+    .projects-slider {
+        width: min(100%, 1000px);
+    }
+
+    .project-content {
+        padding: var(--space-lg);
+    }
+}
 
 @media (max-width: 900px) {
     .hero-container {
@@ -1096,31 +1097,46 @@ section {
         justify-content: center;
     }
 
+    .hero-image img {
+        width: 280px;
+        height: 280px;
+        border-radius: 50%;
+    }
+
     .about-content {
         grid-template-columns: 1fr;
     }
 
+    .skills-container {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
     .project-slide {
         grid-template-columns: 1fr;
-        gap: 0;
         min-height: 0;
+        gap: 0;
     }
 
     .project-image-box {
-        min-height: 320px;
+        min-height: 300px;
     }
 
     .project-image-box img {
-        min-height: 320px;
+        min-height: 300px;
         max-height: 360px;
         padding: var(--space-md);
-        object-fit: contain;
+        object-fit: contain !important;
     }
 
     .project-content {
         min-height: 0;
         padding: var(--space-2xl);
         overflow: visible;
+    }
+
+    .certificate-grid,
+    .achievement-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
     .contact-container {
@@ -1145,7 +1161,7 @@ section {
         gap: 0;
 
         max-height: 0;
-        padding: 0 1.25rem;
+        padding: 0 1rem;
 
         overflow: hidden;
 
@@ -1156,14 +1172,13 @@ section {
         opacity: 0;
         pointer-events: none;
         transform: translateY(-10px);
-
         transition: var(--transition-normal);
     }
 
     .nav-links.active {
         max-height: 420px;
-        padding-top: 1rem;
-        padding-bottom: 1rem;
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
 
         opacity: 1;
         pointer-events: auto;
@@ -1180,16 +1195,17 @@ section {
         padding-top: calc(
             var(--header-height) + var(--space-3xl)
         );
-        padding-bottom: var(--space-4xl);
+        padding-bottom: 90px;
+    }
+
+    .hero h1 {
+        font-size: 3rem;
     }
 
     .hero-image img {
         width: 280px;
         height: 280px;
-    }
-
-    .hero h1 {
-        font-size: 3rem;
+        border-radius: 50%;
     }
 
     .projects-slider {
@@ -1199,21 +1215,6 @@ section {
     .project-slider-button {
         width: 38px;
         height: 38px;
-    }
-
-    .project-image-box {
-        min-height: 250px;
-    }
-
-    .project-image-box img {
-        min-height: 250px;
-        max-height: 290px;
-        padding: var(--space-sm);
-        object-fit: contain;
-    }
-
-    .project-content {
-        padding: var(--space-xl);
     }
 }
 
@@ -1231,26 +1232,28 @@ section {
         width: 100%;
     }
 
-    .about-cards {
+    .about-cards,
+    .skills-container,
+    .certificate-grid,
+    .achievement-grid {
         grid-template-columns: 1fr;
     }
 
     .projects-slider {
         position: relative;
         display: block;
-        padding-inline: 28px;
+        padding-inline: 30px;
     }
 
     .project-slider-button {
         position: absolute;
         z-index: 2;
         top: 50%;
-
         transform: translateY(-50%);
     }
 
     .project-slider-button:hover {
-        transform: translateY(-50%) scale(1.08);
+        transform: translateY(-50%) scale(1.05);
     }
 
     .project-slider-prev {
@@ -1269,12 +1272,20 @@ section {
         min-height: 220px;
         max-height: 250px;
         padding: var(--space-sm);
-        object-fit: contain;
+        object-fit: contain !important;
     }
 
     .project-content {
         padding: var(--space-lg);
         overflow: visible;
+    }
+
+    .project-content h3 {
+        font-size: var(--font-size-lg);
+    }
+
+    .project-content p {
+        font-size: var(--font-size-sm);
     }
 
     #backToTop {
@@ -1295,6 +1306,7 @@ section {
     .hero-image img {
         width: 240px;
         height: 240px;
+        border-radius: 50%;
     }
 
     .projects-slider {
@@ -1302,12 +1314,12 @@ section {
     }
 
     .project-image-box {
-        min-height: 200px;
+        min-height: 190px;
     }
 
     .project-image-box img {
-        min-height: 200px;
-        max-height: 230px;
+        min-height: 190px;
+        max-height: 220px;
     }
 }
 
