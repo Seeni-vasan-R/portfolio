@@ -8,7 +8,7 @@
 
 
 /* =========================================================================
-   FONT COMPATIBILITY
+   FONT SETTINGS
 ========================================================================= */
 
 :root {
@@ -32,6 +32,7 @@
 
 html {
     scroll-behavior: smooth;
+    scroll-padding-top: var(--header-height);
 }
 
 body {
@@ -81,7 +82,7 @@ ul {
 }
 
 button {
-    border: none;
+    border: 0;
     background: none;
     cursor: pointer;
     font: inherit;
@@ -160,6 +161,7 @@ section {
     justify-content: center;
     gap: var(--space-sm);
 
+    min-height: 48px;
     padding: 14px 26px;
 
     border: 2px solid transparent;
@@ -237,6 +239,7 @@ section {
 
 .nav-links {
     display: flex;
+    align-items: center;
     gap: var(--space-xl);
 }
 
@@ -257,8 +260,9 @@ section {
 
 .nav-links a::after {
     position: absolute;
-    left: 0;
+    right: 0;
     bottom: -8px;
+    left: 0;
 
     width: 0;
     height: 2px;
@@ -371,7 +375,6 @@ section {
     object-position: center;
 
     box-shadow: var(--shadow-xl);
-
     transition: transform var(--transition-normal);
 }
 
@@ -415,7 +418,6 @@ section {
 
 .about-text p {
     margin-bottom: var(--space-md);
-
     color: var(--text-secondary);
     text-align: justify;
 }
@@ -433,7 +435,6 @@ section {
 .contact-card {
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
-
     background: var(--surface-color);
     box-shadow: var(--shadow-md);
 }
@@ -441,10 +442,7 @@ section {
 .about-card {
     padding: var(--space-xl);
     text-align: center;
-
-    transition:
-        box-shadow var(--transition-normal),
-        transform var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 .about-card:hover,
@@ -456,7 +454,6 @@ section {
 
 .about-card i {
     margin-bottom: var(--space-md);
-
     color: var(--accent-dark);
     font-size: 2rem;
 }
@@ -517,10 +514,7 @@ section {
 
 .skill-category {
     padding: var(--space-xl);
-
-    transition:
-        box-shadow var(--transition-normal),
-        transform var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 .skill-category h3 {
@@ -570,9 +564,7 @@ section {
     font-family: var(--font-label);
     font-size: var(--font-size-xs);
 
-    transition:
-        background-color var(--transition-fast),
-        color var(--transition-fast);
+    transition: var(--transition-fast);
 }
 
 .skill-list span:hover,
@@ -607,6 +599,8 @@ section {
 
 .projects-track {
     display: flex;
+    width: 100%;
+
     transition: transform var(--transition-normal);
 }
 
@@ -617,6 +611,8 @@ section {
     gap: var(--space-xl);
 
     flex: 0 0 100%;
+    width: 100%;
+    min-height: 470px;
 
     overflow: hidden;
 
@@ -634,24 +630,36 @@ section {
 }
 
 .project-image-box {
-    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-width: 0;
+    min-height: 470px;
+
     overflow: hidden;
     background: var(--surface-dark);
 }
 
 .project-image-box img {
+    display: block;
+
     width: 100%;
     height: 100%;
-    min-height: 380px;
+    min-height: 470px;
+    padding: var(--space-lg);
 
-    object-fit: cover;
+    background: var(--surface-dark);
+
+    object-fit: contain;
     object-position: center;
 
     transition: transform var(--transition-normal);
 }
 
 .project-slide:hover .project-image-box img {
-    transform: scale(1.04);
+    transform: scale(1.02);
 }
 
 .project-content {
@@ -659,12 +667,15 @@ section {
     flex-direction: column;
     justify-content: center;
 
+    min-width: 0;
+    min-height: 470px;
     padding: var(--space-2xl);
+
+    overflow: visible;
 }
 
 .project-label {
     margin-bottom: var(--space-sm);
-
     color: var(--accent-dark);
     font-size: var(--font-size-xs);
 }
@@ -679,7 +690,6 @@ section {
 
 .project-content p {
     margin-bottom: var(--space-lg);
-
     color: var(--text-secondary);
     line-height: 1.8;
 }
@@ -698,6 +708,7 @@ section {
 
 .project-content .btn {
     width: 100%;
+    margin-top: auto;
 }
 
 .project-slider-button {
@@ -716,11 +727,7 @@ section {
     color: var(--primary-color);
 
     cursor: pointer;
-
-    transition:
-        background-color var(--transition-fast),
-        color var(--transition-fast),
-        transform var(--transition-fast);
+    transition: var(--transition-fast);
 }
 
 .project-slider-button:hover {
@@ -746,10 +753,7 @@ section {
     background: var(--border-strong);
 
     cursor: pointer;
-
-    transition:
-        width var(--transition-fast),
-        background-color var(--transition-fast);
+    transition: var(--transition-fast);
 }
 
 .project-dot.active {
@@ -770,15 +774,11 @@ section {
 .certificate-card {
     padding: var(--space-xl);
     text-align: center;
-
-    transition:
-        box-shadow var(--transition-normal),
-        transform var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 .certificate-card i {
     margin-bottom: var(--space-md);
-
     color: var(--warning-color);
     font-size: 3rem;
 }
@@ -827,9 +827,7 @@ section {
     background: rgba(246, 241, 234, 0.12);
     text-align: center;
 
-    transition:
-        background-color var(--transition-normal),
-        transform var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 .achievement-card:hover {
@@ -883,7 +881,6 @@ section {
     display: flex;
     align-items: flex-start;
     gap: var(--space-md);
-
     margin-bottom: var(--space-lg);
 }
 
@@ -966,9 +963,7 @@ section {
     border-radius: 50%;
     background: rgba(246, 241, 234, 0.08);
 
-    transition:
-        background-color var(--transition-normal),
-        transform var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 .footer-social a:hover {
@@ -1007,12 +1002,7 @@ section {
 
     opacity: 0;
     visibility: hidden;
-
-    transition:
-        background-color var(--transition-normal),
-        opacity var(--transition-normal),
-        transform var(--transition-normal),
-        visibility var(--transition-normal);
+    transition: var(--transition-normal);
 }
 
 #backToTop.show {
@@ -1027,7 +1017,7 @@ section {
 
 
 /* =========================================================================
-   UTILITIES
+   UTILITIES AND ANIMATIONS
 ========================================================================= */
 
 ::selection {
@@ -1051,11 +1041,6 @@ section {
 ::-webkit-scrollbar-thumb:hover {
     background: var(--accent-dark);
 }
-
-
-/* =========================================================================
-   ANIMATIONS
-========================================================================= */
 
 .fade-in {
     animation: fadeIn 0.8s ease forwards;
@@ -1118,14 +1103,24 @@ section {
     .project-slide {
         grid-template-columns: 1fr;
         gap: 0;
+        min-height: 0;
     }
 
     .project-image-box {
-        min-height: 300px;
+        min-height: 320px;
     }
 
     .project-image-box img {
-        min-height: 300px;
+        min-height: 320px;
+        max-height: 360px;
+        padding: var(--space-md);
+        object-fit: contain;
+    }
+
+    .project-content {
+        min-height: 0;
+        padding: var(--space-2xl);
+        overflow: visible;
     }
 
     .contact-container {
@@ -1162,10 +1157,7 @@ section {
         pointer-events: none;
         transform: translateY(-10px);
 
-        transition:
-            max-height var(--transition-normal),
-            opacity var(--transition-normal),
-            transform var(--transition-normal);
+        transition: var(--transition-normal);
     }
 
     .nav-links.active {
@@ -1181,10 +1173,6 @@ section {
     .nav-links a {
         display: block;
         padding: 0.85rem 0;
-    }
-
-    .nav-links a::after {
-        bottom: 4px;
     }
 
     .hero {
@@ -1211,6 +1199,17 @@ section {
     .project-slider-button {
         width: 38px;
         height: 38px;
+    }
+
+    .project-image-box {
+        min-height: 250px;
+    }
+
+    .project-image-box img {
+        min-height: 250px;
+        max-height: 290px;
+        padding: var(--space-sm);
+        object-fit: contain;
     }
 
     .project-content {
@@ -1265,3 +1264,59 @@ section {
     .project-image-box {
         min-height: 220px;
     }
+
+    .project-image-box img {
+        min-height: 220px;
+        max-height: 250px;
+        padding: var(--space-sm);
+        object-fit: contain;
+    }
+
+    .project-content {
+        padding: var(--space-lg);
+        overflow: visible;
+    }
+
+    #backToTop {
+        right: 18px;
+        bottom: 18px;
+    }
+}
+
+@media (max-width: 400px) {
+    .container {
+        width: calc(100% - 2rem);
+    }
+
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-image img {
+        width: 240px;
+        height: 240px;
+    }
+
+    .projects-slider {
+        padding-inline: 24px;
+    }
+
+    .project-image-box {
+        min-height: 200px;
+    }
+
+    .project-image-box img {
+        min-height: 200px;
+        max-height: 230px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
