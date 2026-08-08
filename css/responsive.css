@@ -8,7 +8,7 @@
     }
 
     .projects-slider {
-        width: min(100%, 900px);
+        width: min(100%, 1040px);
     }
 }
 
@@ -49,20 +49,19 @@
     }
 
     .project-slide {
-        grid-template-columns: 1fr;
-        gap: 0;
+        grid-template-columns: 1.15fr .85fr;
     }
 
     .project-image-box {
-        min-height: 320px;
+        min-height: 380px;
     }
 
     .project-image-box img {
-        min-height: 320px;
+        min-height: 380px;
     }
 
     .project-content {
-        padding: var(--space-xl);
+        padding: var(--space-xl) var(--space-lg) var(--space-xl) 0;
     }
 }
 
@@ -128,16 +127,22 @@
         padding-bottom: var(--space-3xl);
     }
 
+    .project-slide {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
     .project-image-box {
-        min-height: 280px;
+        min-height: 300px;
     }
 
     .project-image-box img {
-        min-height: 280px;
+        min-height: 300px;
+        padding: 14px;
     }
 
     .project-content {
-        padding: var(--space-lg);
+        padding: var(--space-xl);
     }
 
     .achievement-grid {
@@ -157,11 +162,12 @@
     }
 
     .project-image-box {
-        min-height: 230px;
+        min-height: 245px;
     }
 
     .project-image-box img {
-        min-height: 230px;
+        min-height: 245px;
+        padding: 10px;
     }
 
     .project-content h3 {
@@ -202,6 +208,7 @@
 
     .project-image-box img {
         min-height: 210px;
+        padding: 8px;
     }
 
     .project-content {
@@ -240,16 +247,5 @@
 
     .project-image-box img {
         min-height: 190px;
-    }
-}
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
     }
 }
