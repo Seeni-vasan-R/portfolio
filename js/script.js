@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
     ).matches;
 
 
-    /* MOBILE MENU */
+    /* =========================================================================
+       MOBILE MENU
+    ========================================================================= */
 
     function setMenuState(isOpen) {
         if (!menuBtn || !navLinks) {
@@ -79,7 +81,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* PROJECT SLIDER */
+    /* =========================================================================
+       PROJECT SLIDER
+    ========================================================================= */
 
     if (projectSlider) {
         const projectTrack =
@@ -147,15 +151,19 @@ document.addEventListener("DOMContentLoaded", () => {
             startProjectAutoSlide();
         }
 
-        previousButton?.addEventListener("click", () => {
-            showPreviousProject();
-            restartProjectAutoSlide();
-        });
+        if (previousButton) {
+            previousButton.addEventListener("click", () => {
+                showPreviousProject();
+                restartProjectAutoSlide();
+            });
+        }
 
-        nextButton?.addEventListener("click", () => {
-            showNextProject();
-            restartProjectAutoSlide();
-        });
+        if (nextButton) {
+            nextButton.addEventListener("click", () => {
+                showNextProject();
+                restartProjectAutoSlide();
+            });
+        }
 
         projectDots.forEach((dot, index) => {
             dot.addEventListener("click", () => {
@@ -214,7 +222,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* HEADER SHADOW */
+    /* =========================================================================
+       HEADER SHADOW
+    ========================================================================= */
 
     function updateHeaderShadow() {
         if (!header) {
@@ -234,7 +244,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateHeaderShadow();
 
 
-    /* BACK TO TOP */
+    /* =========================================================================
+       BACK TO TOP
+    ========================================================================= */
 
     if (backToTop) {
         function updateBackToTop() {
@@ -259,7 +271,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* ACTIVE NAVIGATION */
+    /* =========================================================================
+       ACTIVE NAVIGATION
+    ========================================================================= */
 
     function updateActiveSection() {
         let currentSection = "";
@@ -289,7 +303,9 @@ document.addEventListener("DOMContentLoaded", () => {
     updateActiveSection();
 
 
-    /* SCROLL REVEAL */
+    /* =========================================================================
+       SCROLL REVEAL
+    ========================================================================= */
 
     const revealItems = document.querySelectorAll(
         ".about-card, " +
@@ -326,7 +342,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* TYPING EFFECT */
+    /* =========================================================================
+       TYPING EFFECT
+    ========================================================================= */
 
     const heroTitle = document.querySelector(".hero h2");
 
@@ -353,7 +371,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 
-    /* SMOOTH SCROLL */
+    /* =========================================================================
+       SMOOTH SCROLL
+    ========================================================================= */
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", (event) => {
@@ -382,7 +402,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /* CURRENT YEAR */
+    /* =========================================================================
+       CURRENT YEAR
+    ========================================================================= */
 
     const yearElement =
         document.getElementById("year");
