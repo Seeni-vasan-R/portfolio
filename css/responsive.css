@@ -157,6 +157,7 @@
         opacity: 0;
         pointer-events: none;
         transform: translateY(-10px);
+
         transition:
             max-height var(--transition-normal),
             opacity var(--transition-normal),
