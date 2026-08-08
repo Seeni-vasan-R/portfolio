@@ -7,6 +7,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".header");
     const sections = document.querySelectorAll("section");
 
+    const projectSlider = document.querySelector(
+        "[data-project-slider]"
+    );
+
     const reduceMotion = window.matchMedia(
         "(prefers-reduced-motion: reduce)"
     ).matches;
@@ -41,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
             event.stopPropagation();
 
             const isOpen = navLinks.classList.contains("active");
+
             setMenuState(!isOpen);
         });
 
@@ -71,6 +76,141 @@ document.addEventListener("DOMContentLoaded", () => {
                 setMenuState(false);
             }
         });
+    }
+
+
+    /* PROJECT SLIDER */
+
+    if (projectSlider) {
+        const projectTrack =
+            projectSlider.querySelector(".projects-track");
+
+        const projectSlides =
+            projectSlider.querySelectorAll(".project-slide");
+
+        const previousButton =
+            projectSlider.querySelector(".project-slider-prev");
+
+        const nextButton =
+            projectSlider.querySelector(".project-slider-next");
+
+        const projectDots =
+            projectSlider.querySelectorAll(".project-dot");
+
+        let currentProject = 0;
+        let projectAutoSlide;
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        function showProject(index) {
+            currentProject =
+                (index + projectSlides.length) %
+                projectSlides.length;
+
+            projectTrack.style.transform =
+                `translateX(-${currentProject * 100}%)`;
+
+            projectDots.forEach((dot, dotIndex) => {
+                dot.classList.toggle(
+                    "active",
+                    dotIndex === currentProject
+                );
+            });
+        }
+
+        function showNextProject() {
+            showProject(currentProject + 1);
+        }
+
+        function showPreviousProject() {
+            showProject(currentProject - 1);
+        }
+
+        function stopProjectAutoSlide() {
+            clearInterval(projectAutoSlide);
+        }
+
+        function startProjectAutoSlide() {
+            if (reduceMotion || projectSlides.length <= 1) {
+                return;
+            }
+
+            stopProjectAutoSlide();
+
+            projectAutoSlide = setInterval(() => {
+                showNextProject();
+            }, 5000);
+        }
+
+        function restartProjectAutoSlide() {
+            stopProjectAutoSlide();
+            startProjectAutoSlide();
+        }
+
+        previousButton?.addEventListener("click", () => {
+            showPreviousProject();
+            restartProjectAutoSlide();
+        });
+
+        nextButton?.addEventListener("click", () => {
+            showNextProject();
+            restartProjectAutoSlide();
+        });
+
+        projectDots.forEach((dot, index) => {
+            dot.addEventListener("click", () => {
+                showProject(index);
+                restartProjectAutoSlide();
+            });
+        });
+
+        projectSlider.addEventListener("mouseenter", () => {
+            stopProjectAutoSlide();
+        });
+
+        projectSlider.addEventListener("mouseleave", () => {
+            startProjectAutoSlide();
+        });
+
+        projectSlider.addEventListener(
+            "touchstart",
+            (event) => {
+                touchStartX =
+                    event.changedTouches[0].screenX;
+
+                stopProjectAutoSlide();
+            },
+            {
+                passive: true
+            }
+        );
+
+        projectSlider.addEventListener(
+            "touchend",
+            (event) => {
+                touchEndX =
+                    event.changedTouches[0].screenX;
+
+                const swipeDistance =
+                    touchStartX - touchEndX;
+
+                if (Math.abs(swipeDistance) > 50) {
+                    if (swipeDistance > 0) {
+                        showNextProject();
+                    } else {
+                        showPreviousProject();
+                    }
+                }
+
+                startProjectAutoSlide();
+            },
+            {
+                passive: true
+            }
+        );
+
+        showProject(0);
+        startProjectAutoSlide();
     }
 
 
@@ -125,7 +265,8 @@ document.addEventListener("DOMContentLoaded", () => {
         let currentSection = "";
 
         sections.forEach((section) => {
-            const sectionTop = section.offsetTop - 140;
+            const sectionTop =
+                section.offsetTop - 140;
 
             if (window.scrollY >= sectionTop) {
                 currentSection = section.id;
@@ -135,7 +276,8 @@ document.addEventListener("DOMContentLoaded", () => {
         navItems.forEach((link) => {
             link.classList.toggle(
                 "active-link",
-                link.getAttribute("href") === `#${currentSection}`
+                link.getAttribute("href") ===
+                `#${currentSection}`
             );
         });
     }
@@ -155,7 +297,7 @@ document.addEventListener("DOMContentLoaded", () => {
         ".education-card, " +
         ".certificate-card, " +
         ".achievement-card, " +
-        ".project-card, " +
+        ".project-slide, " +
         ".contact-card"
     );
 
@@ -189,7 +331,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const heroTitle = document.querySelector(".hero h2");
 
     if (heroTitle && !reduceMotion) {
-        const originalText = heroTitle.textContent.trim();
+        const originalText =
+            heroTitle.textContent.trim();
 
         heroTitle.textContent = "";
 
@@ -197,7 +340,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         function typeWriter() {
             if (index < originalText.length) {
-                heroTitle.textContent += originalText.charAt(index);
+                heroTitle.textContent +=
+                    originalText.charAt(index);
+
                 index++;
 
                 setTimeout(typeWriter, 70);
@@ -212,19 +357,24 @@ document.addEventListener("DOMContentLoaded", () => {
 
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", (event) => {
-            const targetId = anchor.getAttribute("href");
+            const targetId =
+                anchor.getAttribute("href");
 
             if (!targetId || targetId === "#") {
                 return;
             }
 
-            const target = document.querySelector(targetId);
+            const target =
+                document.querySelector(targetId);
 
             if (target) {
                 event.preventDefault();
 
                 target.scrollIntoView({
-                    behavior: reduceMotion ? "auto" : "smooth",
+                    behavior: reduceMotion
+                        ? "auto"
+                        : "smooth",
+
                     block: "start"
                 });
             }
@@ -234,9 +384,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     /* CURRENT YEAR */
 
-    const yearElement = document.getElementById("year");
+    const yearElement =
+        document.getElementById("year");
 
     if (yearElement) {
-        yearElement.textContent = new Date().getFullYear();
+        yearElement.textContent =
+            new Date().getFullYear();
     }
 });
