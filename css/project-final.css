@@ -1,40 +1,52 @@
 /* =========================================================================
-   FINAL PROJECT LAYOUT OVERRIDE
+   FINAL STATIC PROJECT LAYOUT
    Load this file after styles.css and responsive.css
 ========================================================================= */
 
 
-/* MAIN SLIDER WIDTH */
+/* =========================================================================
+   PROJECT CONTAINER
+========================================================================= */
 
 .projects-slider {
-    display: flex !important;
-    align-items: center !important;
-    gap: 14px !important;
-
-    width: min(100%, 1280px) !important;
-    max-width: 1280px !important;
+    display: block !important;
+    width: min(100%, 1180px) !important;
+    max-width: 1180px !important;
     margin-inline: auto !important;
 }
 
 .projects-viewport {
+    display: block !important;
     width: 100% !important;
-    overflow: hidden !important;
-    border-radius: var(--radius-lg) !important;
+    overflow: visible !important;
+}
+
+.projects-track {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: var(--space-2xl) !important;
+
+    width: 100% !important;
+    transform: none !important;
+    transition: none !important;
 }
 
 
-/* PROJECT CARD */
+/* =========================================================================
+   PROJECT CARD
+========================================================================= */
 
 .project-slide {
     display: grid !important;
-    grid-template-columns: minmax(0, 1.8fr) minmax(0, .8fr) !important;
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, .85fr) !important;
     align-items: stretch !important;
 
     width: 100% !important;
-    min-height: 320px !important;
-    max-height: 320px !important;
+    min-height: 470px !important;
+    height: auto !important;
+    max-height: none !important;
 
-    flex: 0 0 100% !important;
+    flex: none !important;
     gap: 0 !important;
     overflow: hidden !important;
 
@@ -43,10 +55,22 @@
 
     background: var(--surface-color) !important;
     box-shadow: var(--shadow-md) !important;
+
+    transform: none !important;
+    transition:
+        transform var(--transition-normal),
+        box-shadow var(--transition-normal) !important;
+}
+
+.project-slide:hover {
+    box-shadow: var(--shadow-xl) !important;
+    transform: translateY(-6px) !important;
 }
 
 
-/* IMAGE AREA */
+/* =========================================================================
+   PROJECT IMAGE
+========================================================================= */
 
 .project-image-box {
     display: flex !important;
@@ -54,19 +78,14 @@
     justify-content: center !important;
 
     width: 100% !important;
-    height: 320px !important;
-    min-height: 320px !important;
-    max-height: 320px !important;
+    min-width: 0 !important;
+    min-height: 470px !important;
+    height: 100% !important;
+    max-height: none !important;
     overflow: hidden !important;
 
     background: var(--surface-light) !important;
 }
-
-
-/* IMPORTANT:
-   contain keeps the complete Power BI dashboard visible.
-   Do not use cover here.
-*/
 
 .project-image-box img {
     display: block !important;
@@ -78,7 +97,7 @@
     max-width: 100% !important;
     max-height: 100% !important;
 
-    padding: 12px !important;
+    padding: 18px !important;
 
     object-fit: contain !important;
     object-position: center !important;
@@ -87,8 +106,14 @@
     transform: none !important;
 }
 
+.project-slide:hover .project-image-box img {
+    transform: none !important;
+}
 
-/* PROJECT CONTENT */
+
+/* =========================================================================
+   PROJECT CONTENT
+========================================================================= */
 
 .project-content {
     display: flex !important;
@@ -97,142 +122,146 @@
 
     width: 100% !important;
     min-width: 0 !important;
-    height: 320px !important;
-    padding: 24px !important;
-    overflow-y: auto !important;
+    height: auto !important;
+    min-height: 470px !important;
+    max-height: none !important;
+
+    padding: 40px 34px !important;
+    overflow: visible !important;
+}
+
+.project-label {
+    margin-bottom: var(--space-sm) !important;
+
+    color: var(--accent-dark) !important;
+    font-family: var(--font-label) !important;
+    font-size: var(--font-size-xs) !important;
+    letter-spacing: .08em !important;
+    text-transform: uppercase !important;
 }
 
 .project-content h3 {
-    margin-bottom: 10px !important;
-    font-size: clamp(1.35rem, 2.3vw, 2rem) !important;
+    margin-bottom: var(--space-md) !important;
+
+    color: var(--text-primary) !important;
+    font-size: clamp(1.5rem, 3vw, 2.3rem) !important;
     line-height: 1.15 !important;
 }
 
 .project-content p {
-    margin-bottom: 14px !important;
-    font-size: .9rem !important;
-    line-height: 1.55 !important;
+    margin-bottom: var(--space-lg) !important;
+
+    color: var(--text-secondary) !important;
+    font-size: var(--font-size-md) !important;
+    line-height: 1.8 !important;
 }
 
 .project-content h4 {
-    margin-bottom: 8px !important;
-    font-size: .95rem !important;
+    margin-bottom: var(--space-sm) !important;
+
+    color: var(--text-primary) !important;
+    font-size: var(--font-size-md) !important;
 }
 
 .project-tech {
     display: flex !important;
     flex-wrap: wrap !important;
-    gap: 6px !important;
-    margin-bottom: 14px !important;
+    gap: var(--space-sm) !important;
+    margin-bottom: var(--space-xl) !important;
 }
 
 .project-tech span {
-    padding: 6px 9px !important;
-    font-size: .65rem !important;
+    padding: 8px 12px !important;
+    font-size: var(--font-size-xs) !important;
 }
 
 .project-content .btn {
     width: 100% !important;
-    padding: 10px 16px !important;
-    font-size: .85rem !important;
+    margin-top: auto !important;
 }
 
 
-/* SLIDER BUTTONS */
+/* =========================================================================
+   REMOVE SLIDER CONTROLS
+========================================================================= */
 
-.project-slider-button {
-    flex-shrink: 0 !important;
+.project-slider-button,
+.project-slider-dots {
+    display: none !important;
 }
 
 
-/* TABLET */
+/* =========================================================================
+   TABLET
+========================================================================= */
 
-@media (max-width: 1024px) {
-    .projects-slider {
-        width: min(100%, 940px) !important;
-    }
-
-    .project-slide {
-        grid-template-columns: minmax(0, 1.45fr) minmax(0, .85fr) !important;
-        min-height: 300px !important;
-        max-height: 300px !important;
-    }
-
-    .project-image-box {
-        height: 300px !important;
-        min-height: 300px !important;
-        max-height: 300px !important;
-    }
-
-    .project-content {
-        height: 300px !important;
-        padding: 20px !important;
-    }
-
-    .project-image-box img {
-        padding: 10px !important;
-    }
-}
-
-
-/* MOBILE */
-
-@media (max-width: 768px) {
-    .projects-slider {
-        width: 100% !important;
-        gap: 8px !important;
-    }
-
+@media (max-width: 900px) {
     .project-slide {
         grid-template-columns: 1fr !important;
-        min-height: auto !important;
-        max-height: none !important;
+        min-height: 0 !important;
     }
 
     .project-image-box {
-        width: 100% !important;
-        height: 240px !important;
-        min-height: 240px !important;
-        max-height: 240px !important;
-    }
-
-    .project-image-box img {
-        width: 100% !important;
-        height: 100% !important;
-        padding: 10px !important;
-        object-fit: contain !important;
+        min-height: 360px !important;
+        height: 360px !important;
     }
 
     .project-content {
-        width: 100% !important;
-        height: auto !important;
-        max-height: none !important;
-        padding: 20px !important;
-        overflow: visible !important;
+        min-height: 0 !important;
+        padding: 32px !important;
     }
 }
 
 
-/* SMALL MOBILE */
+/* =========================================================================
+   MOBILE
+========================================================================= */
 
-@media (max-width: 480px) {
+@media (max-width: 600px) {
+    .project-slide {
+        grid-template-columns: 1fr !important;
+        min-height: 0 !important;
+    }
+
     .project-image-box {
-        height: 210px !important;
-        min-height: 210px !important;
-        max-height: 210px !important;
+        min-height: 260px !important;
+        height: 260px !important;
+    }
+
+    .project-image-box img {
+        padding: 12px !important;
+    }
+
+    .project-content {
+        min-height: 0 !important;
+        padding: 24px !important;
+    }
+
+    .project-content h3 {
+        font-size: 1.7rem !important;
+    }
+
+    .project-content p {
+        font-size: var(--font-size-sm) !important;
+    }
+}
+
+
+/* =========================================================================
+   SMALL MOBILE
+========================================================================= */
+
+@media (max-width: 400px) {
+    .project-image-box {
+        min-height: 230px !important;
+        height: 230px !important;
+    }
+
+    .project-content {
+        padding: 20px !important;
     }
 
     .project-image-box img {
         padding: 8px !important;
-    }
-
-    .project-content {
-        padding: 16px !important;
-    }
-
-    .project-slider-button {
-        width: 34px !important;
-        height: 34px !important;
-        font-size: .75rem !important;
     }
 }
