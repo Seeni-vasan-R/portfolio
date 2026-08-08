@@ -19,9 +19,11 @@
 
     <link rel="icon" href="assets/favicon.ico">
 
+    <!-- Font Awesome -->
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
 
+    <!-- CSS -->
     <link rel="stylesheet" href="css/variables.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/responsive.css">
@@ -42,12 +44,29 @@
 
                 <ul class="nav-links">
 
-                    <li><a href="#home">Home</a></li>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#skills">Skills</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#certifications">Certificates</a></li>
-                    <li><a href="#contact">Contact</a></li>
+                    <li>
+                        <a href="#home">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="#about">About</a>
+                    </li>
+
+                    <li>
+                        <a href="#skills">Skills</a>
+                    </li>
+
+                    <li>
+                        <a href="#projects">Projects</a>
+                    </li>
+
+                    <li>
+                        <a href="#certifications">Certificates</a>
+                    </li>
+
+                    <li>
+                        <a href="#contact">Contact</a>
+                    </li>
 
                 </ul>
 
@@ -255,6 +274,7 @@
             <div class="skills-container">
 
                 <div class="skill-category">
+
                     <h3>
                         <i class="fa-solid fa-laptop-code"></i>
                         Programming
@@ -264,9 +284,11 @@
                         <span>Python</span>
                         <span>SQL</span>
                     </div>
+
                 </div>
 
                 <div class="skill-category">
+
                     <h3>
                         <i class="fa-solid fa-database"></i>
                         Databases
@@ -278,9 +300,11 @@
                         <span>Relational Database Design</span>
                         <span>Query Optimization</span>
                     </div>
+
                 </div>
 
                 <div class="skill-category">
+
                     <h3>
                         <i class="fa-solid fa-chart-line"></i>
                         Visualization & Analytics
@@ -292,9 +316,11 @@
                         <span>Matplotlib</span>
                         <span>Pandas</span>
                     </div>
+
                 </div>
 
                 <div class="skill-category">
+
                     <h3>
                         <i class="fa-solid fa-gears"></i>
                         Data Engineering
@@ -306,9 +332,11 @@
                         <span>Data Pipelines</span>
                         <span>Batch & Streaming Data</span>
                     </div>
+
                 </div>
 
                 <div class="skill-category">
+
                     <h3>
                         <i class="fa-solid fa-screwdriver-wrench"></i>
                         Tools
@@ -321,9 +349,11 @@
                         <span>Excel</span>
                         <span>Docker</span>
                     </div>
+
                 </div>
 
                 <div class="skill-category">
+
                     <h3>
                         <i class="fa-solid fa-cloud"></i>
                         Cloud
@@ -335,9 +365,11 @@
                         <span>AWS S3</span>
                         <span>AWS RDS</span>
                     </div>
+
                 </div>
 
                 <div class="skill-category">
+
                     <h3>
                         <i class="fa-solid fa-book-open"></i>
                         Currently Learning
@@ -347,6 +379,7 @@
                         <span>Apache Kafka</span>
                         <span>Apache Spark</span>
                     </div>
+
                 </div>
 
             </div>
@@ -356,7 +389,7 @@
     </section>
 
 
-    <!-- STATIC PROJECTS -->
+    <!-- PROJECTS SLIDER -->
     <section id="projects" class="projects">
 
         <div class="container">
@@ -366,200 +399,213 @@
                 <h2>Featured Projects</h2>
             </div>
 
-            <div class="projects-grid">
+            <div class="projects-slider"
+                 data-project-slider>
+
+                <button class="project-slider-button project-slider-prev"
+                        type="button"
+                        aria-label="Previous project">
+
+                    <i class="fa-solid fa-chevron-left"></i>
+
+                </button>
+
+                <div class="projects-viewport">
+
+                    <div class="projects-track">
 
 
-                <!-- PROJECT 1 -->
-                <article class="project-card">
+                        <!-- PROJECT 1 -->
+                        <article class="project-slide">
 
-                    <div class="project-media">
+                            <div class="project-image-box">
 
-                        <div class="project-gallery single-image">
+                                <img src="images/expense-tracker.png"
+                                     alt="AI-assisted expense tracker project">
 
-                            <img src="images/expense-tracker.png"
-                                 alt="AI-assisted expense tracker project">
+                            </div>
 
-                        </div>
+                            <div class="project-content">
 
-                    </div>
+                                <p class="project-label">
+                                    Project 01
+                                </p>
 
-                    <div class="project-content">
+                                <h3>
+                                    AI-Assisted Personal Expense Behavior
+                                    Analysis System
+                                </h3>
 
-                        <p class="project-label">
-                            Project 01
-                        </p>
+                                <p>
+                                    A full-stack Django application deployed
+                                    on AWS that helps users manage expenses,
+                                    monitor budgets, analyse spending patterns
+                                    and generate data-driven financial insights.
+                                </p>
 
-                        <h3>
-                            AI-Assisted Personal Expense Behavior
-                            Analysis System
-                        </h3>
+                                <h4>
+                                    Technologies and skills
+                                </h4>
 
-                        <p>
-                            A full-stack Django application deployed on AWS
-                            that helps users manage expenses, monitor budgets,
-                            analyse spending patterns and generate data-driven
-                            financial insights.
-                        </p>
+                                <div class="project-tech">
+                                    <span>Python</span>
+                                    <span>Django</span>
+                                    <span>MySQL</span>
+                                    <span>AWS</span>
+                                    <span>Full-Stack Development</span>
+                                </div>
 
-                        <h4>
-                            Technologies and skills
-                        </h4>
+                                <a href="https://github.com/Seeni-vasan-R/ExpenseTracker-AI"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="btn primary-btn">
 
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Django</span>
-                            <span>MySQL</span>
-                            <span>AWS</span>
-                            <span>Full-Stack Development</span>
-                        </div>
+                                    <i class="fab fa-github"></i>
+                                    View on GitHub
 
-                        <div class="project-buttons">
+                                </a>
 
-                            <a href="https://github.com/Seeni-vasan-R/ExpenseTracker-AI"
-                               target="_blank"
-                               rel="noopener"
-                               class="btn primary-btn">
+                            </div>
 
-                                <i class="fab fa-github"></i>
-                                View on GitHub
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </article>
+                        </article>
 
 
-                <!-- PROJECT 2 -->
-                <article class="project-card">
+                        <!-- PROJECT 2 -->
+                        <article class="project-slide">
 
-                    <div class="project-media">
+                            <div class="project-image-box">
 
-                        <div class="project-gallery">
+                                <img src="images/datawarehouse.png"
+                                     alt="SQL Data Warehouse project">
 
-                            <img src="images/datawarehouse.png"
-                                 alt="SQL Data Warehouse overview">
+                            </div>
 
-                            <img src="images/customer_dashboard.png"
-                                 alt="Customer dashboard">
+                            <div class="project-content">
 
-                            <img src="images/product_dashboard.png"
-                                 alt="Product dashboard">
+                                <p class="project-label">
+                                    Project 02
+                                </p>
 
-                        </div>
+                                <h3>
+                                    SQL Data Warehouse & Power BI
+                                </h3>
 
-                    </div>
+                                <p>
+                                    Designed a complete Data Warehouse using
+                                    Bronze, Silver and Gold architecture.
+                                    Built ETL pipelines, optimized SQL queries
+                                    and developed interactive Power BI
+                                    dashboards.
+                                </p>
 
-                    <div class="project-content">
+                                <h4>
+                                    Technologies and skills
+                                </h4>
 
-                        <p class="project-label">
-                            Project 02
-                        </p>
+                                <div class="project-tech">
+                                    <span>SQL</span>
+                                    <span>MySQL</span>
+                                    <span>ETL</span>
+                                    <span>Power BI</span>
+                                    <span>Data Warehouse</span>
+                                </div>
 
-                        <h3>
-                            SQL Data Warehouse & Power BI
-                        </h3>
+                                <a href="https://github.com/Seeni-vasan-R/sql-data-warehouse-powerbi"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="btn primary-btn">
 
-                        <p>
-                            Designed a complete Data Warehouse using Bronze,
-                            Silver and Gold architecture. Built ETL pipelines,
-                            optimized SQL queries and developed interactive
-                            Power BI dashboards.
-                        </p>
+                                    <i class="fab fa-github"></i>
+                                    View on GitHub
 
-                        <h4>
-                            Technologies and skills
-                        </h4>
+                                </a>
 
-                        <div class="project-tech">
-                            <span>SQL</span>
-                            <span>MySQL</span>
-                            <span>ETL</span>
-                            <span>Power BI</span>
-                            <span>Data Warehouse</span>
-                        </div>
+                            </div>
 
-                        <div class="project-buttons">
-
-                            <a href="https://github.com/Seeni-vasan-R/sql-data-warehouse-powerbi"
-                               target="_blank"
-                               rel="noopener"
-                               class="btn primary-btn">
-
-                                <i class="fab fa-github"></i>
-                                View on GitHub
-
-                            </a>
-
-                        </div>
-
-                    </div>
-
-                </article>
+                        </article>
 
 
-                <!-- PROJECT 3 -->
-                <article class="project-card">
+                        <!-- PROJECT 3 -->
+                        <article class="project-slide">
 
-                    <div class="project-media">
+                            <div class="project-image-box">
 
-                        <div class="project-gallery single-image">
+                                <img src="images/stock-market.png"
+                                     alt="Stock Market Streaming Data Platform">
 
-                            <img src="images/stock-market.png"
-                                 alt="Stock Market Streaming Data Platform">
+                            </div>
 
-                        </div>
+                            <div class="project-content">
 
-                    </div>
+                                <p class="project-label">
+                                    Project 03
+                                </p>
 
-                    <div class="project-content">
+                                <h3>
+                                    Stock Market Streaming Data Platform
+                                </h3>
 
-                        <p class="project-label">
-                            Project 03
-                        </p>
+                                <p>
+                                    An end-to-end streaming data platform that
+                                    ingests live stock market data using Kafka,
+                                    processes and stores it on AWS and prepares
+                                    it for real-time analytics and visualization.
+                                </p>
 
-                        <h3>
-                            Stock Market Streaming Data Platform
-                        </h3>
+                                <h4>
+                                    Technologies and skills
+                                </h4>
 
-                        <p>
-                            An end-to-end streaming data platform that ingests
-                            live stock market data using Kafka, processes and
-                            stores it on AWS and prepares it for real-time
-                            analytics and visualization.
-                        </p>
+                                <div class="project-tech">
+                                    <span>Python</span>
+                                    <span>Apache Kafka</span>
+                                    <span>AWS</span>
+                                    <span>Streaming ETL</span>
+                                    <span>Data Engineering</span>
+                                </div>
 
-                        <h4>
-                            Technologies and skills
-                        </h4>
+                                <a href="https://github.com/Seeni-vasan-R/stockmarket-streaming-data-platform"
+                                   target="_blank"
+                                   rel="noopener"
+                                   class="btn primary-btn">
 
-                        <div class="project-tech">
-                            <span>Python</span>
-                            <span>Apache Kafka</span>
-                            <span>AWS</span>
-                            <span>Streaming ETL</span>
-                            <span>Data Engineering</span>
-                        </div>
+                                    <i class="fab fa-github"></i>
+                                    View on GitHub
 
-                        <div class="project-buttons">
+                                </a>
 
-                            <a href="https://github.com/Seeni-vasan-R/stockmarket-streaming-data-platform"
-                               target="_blank"
-                               rel="noopener"
-                               class="btn primary-btn">
+                            </div>
 
-                                <i class="fab fa-github"></i>
-                                View on GitHub
-
-                            </a>
-
-                        </div>
+                        </article>
 
                     </div>
 
-                </article>
+                </div>
+
+                <button class="project-slider-button project-slider-next"
+                        type="button"
+                        aria-label="Next project">
+
+                    <i class="fa-solid fa-chevron-right"></i>
+
+                </button>
+
+            </div>
+
+            <div class="project-slider-dots"
+                 aria-label="Project navigation">
+
+                <button class="project-dot active"
+                        type="button"
+                        aria-label="Show Project 1"></button>
+
+                <button class="project-dot"
+                        type="button"
+                        aria-label="Show Project 2"></button>
+
+                <button class="project-dot"
+                        type="button"
+                        aria-label="Show Project 3"></button>
 
             </div>
 
@@ -581,21 +627,45 @@
             <div class="certificate-grid">
 
                 <div class="certificate-card">
+
                     <i class="fa-solid fa-database"></i>
-                    <h3>Cisco Networking Academy</h3>
-                    <p>Data Analytics Essentials</p>
+
+                    <h3>
+                        Cisco Networking Academy
+                    </h3>
+
+                    <p>
+                        Data Analytics Essentials
+                    </p>
+
                 </div>
 
                 <div class="certificate-card">
+
                     <i class="fa-solid fa-chart-bar"></i>
-                    <h3>Wipro TalentNext</h3>
-                    <p>Data Science Program</p>
+
+                    <h3>
+                        Wipro TalentNext
+                    </h3>
+
+                    <p>
+                        Data Science Program
+                    </p>
+
                 </div>
 
                 <div class="certificate-card">
+
                     <i class="fa-solid fa-cloud"></i>
-                    <h3>Online Courses</h3>
-                    <p>Python, SQL & AWS Fundamentals</p>
+
+                    <h3>
+                        Online Courses
+                    </h3>
+
+                    <p>
+                        Python, SQL & AWS Fundamentals
+                    </p>
+
                 </div>
 
             </div>
@@ -674,12 +744,15 @@
                         <i class="fas fa-envelope"></i>
 
                         <div>
+
                             <h4>Email</h4>
+
                             <p>
                                 <a href="mailto:iseenivasanr@gmail.com">
                                     iseenivasanr@gmail.com
                                 </a>
                             </p>
+
                         </div>
 
                     </div>
@@ -689,14 +762,19 @@
                         <i class="fab fa-linkedin"></i>
 
                         <div>
+
                             <h4>LinkedIn</h4>
+
                             <p>
                                 <a href="https://www.linkedin.com/in/seenivasan-rajkumar/"
                                    target="_blank"
                                    rel="noopener">
+
                                     linkedin.com/in/seenivasan-rajkumar
+
                                 </a>
                             </p>
+
                         </div>
 
                     </div>
@@ -706,14 +784,19 @@
                         <i class="fab fa-github"></i>
 
                         <div>
+
                             <h4>GitHub</h4>
+
                             <p>
                                 <a href="https://github.com/Seeni-vasan-R"
                                    target="_blank"
                                    rel="noopener">
+
                                     github.com/Seeni-vasan-R
+
                                 </a>
                             </p>
+
                         </div>
 
                     </div>
@@ -723,8 +806,10 @@
                         <i class="fas fa-location-dot"></i>
 
                         <div>
+
                             <h4>Location</h4>
                             <p>Madurai, Tamilnadu, India</p>
+
                         </div>
 
                     </div>
