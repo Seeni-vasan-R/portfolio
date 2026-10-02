@@ -33,13 +33,7 @@ body.menu-open {
     overflow: hidden;
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.logo {
+h1, h2, h3, h4, h5, h6, .logo {
     color: var(--heading-color);
     font-family: var(--font-heading);
     letter-spacing: -0.02em;
@@ -69,8 +63,7 @@ button {
     font: inherit;
 }
 
-button,
-a {
+button, a {
     -webkit-tap-highlight-color: transparent;
 }
 
@@ -92,7 +85,6 @@ section {
 /* =========================================================================
    SECTION TITLES
 ========================================================================= */
-
 .section-title {
     margin-bottom: var(--space-4xl);
     text-align: center;
@@ -112,7 +104,6 @@ section {
     display: inline-flex;
     align-items: center;
     gap: var(--space-sm);
-
     color: var(--accent-color);
     font-size: var(--font-size-xs);
     font-weight: var(--font-medium);
@@ -134,24 +125,19 @@ section {
 /* =========================================================================
    BUTTONS
 ========================================================================= */
-
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: var(--space-sm);
-
     min-height: 48px;
     padding: 14px 26px;
-
     border: 1px solid transparent;
     border-radius: var(--radius-sm);
-
     font-family: var(--font-heading);
     font-weight: var(--font-semibold);
     font-size: var(--font-size-sm);
     letter-spacing: 0.02em;
-
     transition: all var(--transition-normal);
 }
 
@@ -168,22 +154,22 @@ section {
 }
 
 .secondary-btn {
-    background: var(--surface-light);
-    border-color: var(--border-color);
-    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.3);
+    color: var(--text-white);
+    backdrop-filter: blur(5px);
 }
 
 .secondary-btn:hover {
     border-color: var(--accent-color);
     color: var(--accent-color);
-    background: var(--accent-soft);
+    background: rgba(6, 182, 212, 0.15);
     transform: translateY(-2px);
 }
 
 /* =========================================================================
    HEADER
 ========================================================================= */
-
 .header {
     position: fixed;
     z-index: 1000;
@@ -240,26 +226,38 @@ section {
 }
 
 /* =========================================================================
-   HERO
+   HERO (Cinematic Flipped Image Background)
 ========================================================================= */
-
 .hero {
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    min-height: 100vh;
     padding-top: var(--header-height);
-    background: radial-gradient(circle at top left, var(--primary-soft), var(--background-color) 50%, var(--background-color));
+    
+    /* Applies your image with the dark-to-light gradient overlay */
+    background-image: 
+        linear-gradient(to right, rgba(11, 15, 25, 0.95) 0%, rgba(11, 15, 25, 0.8) 40%, rgba(11, 15, 25, 0.3) 100%), 
+        url('images/website.jpg'); /* CHANGE THIS FILENAME TO YOUR ACTUAL IMAGE NAME */
+        
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-color: #0b0f19;
+    background-blend-mode: luminosity; /* Desaturates to give a moody tech vibe */
 }
 
 .hero-container {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    align-items: center;
-    gap: var(--space-4xl);
+    display: block; /* Removed grid to let text sit on the left */
+    width: 100%;
 }
 
 .hero-content {
     animation: fadeIn 0.9s ease forwards;
+    max-width: 650px; /* Constrains text to the dark left side */
+}
+
+.hero-image {
+    display: none; /* Hides the old circular profile picture */
 }
 
 .hero-subtitle {
@@ -273,10 +271,11 @@ section {
 
 .hero h1 {
     margin-bottom: var(--space-xs);
-    color: var(--text-primary);
+    color: var(--text-white);
     font-size: clamp(3rem, 6vw, 4.5rem);
     line-height: 1.1;
     font-weight: var(--font-bold);
+    text-shadow: 0 4px 20px rgba(0,0,0,0.5); /* Helps text pop against background */
 }
 
 .hero h2 {
@@ -288,9 +287,8 @@ section {
 }
 
 .hero-description {
-    max-width: 580px;
     margin-bottom: var(--space-2xl);
-    color: var(--text-secondary);
+    color: rgba(255, 255, 255, 0.8);
     font-size: var(--font-size-md);
     line-height: 1.8;
 }
@@ -301,65 +299,13 @@ section {
     gap: var(--space-md);
 }
 
-.hero-image {
-    display: flex;
-    justify-content: center;
-    position: relative;
-}
-
-.hero-image::before {
-    content: '';
-    position: absolute;
-    width: 360px;
-    height: 360px;
-    background: var(--primary-color);
-    border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.15;
-    z-index: 0;
-}
-
-.hero-image img {
-    position: relative;
-    z-index: 1;
-    width: 340px;
-    height: 340px;
-    border: 1px solid var(--border-strong);
-    border-radius: 50%;
-    background: var(--surface-color);
-    object-fit: cover;
-    object-position: center;
-    box-shadow: var(--shadow-xl);
-    transition: transform var(--transition-normal), border-color var(--transition-normal);
-}
-
-.hero-image img:hover {
-    transform: scale(1.02);
-    border-color: var(--accent-color);
-}
-
-.scroll-down {
-    margin-top: var(--space-3xl);
-    text-align: center;
-}
-
-.scroll-down a {
-    color: var(--text-secondary);
-    font-size: 1.5rem;
-    animation: bounce 2s infinite;
-    transition: color var(--transition-fast);
-}
-
-.scroll-down a:hover {
-    color: var(--accent-color);
-}
-
 /* =========================================================================
-   BENTO GRID STRUCTURE (DASHBOARD AESTHETIC)
+   ABOUT (BENTO DASHBOARD STRUCTURE)
 ========================================================================= */
-
 .about {
     background: var(--background-color);
+    position: relative;
+    z-index: 2; /* Ensures it sits above the fixed hero background */
 }
 
 .bento-grid {
@@ -389,7 +335,6 @@ section {
     box-shadow: var(--shadow-lg);
 }
 
-/* Interlocking Grid Placements */
 .bio-card {
     grid-column: span 2;
     grid-row: span 2;
@@ -506,7 +451,6 @@ section {
 /* =========================================================================
    SKILLS
 ========================================================================= */
-
 .skills {
     background: var(--background-color);
 }
@@ -575,7 +519,6 @@ section {
 /* =========================================================================
    PROJECTS
 ========================================================================= */
-
 .projects {
     background: var(--background-color);
 }
@@ -731,7 +674,6 @@ section {
 /* =========================================================================
    CERTIFICATIONS
 ========================================================================= */
-
 .certifications {
     background: var(--background-color);
 }
@@ -764,9 +706,8 @@ section {
 }
 
 /* =========================================================================
-   ACHIEVEMENTS (METRICS)
+   ACHIEVEMENTS
 ========================================================================= */
-
 .achievements {
     background: var(--surface-dark);
     border-top: 1px solid var(--border-color);
@@ -813,7 +754,6 @@ section {
 /* =========================================================================
    CONTACT
 ========================================================================= */
-
 .contact {
     background: var(--background-color);
 }
@@ -904,7 +844,6 @@ section {
 /* =========================================================================
    FOOTER
 ========================================================================= */
-
 .footer {
     padding: var(--space-3xl) 0 var(--space-xl);
     background: var(--surface-dark);
@@ -966,7 +905,6 @@ section {
 /* =========================================================================
    BACK TO TOP
 ========================================================================= */
-
 #backToTop {
     position: fixed;
     z-index: 999;
@@ -1002,7 +940,6 @@ section {
 /* =========================================================================
    UTILITIES
 ========================================================================= */
-
 ::selection {
     background: var(--primary-color);
     color: #fff;
@@ -1043,33 +980,26 @@ section {
 /* =========================================================================
    RESPONSIVE
 ========================================================================= */
-
 @media (max-width: 1050px) {
-    .container {
-        width: min(calc(100% - 3rem), var(--container-width));
-    }
+    .container { width: min(calc(100% - 3rem), var(--container-width)); }
     .nav-links { gap: var(--space-lg); }
-    .hero-container { gap: var(--space-2xl); }
+    .hero { background-position: 70% center; } /* Keeps focal point visible on smaller screens */
     .projects-slider { width: min(100%, 1000px); }
     .project-content { padding: var(--space-xl); }
     .project-slide { grid-template-columns: 1fr 1fr; }
 }
 
 @media (max-width: 900px) {
-    .hero-container {
-        grid-template-columns: 1fr;
+    .hero-content {
+        max-width: 100%;
         text-align: center;
+        padding: 0 1rem;
     }
-    .hero-content { order: 2; }
-    .hero-image { order: 1; }
-    .hero-description { margin-inline: auto; }
+    .hero-subtitle { justify-content: center; }
     .hero-buttons { justify-content: center; }
-    
     .bento-grid { grid-template-columns: repeat(2, 1fr); }
     .bio-card, .goal-card { grid-column: span 2; }
-    
     .skills-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-    
     .project-slide {
         grid-template-columns: 1fr;
         min-height: 0;
@@ -1120,11 +1050,7 @@ section {
         text-align: center;
         width: 100%;
     }
-    .hero {
-        min-height: auto;
-        padding-top: calc(var(--header-height) + var(--space-3xl));
-        padding-bottom: 90px;
-    }
+    .hero { padding-bottom: 90px; }
     .projects-slider { gap: var(--space-sm); }
 }
 
@@ -1132,14 +1058,12 @@ section {
     section { padding: var(--space-3xl) 0; }
     .hero-buttons { flex-direction: column; align-items: stretch; }
     .hero-buttons .btn { width: 100%; }
-    
     .bento-grid { grid-template-columns: 1fr; }
     .bio-card, .edu-card, .metric-card, .goal-card {
         grid-column: span 1;
         grid-row: auto;
     }
     .goal-card { flex-direction: column; text-align: center; }
-
     .skills-container, .certificate-grid, .achievement-grid {
         grid-template-columns: 1fr;
     }
