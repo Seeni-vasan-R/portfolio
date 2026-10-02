@@ -7,26 +7,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const header = document.querySelector(".header");
     const sections = document.querySelectorAll("section");
 
-    const projectSlider = document.querySelector(
-        "[data-project-slider]"
-    );
+    const projectSlider = document.querySelector("[data-project-slider]");
 
-    const reduceMotion = window.matchMedia(
-        "(prefers-reduced-motion: reduce)"
-    ).matches;
-
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
     /* =========================================================================
        MOBILE MENU
     ========================================================================= */
-
     function setMenuState(isOpen) {
-        if (!menuBtn || !navLinks) {
-            return;
-        }
+        if (!menuBtn || !navLinks) return;
 
         const icon = menuBtn.querySelector("i");
-
         navLinks.classList.toggle("active", isOpen);
         menuBtn.setAttribute("aria-expanded", String(isOpen));
         document.body.classList.toggle("menu-open", isOpen);
@@ -39,67 +30,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (menuBtn && navLinks) {
         navLinks.id = navLinks.id || "primary-navigation";
-
         menuBtn.setAttribute("aria-controls", navLinks.id);
         menuBtn.setAttribute("aria-expanded", "false");
 
         menuBtn.addEventListener("click", (event) => {
             event.stopPropagation();
-
-            const isOpen = navLinks.classList.contains("active");
-
-            setMenuState(!isOpen);
+            setMenuState(!navLinks.classList.contains("active"));
         });
 
         navItems.forEach((link) => {
-            link.addEventListener("click", () => {
-                setMenuState(false);
-            });
+            link.addEventListener("click", () => setMenuState(false));
         });
 
         document.addEventListener("click", (event) => {
-            if (
-                navLinks.classList.contains("active") &&
-                !navLinks.contains(event.target) &&
-                !menuBtn.contains(event.target)
-            ) {
+            if (navLinks.classList.contains("active") && !navLinks.contains(event.target) && !menuBtn.contains(event.target)) {
                 setMenuState(false);
             }
         });
 
         document.addEventListener("keydown", (event) => {
-            if (event.key === "Escape") {
-                setMenuState(false);
-            }
+            if (event.key === "Escape") setMenuState(false);
         });
 
         window.addEventListener("resize", () => {
-            if (window.innerWidth > 768) {
-                setMenuState(false);
-            }
+            if (window.innerWidth > 768) setMenuState(false);
         });
     }
 
-
     /* =========================================================================
-       PROJECT SLIDER
+       PROJECT SLIDER (Fixed Dot Targeting)
     ========================================================================= */
-
     if (projectSlider) {
-        const projectTrack =
-            projectSlider.querySelector(".projects-track");
-
-        const projectSlides =
-            projectSlider.querySelectorAll(".project-slide");
-
-        const previousButton =
-            projectSlider.querySelector(".project-slider-prev");
-
-        const nextButton =
-            projectSlider.querySelector(".project-slider-next");
-
-        const projectDots =
-            projectSlider.querySelectorAll(".project-dot");
+        const projectTrack = projectSlider.querySelector(".projects-track");
+        const projectSlides = projectSlider.querySelectorAll(".project-slide");
+        const previousButton = projectSlider.querySelector(".project-slider-prev");
+        const nextButton = projectSlider.querySelector(".project-slider-next");
+        
+        // FIX: Search the whole document for dots, not just inside the slider container
+        const projectDots = document.querySelectorAll(".project-dot");
 
         let currentProject = 0;
         let projectAutoSlide;
@@ -107,43 +75,22 @@ document.addEventListener("DOMContentLoaded", () => {
         let touchEndX = 0;
 
         function showProject(index) {
-            currentProject =
-                (index + projectSlides.length) %
-                projectSlides.length;
-
-            projectTrack.style.transform =
-                `translateX(-${currentProject * 100}%)`;
+            currentProject = (index + projectSlides.length) % projectSlides.length;
+            projectTrack.style.transform = `translateX(-${currentProject * 100}%)`;
 
             projectDots.forEach((dot, dotIndex) => {
-                dot.classList.toggle(
-                    "active",
-                    dotIndex === currentProject
-                );
+                dot.classList.toggle("active", dotIndex === currentProject);
             });
         }
 
-        function showNextProject() {
-            showProject(currentProject + 1);
-        }
-
-        function showPreviousProject() {
-            showProject(currentProject - 1);
-        }
-
-        function stopProjectAutoSlide() {
-            clearInterval(projectAutoSlide);
-        }
+        function showNextProject() { showProject(currentProject + 1); }
+        function showPreviousProject() { showProject(currentProject - 1); }
+        function stopProjectAutoSlide() { clearInterval(projectAutoSlide); }
 
         function startProjectAutoSlide() {
-            if (reduceMotion || projectSlides.length <= 1) {
-                return;
-            }
-
+            if (reduceMotion || projectSlides.length <= 1) return;
             stopProjectAutoSlide();
-
-            projectAutoSlide = setInterval(() => {
-                showNextProject();
-            }, 5000);
+            projectAutoSlide = setInterval(showNextProject, 5000);
         }
 
         function restartProjectAutoSlide() {
@@ -172,93 +119,62 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         });
 
-        projectSlider.addEventListener("mouseenter", () => {
+        projectSlider.addEventListener("mouseenter", stopProjectAutoSlide);
+        projectSlider.addEventListener("mouseleave", startProjectAutoSlide);
+
+        projectSlider.addEventListener("touchstart", (event) => {
+            touchStartX = event.changedTouches[0].screenX;
             stopProjectAutoSlide();
-        });
+        }, { passive: true });
 
-        projectSlider.addEventListener("mouseleave", () => {
+        projectSlider.addEventListener("touchend", (event) => {
+            touchEndX = event.changedTouches[0].screenX;
+            const swipeDistance = touchStartX - touchEndX;
+
+            if (Math.abs(swipeDistance) > 50) {
+                if (swipeDistance > 0) showNextProject();
+                else showPreviousProject();
+            }
             startProjectAutoSlide();
-        });
-
-        projectSlider.addEventListener(
-            "touchstart",
-            (event) => {
-                touchStartX =
-                    event.changedTouches[0].screenX;
-
-                stopProjectAutoSlide();
-            },
-            {
-                passive: true
-            }
-        );
-
-        projectSlider.addEventListener(
-            "touchend",
-            (event) => {
-                touchEndX =
-                    event.changedTouches[0].screenX;
-
-                const swipeDistance =
-                    touchStartX - touchEndX;
-
-                if (Math.abs(swipeDistance) > 50) {
-                    if (swipeDistance > 0) {
-                        showNextProject();
-                    } else {
-                        showPreviousProject();
-                    }
-                }
-
-                startProjectAutoSlide();
-            },
-            {
-                passive: true
-            }
-        );
+        }, { passive: true });
 
         showProject(0);
         startProjectAutoSlide();
     }
 
-
     /* =========================================================================
-       HEADER SHADOW
+       SMART HEADER (Transparent to Solid on scroll)
     ========================================================================= */
+    function updateHeaderState() {
+        if (!header) return;
 
-    function updateHeaderShadow() {
-        if (!header) {
-            return;
+        if (window.scrollY > 50) {
+            header.style.background = "#0b0f19"; /* Sleek dark color */
+            header.style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
+            header.style.boxShadow = "var(--shadow-md)";
+            header.style.position = "fixed";
+            header.style.paddingTop = "0";
+        } else {
+            header.style.background = "transparent";
+            header.style.borderBottom = "none";
+            header.style.boxShadow = "none";
+            header.style.position = "absolute";
+            header.style.paddingTop = "var(--space-md)";
         }
-
-        header.style.boxShadow =
-            window.scrollY > 50
-                ? "var(--shadow-md)"
-                : "none";
     }
 
-    window.addEventListener("scroll", updateHeaderShadow, {
-        passive: true
-    });
-
-    updateHeaderShadow();
-
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    updateHeaderState();
 
     /* =========================================================================
        BACK TO TOP
     ========================================================================= */
-
     if (backToTop) {
         function updateBackToTop() {
-            backToTop.classList.toggle(
-                "show",
-                window.scrollY > 400
-            );
+            backToTop.classList.toggle("show", window.scrollY > 400);
         }
 
-        window.addEventListener("scroll", updateBackToTop, {
-            passive: true
-        });
+        window.addEventListener("scroll", updateBackToTop, { passive: true });
 
         backToTop.addEventListener("click", () => {
             window.scrollTo({
@@ -266,22 +182,17 @@ document.addEventListener("DOMContentLoaded", () => {
                 behavior: reduceMotion ? "auto" : "smooth"
             });
         });
-
         updateBackToTop();
     }
-
 
     /* =========================================================================
        ACTIVE NAVIGATION
     ========================================================================= */
-
     function updateActiveSection() {
         let currentSection = "";
 
         sections.forEach((section) => {
-            const sectionTop =
-                section.offsetTop - 140;
-
+            const sectionTop = section.offsetTop - 140;
             if (window.scrollY >= sectionTop) {
                 currentSection = section.id;
             }
@@ -290,27 +201,20 @@ document.addEventListener("DOMContentLoaded", () => {
         navItems.forEach((link) => {
             link.classList.toggle(
                 "active-link",
-                link.getAttribute("href") ===
-                `#${currentSection}`
+                link.getAttribute("href") === `#${currentSection}`
             );
         });
     }
 
-    window.addEventListener("scroll", updateActiveSection, {
-        passive: true
-    });
-
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
     updateActiveSection();
 
-
     /* =========================================================================
-       SCROLL REVEAL
+       SCROLL REVEAL (Added .bento-card for new layout)
     ========================================================================= */
-
     const revealItems = document.querySelectorAll(
-        ".about-card, " +
+        ".bento-card, " +
         ".skill-category, " +
-        ".education-card, " +
         ".certificate-card, " +
         ".achievement-card, " +
         ".project-slide, " +
@@ -327,90 +231,58 @@ document.addEventListener("DOMContentLoaded", () => {
                     }
                 });
             },
-            {
-                threshold: .15
-            }
+            { threshold: .15 }
         );
 
-        revealItems.forEach((item) => {
-            observer.observe(item);
-        });
+        revealItems.forEach((item) => observer.observe(item));
     } else {
-        revealItems.forEach((item) => {
-            item.classList.add("fade-in");
-        });
+        revealItems.forEach((item) => item.classList.add("fade-in"));
     }
-
 
     /* =========================================================================
        TYPING EFFECT
     ========================================================================= */
-
     const heroTitle = document.querySelector(".hero h2");
 
     if (heroTitle && !reduceMotion) {
-        const originalText =
-            heroTitle.textContent.trim();
-
+        const originalText = heroTitle.textContent.trim();
         heroTitle.textContent = "";
-
         let index = 0;
 
         function typeWriter() {
             if (index < originalText.length) {
-                heroTitle.textContent +=
-                    originalText.charAt(index);
-
+                heroTitle.textContent += originalText.charAt(index);
                 index++;
-
                 setTimeout(typeWriter, 70);
             }
         }
-
         setTimeout(typeWriter, 400);
     }
-
 
     /* =========================================================================
        SMOOTH SCROLL
     ========================================================================= */
-
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", (event) => {
-            const targetId =
-                anchor.getAttribute("href");
+            const targetId = anchor.getAttribute("href");
+            if (!targetId || targetId === "#") return;
 
-            if (!targetId || targetId === "#") {
-                return;
-            }
-
-            const target =
-                document.querySelector(targetId);
-
+            const target = document.querySelector(targetId);
             if (target) {
                 event.preventDefault();
-
                 target.scrollIntoView({
-                    behavior: reduceMotion
-                        ? "auto"
-                        : "smooth",
-
+                    behavior: reduceMotion ? "auto" : "smooth",
                     block: "start"
                 });
             }
         });
     });
 
-
     /* =========================================================================
        CURRENT YEAR
     ========================================================================= */
-
-    const yearElement =
-        document.getElementById("year");
-
+    const yearElement = document.getElementById("year");
     if (yearElement) {
-        yearElement.textContent =
-            new Date().getFullYear();
+        yearElement.textContent = new Date().getFullYear();
     }
 });
