@@ -168,16 +168,16 @@ section {
 }
 
 /* =========================================================================
-   HEADER (Fully Transparent Fix)
+   HEADER (Fully Transparent)
 ========================================================================= */
 .header {
-    position: absolute; /* Ensures it sits on top of the hero image without forcing a solid block */
+    position: absolute; 
     z-index: 1000;
     top: 0;
     left: 0;
     width: 100%;
-    background: transparent; /* Removed the dark background */
-    border-bottom: none; /* Removed the border */
+    background: transparent; 
+    border-bottom: none; 
     padding-top: var(--space-md);
 }
 
@@ -189,7 +189,7 @@ section {
 }
 
 .logo {
-    color: var(--text-white); /* Forced white so it shows over the image */
+    color: var(--text-white); 
     font-size: 1.5rem;
     font-weight: var(--font-bold);
     letter-spacing: -0.03em;
@@ -206,7 +206,7 @@ section {
 }
 
 .nav-links a {
-    color: rgba(255, 255, 255, 0.85); /* Slightly transparent white for a clean look */
+    color: rgba(255, 255, 255, 0.85); 
     font-family: var(--font-family);
     font-weight: var(--font-medium);
     font-size: var(--font-size-sm);
@@ -308,7 +308,7 @@ section {
 
 .bento-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr); /* Changed to a 4-column math grid */
+    grid-template-columns: repeat(4, 1fr); 
     grid-auto-rows: minmax(180px, auto);
     gap: var(--space-md);
     width: 100%;
@@ -350,7 +350,7 @@ section {
 }
 
 .edu-card {
-    grid-column: span 2; /* Now beautifully spans 2 columns to sit perfectly above the metrics */
+    grid-column: span 2; 
     grid-row: span 1;
     text-align: center;
     align-items: center;
@@ -378,7 +378,7 @@ section {
 }
 
 .metric-card {
-    grid-column: span 1; /* These two fill out the space underneath the edu-card */
+    grid-column: span 1; 
     grid-row: span 1;
     text-align: center;
     align-items: center;
@@ -399,7 +399,7 @@ section {
 }
 
 .goal-card {
-    grid-column: span 4; /* Spans the entire bottom of the grid */
+    grid-column: span 4; 
     flex-direction: row;
     align-items: center;
     gap: var(--space-lg);
@@ -517,43 +517,41 @@ section {
 }
 
 /* =========================================================================
-   PROJECTS (CSS Scroll Snapping Fix)
+   PROJECTS (Buttons and Dots Restored)
 ========================================================================= */
 .projects {
     background: var(--background-color);
 }
 
 .projects-slider {
-    position: relative;
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
     width: min(100%, 1200px);
     margin-inline: auto;
+    position: relative;
 }
 
 .projects-viewport {
     width: 100%;
-    overflow-x: auto; /* Allows native horizontal scrolling */
-    scroll-snap-type: x mandatory; /* Forces slide snapping */
+    overflow: hidden;
     border-radius: var(--radius-lg);
-    scrollbar-width: none; /* Hides scrollbar in Firefox */
-}
-
-.projects-viewport::-webkit-scrollbar {
-    display: none; /* Hides scrollbar in Chrome/Safari */
 }
 
 .projects-track {
     display: flex;
-    gap: var(--space-md);
-    width: max-content; /* Allows track to stretch beyond screen */
+    width: 100%;
+    transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
 .project-slide {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
     align-items: stretch;
-    width: min(100vw - 10vw, 1200px); /* Sets exact width for snapping */
+    flex: 0 0 100%;
+    width: 100%;
     min-height: 420px;
-    scroll-snap-align: center; /* Snaps to the center of the viewport */
+    overflow: hidden;
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
     background: var(--surface-color);
@@ -628,15 +626,54 @@ section {
     margin-bottom: var(--space-xl);
 }
 
-/* Hide the old JS buttons since native CSS scrolling is better */
+/* Slider Controls Restored */
 .project-slider-button {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 48px;
+    height: 48px;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-round);
+    background: var(--surface-color);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    z-index: 10;
+}
+
+.project-slider-button:hover {
+    background: var(--surface-light);
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+    transform: scale(1.05);
 }
 
 .project-slider-dots {
-    display: none; /* Native scrolling replaces the need for dots */
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: var(--space-xl);
 }
 
+.project-dot {
+    width: 8px;
+    height: 8px;
+    padding: 0;
+    border-radius: 50%;
+    background: var(--border-strong);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    border: none;
+}
+
+.project-dot.active {
+    width: 24px;
+    border-radius: var(--radius-round);
+    background: var(--accent-color);
+    box-shadow: 0 0 8px rgba(6, 182, 212, 0.5);
+}
 
 /* =========================================================================
    CERTIFICATIONS
@@ -910,6 +947,24 @@ section {
 ::selection {
     background: var(--primary-color);
     color: #fff;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--background-color);
+}
+
+::-webkit-scrollbar-thumb {
+    border-radius: var(--radius-round);
+    background: var(--surface-light);
+    border: 1px solid var(--border-color);
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--border-strong);
 }
 
 .fade-in {
