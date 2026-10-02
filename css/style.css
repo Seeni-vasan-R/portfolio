@@ -355,119 +355,75 @@ section {
 }
 
 /* =========================================================================
-   ABOUT (BENTO GRID STYLE)
+   BENTO GRID STRUCTURE (DASHBOARD AESTHETIC)
 ========================================================================= */
 
 .about {
     background: var(--background-color);
 }
 
-.about-content {
+.bento-grid {
     display: grid;
-    grid-template-columns: 1.2fr 1fr;
-    align-items: stretch;
-    gap: var(--space-xl);
-    margin-bottom: var(--space-xl);
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: minmax(150px, auto);
+    gap: var(--space-md);
+    width: 100%;
 }
 
-.about-text {
+.bento-card {
     background: var(--surface-color);
-    padding: var(--space-2xl);
     border: 1px solid var(--border-color);
     border-radius: var(--radius-lg);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: all var(--transition-normal);
+    box-shadow: var(--shadow-sm);
 }
 
-.about-text h3 {
+.bento-card:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-light);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+/* Interlocking Grid Placements */
+.bio-card {
+    grid-column: span 2;
+    grid-row: span 2;
+    justify-content: flex-start;
+}
+
+.bio-card h3 {
     margin-bottom: var(--space-md);
     font-size: var(--font-size-xl);
 }
 
-.about-text p {
-    margin-bottom: var(--space-md);
+.bio-card p {
     color: var(--text-secondary);
     line-height: 1.8;
 }
 
-.about-text p:last-child {
-    margin-bottom: 0;
-}
-
-.about-cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: var(--space-md);
-}
-
-.about-card,
-.skill-category,
-.education-card,
-.certificate-card,
-.contact-card {
-    border: 1px solid var(--border-color);
-    border-radius: var(--radius-lg);
-    background: var(--surface-color);
-    box-shadow: var(--shadow-sm);
-    transition: all var(--transition-normal);
-}
-
-.about-card {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: var(--space-xl);
+.edu-card {
+    grid-column: span 1;
+    grid-row: span 1;
     text-align: center;
+    align-items: center;
 }
 
-.about-card:hover,
-.skill-category:hover,
-.certificate-card:hover,
-.achievement-card:hover {
-    border-color: var(--border-strong);
-    background: var(--surface-light);
-    box-shadow: var(--shadow-lg);
-    transform: translateY(-4px);
-}
-
-.about-card i {
-    margin-bottom: var(--space-md);
-    color: var(--primary-color);
-    font-size: 1.8rem;
-}
-
-.about-card h3 {
-    margin-bottom: var(--space-xs);
-    font-size: var(--font-size-xl);
-    color: var(--text-primary);
-}
-
-.about-card p,
-.certificate-card p {
-    color: var(--text-secondary);
-    font-size: var(--font-size-sm);
-}
-
-.education {
-    margin-top: var(--space-md);
-}
-
-.education-card {
-    padding: var(--space-2xl);
-    border-left: 4px solid var(--primary-color);
-}
-
-.education-card h3 {
+.edu-card h3 {
     margin-bottom: var(--space-xs);
     font-size: var(--font-size-lg);
 }
 
-.education-card h4 {
-    margin-bottom: var(--space-md);
+.edu-card p {
     color: var(--text-secondary);
-    font-family: var(--font-family);
-    font-weight: var(--font-normal);
+    margin-bottom: var(--space-xs);
 }
 
-.education-card p {
+.edu-date {
     display: inline-block;
     padding: 4px 12px;
     background: var(--surface-light);
@@ -476,6 +432,75 @@ section {
     color: var(--text-primary);
     font-family: var(--font-label);
     font-size: var(--font-size-xs);
+}
+
+.metric-card {
+    text-align: center;
+    align-items: center;
+    background: radial-gradient(circle at top left, var(--surface-light), var(--surface-color));
+}
+
+.metric-card h2 {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    line-height: 1;
+    margin-bottom: var(--space-xs);
+    font-family: var(--font-label);
+}
+
+.metric-card p {
+    color: var(--text-secondary);
+    font-size: var(--font-size-sm);
+}
+
+.goal-card {
+    grid-column: span 3;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--space-lg);
+}
+
+.goal-card h3 {
+    margin-bottom: var(--space-xs);
+}
+
+.goal-card p {
+    color: var(--text-secondary);
+}
+
+.card-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--primary-soft);
+    color: var(--primary-color);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: var(--space-sm);
+}
+
+.goal-card .card-icon {
+    margin-bottom: 0;
+    flex-shrink: 0;
+}
+
+.bio-tags {
+    display: flex;
+    gap: var(--space-sm);
+    margin-top: auto;
+    padding-top: var(--space-lg);
+}
+
+.bio-tags span {
+    padding: 6px 12px;
+    background: var(--surface-dark);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-label);
+    font-size: 0.75rem;
+    color: var(--accent-light);
 }
 
 /* =========================================================================
@@ -495,6 +520,17 @@ section {
 
 .skill-category {
     padding: var(--space-xl);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--surface-color);
+    transition: all var(--transition-normal);
+}
+
+.skill-category:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-light);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .skill-category h3 {
@@ -702,7 +738,18 @@ section {
 
 .certificate-card {
     padding: var(--space-2xl);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--surface-color);
     text-align: center;
+    transition: all var(--transition-normal);
+}
+
+.certificate-card:hover {
+    border-color: var(--border-strong);
+    background: var(--surface-light);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .certificate-card i {
@@ -739,6 +786,13 @@ section {
     background: var(--surface-color);
     text-align: center;
     transition: all var(--transition-normal);
+}
+
+.achievement-card:hover {
+    background: var(--surface-light);
+    border-color: var(--border-strong);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-lg);
 }
 
 .achievement-card h2 {
@@ -829,6 +883,9 @@ section {
 
 .contact-card {
     padding: var(--space-2xl);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    background: var(--surface-color);
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1008,7 +1065,9 @@ section {
     .hero-description { margin-inline: auto; }
     .hero-buttons { justify-content: center; }
     
-    .about-content { grid-template-columns: 1fr; }
+    .bento-grid { grid-template-columns: repeat(2, 1fr); }
+    .bio-card, .goal-card { grid-column: span 2; }
+    
     .skills-container { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     
     .project-slide {
@@ -1073,7 +1132,15 @@ section {
     section { padding: var(--space-3xl) 0; }
     .hero-buttons { flex-direction: column; align-items: stretch; }
     .hero-buttons .btn { width: 100%; }
-    .about-cards, .skills-container, .certificate-grid, .achievement-grid {
+    
+    .bento-grid { grid-template-columns: 1fr; }
+    .bio-card, .edu-card, .metric-card, .goal-card {
+        grid-column: span 1;
+        grid-row: auto;
+    }
+    .goal-card { flex-direction: column; text-align: center; }
+
+    .skills-container, .certificate-grid, .achievement-grid {
         grid-template-columns: 1fr;
     }
     .projects-slider {
@@ -1081,7 +1148,7 @@ section {
         display: block;
         padding-inline: 0;
     }
-    .project-slider-button { display: none; /* Rely on swipe/dots for mobile */ }
+    .project-slider-button { display: none; }
     .project-image-box { min-height: 220px; }
     #backToTop { right: 18px; bottom: 18px; }
 }
