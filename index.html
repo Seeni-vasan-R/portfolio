@@ -24,7 +24,6 @@
     <!-- Poppins Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
           rel="stylesheet">
 
@@ -42,78 +41,38 @@
 
     <!-- HEADER -->
     <header class="header">
-
         <div class="container">
-
             <nav class="navbar">
-
                 <a href="#home" class="logo">
                     Seenivasan<span>.</span>
                 </a>
 
                 <ul class="nav-links">
-
-                    <li>
-                        <a href="#home">Home</a>
-                    </li>
-
-                    <li>
-                        <a href="#about">About</a>
-                    </li>
-
-                    <li>
-                        <a href="#skills">Skills</a>
-                    </li>
-
-                    <li>
-                        <a href="#projects">Projects</a>
-                    </li>
-
-                    <li>
-                        <a href="#certifications">Certificates</a>
-                    </li>
-
-                    <li>
-                        <a href="#contact">Contact</a>
-                    </li>
-
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#certifications">Certificates</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
 
                 <button class="menu-btn"
                         type="button"
                         aria-label="Open navigation menu"
                         aria-expanded="false">
-
                     <i class="fa-solid fa-bars"></i>
-
                 </button>
-
             </nav>
-
         </div>
-
     </header>
-
 
     <!-- HERO -->
     <section id="home" class="hero">
-
         <div class="container hero-container">
-
             <div class="hero-content">
-
-                <p class="hero-subtitle">
-                    Hello, I'm
-                </p>
-
-                <h1>
-                    Seenivasan R
-                </h1>
-
-                <h2>
-                    Aspiring Data Engineer & Data Analyst
-                </h2>
-
+                <p class="hero-subtitle">Hello, I'm</p>
+                <h1>Seenivasan R</h1>
+                <h2>Aspiring Data Engineer & Data Analyst</h2>
                 <p class="hero-description">
                     Passionate about building scalable data pipelines,
                     designing efficient ETL workflows and transforming raw data
@@ -122,235 +81,137 @@
                 </p>
 
                 <div class="hero-buttons">
-
                     <a href="assets/Seenivasan_Resume.pdf"
                        class="btn primary-btn"
                        target="_blank"
                        rel="noopener">
-
                         <i class="fa-solid fa-download"></i>
                         Resume
-
                     </a>
-
                     <a href="#projects"
                        class="btn secondary-btn">
-
                         <i class="fa-solid fa-code"></i>
                         Explore Projects
-
                     </a>
-
                 </div>
-
             </div>
 
             <div class="hero-image">
-
                 <img src="images/profile.jpeg"
                      alt="Portrait of Seenivasan R">
-
             </div>
-
         </div>
 
         <div class="scroll-down">
-
             <a href="#about"
                aria-label="Scroll to About section">
-
                 <i class="fa-solid fa-angles-down"></i>
-
             </a>
-
         </div>
-
     </section>
 
-
-    <!-- ABOUT -->
+    <!-- ABOUT (BENTO DASHBOARD STRUCTURE) -->
     <section id="about" class="about">
-
         <div class="container">
-
             <div class="section-title">
                 <span>About Me</span>
                 <h2>Who Am I?</h2>
             </div>
 
-            <div class="about-content">
-
-                <div class="about-text">
-
-                    <h3>
-                        Turning Data into Meaningful Insights
-                    </h3>
-
-                    <p>
-                        I'm <strong>Seenivasan R</strong>, a final-year B.Tech
-                        Computer Science Engineering (AI) student at Parul
-                        University, passionate about Data Engineering, Data
-                        Analytics and Cloud Technologies.
-                    </p>
-
-                    <p>
-                        I enjoy building scalable applications, designing
-                        efficient databases, creating ETL pipelines and
-                        transforming raw data into actionable insights using
-                        Python, SQL, MySQL, AWS and Power BI.
-                    </p>
-
-                    <p>
-                        I'm currently focused on becoming a professional
-                        <strong>Data Engineer</strong> and
-                        <strong>Data Analyst</strong> while continuously
-                        improving my backend development and cloud computing
-                        skills.
-                    </p>
-
+            <div class="bento-grid">
+                <!-- Main Bio Widget (Spans 2 columns) -->
+                <div class="bento-card bio-card">
+                    <h3>Turning Data into Meaningful Insights</h3>
+                    <p>I'm <strong>Seenivasan R</strong>, a final-year B.Tech Computer Science Engineering (AI) student at Parul University. I specialize in building scalable applications, designing efficient databases, creating ETL pipelines, and transforming raw data into actionable insights.</p>
+                    <div class="bio-tags">
+                        <span>Python</span>
+                        <span>SQL</span>
+                        <span>Power BI</span>
+                        <span>AWS</span>
+                    </div>
                 </div>
 
-                <div class="about-cards">
-
-                    <div class="about-card">
-                        <i class="fa-solid fa-code"></i>
-                        <h3>2+</h3>
-                        <p>Major Projects</p>
-                    </div>
-
-                    <div class="about-card">
-                        <i class="fa-solid fa-certificate"></i>
-                        <h3>3+</h3>
-                        <p>Certifications</p>
-                    </div>
-
-                    <div class="about-card">
-                        <i class="fa-solid fa-chart-line"></i>
-                        <h3>Analytics</h3>
-                        <p>Data Visualization</p>
-                    </div>
-
-                    <div class="about-card">
-                        <i class="fa-solid fa-cloud"></i>
-                        <h3>Cloud</h3>
-                        <p>AWS & Big Data Basics</p>
-                    </div>
-
+                <!-- Education Widget -->
+                <div class="bento-card edu-card">
+                    <div class="card-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+                    <h3>B.Tech CSE (AI)</h3>
+                    <p>Parul University</p>
+                    <span class="edu-date">Expected 2027</span>
                 </div>
 
+                <!-- Metric Widget 1 -->
+                <div class="bento-card metric-card">
+                    <h2>2+</h2>
+                    <p>Major Data Projects</p>
+                </div>
+
+                <!-- Metric Widget 2 -->
+                <div class="bento-card metric-card">
+                    <h2>3+</h2>
+                    <p>Cloud & BI Certifications</p>
+                </div>
+
+                <!-- Goal Widget (Spans full width on mobile, 2 cols on desktop) -->
+                <div class="bento-card goal-card">
+                    <div class="card-icon"><i class="fa-solid fa-bullseye"></i></div>
+                    <div>
+                        <h3>Current Focus</h3>
+                        <p>Actively building end-to-end Data Engineering pipelines and mastering Apache Kafka & Spark for real-time streaming analytics.</p>
+                    </div>
+                </div>
             </div>
-
-            <div class="education">
-
-                <div class="section-title">
-                    <span>Education</span>
-                    <h2>Academic Journey</h2>
-                </div>
-
-                <div class="education-card">
-
-                    <h3>
-                        B.Tech Computer Science Engineering (AI)
-                    </h3>
-
-                    <h4>
-                        Parul University
-                    </h4>
-
-                    <p>
-                        Expected Graduation: 2027
-                    </p>
-
-                </div>
-
-            </div>
-
         </div>
-
     </section>
-
 
     <!-- SKILLS -->
     <section id="skills" class="skills">
-
         <div class="container">
-
             <div class="section-title">
                 <span>Skills</span>
                 <h2>Technical Skills</h2>
             </div>
 
             <div class="skills-container">
-
                 <div class="skill-category">
-
-                    <h3>
-                        <i class="fa-solid fa-laptop-code"></i>
-                        Programming
-                    </h3>
-
+                    <h3><i class="fa-solid fa-laptop-code"></i> Programming</h3>
                     <div class="skill-list">
                         <span>Python</span>
                         <span>SQL</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
-                    <h3>
-                        <i class="fa-solid fa-database"></i>
-                        Databases
-                    </h3>
-
+                    <h3><i class="fa-solid fa-database"></i> Databases</h3>
                     <div class="skill-list">
                         <span>SQL Server</span>
                         <span>MySQL</span>
                         <span>Relational Database Design</span>
                         <span>Query Optimization</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
-                    <h3>
-                        <i class="fa-solid fa-chart-line"></i>
-                        Visualization & Analytics
-                    </h3>
-
+                    <h3><i class="fa-solid fa-chart-line"></i> Visualization & Analytics</h3>
                     <div class="skill-list">
                         <span>Power BI</span>
                         <span>Tableau</span>
                         <span>Matplotlib</span>
                         <span>Pandas</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
-                    <h3>
-                        <i class="fa-solid fa-gears"></i>
-                        Data Engineering
-                    </h3>
-
+                    <h3><i class="fa-solid fa-gears"></i> Data Engineering</h3>
                     <div class="skill-list">
                         <span>ETL</span>
                         <span>Data Warehouse</span>
                         <span>Data Pipelines</span>
                         <span>Batch & Streaming Data</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
-                    <h3>
-                        <i class="fa-solid fa-screwdriver-wrench"></i>
-                        Tools
-                    </h3>
-
+                    <h3><i class="fa-solid fa-screwdriver-wrench"></i> Tools</h3>
                     <div class="skill-list">
                         <span>Git</span>
                         <span>GitHub</span>
@@ -358,104 +219,62 @@
                         <span>Excel</span>
                         <span>Docker</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
-                    <h3>
-                        <i class="fa-solid fa-cloud"></i>
-                        Cloud
-                    </h3>
-
+                    <h3><i class="fa-solid fa-cloud"></i> Cloud</h3>
                     <div class="skill-list">
                         <span>AWS</span>
                         <span>AWS EC2</span>
                         <span>AWS S3</span>
                         <span>AWS RDS</span>
                     </div>
-
                 </div>
 
                 <div class="skill-category">
-
-                    <h3>
-                        <i class="fa-solid fa-book-open"></i>
-                        Currently Learning
-                    </h3>
-
+                    <h3><i class="fa-solid fa-book-open"></i> Currently Learning</h3>
                     <div class="skill-list">
                         <span>Apache Kafka</span>
                         <span>Apache Spark</span>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- PROJECTS SLIDER -->
     <section id="projects" class="projects">
-
         <div class="container">
-
             <div class="section-title">
                 <span>Projects</span>
                 <h2>Featured Projects</h2>
             </div>
 
-            <div class="projects-slider"
-                 data-project-slider>
-
+            <div class="projects-slider" data-project-slider>
                 <button class="project-slider-button project-slider-prev"
                         type="button"
                         aria-label="Previous project">
-
                     <i class="fa-solid fa-chevron-left"></i>
-
                 </button>
 
                 <div class="projects-viewport">
-
                     <div class="projects-track">
-
-
                         <!-- PROJECT 1 -->
                         <article class="project-slide">
-
                             <div class="project-image-box">
-
                                 <img src="images/expense-tracker.png"
                                      alt="AI-assisted expense tracker project">
-
                             </div>
-
                             <div class="project-content">
-
-                                <p class="project-label">
-                                    Project 01
-                                </p>
-
-                                <h3>
-                                    AI-Assisted Personal Expense Behavior
-                                    Analysis System
-                                </h3>
-
+                                <p class="project-label">Project 01</p>
+                                <h3>AI-Assisted Personal Expense Behavior Analysis System</h3>
                                 <p>
                                     A full-stack Django application deployed
                                     on AWS that helps users manage expenses,
                                     monitor budgets, analyse spending patterns
                                     and generate data-driven financial insights.
                                 </p>
-
-                                <h4>
-                                    Technologies and skills
-                                </h4>
-
+                                <h4>Technologies and skills</h4>
                                 <div class="project-tech">
                                     <span>Python</span>
                                     <span>Django</span>
@@ -463,42 +282,25 @@
                                     <span>AWS</span>
                                     <span>Full-Stack Development</span>
                                 </div>
-
                                 <a href="https://github.com/Seeni-vasan-R/ExpenseTracker-AI"
                                    target="_blank"
                                    rel="noopener"
                                    class="btn primary-btn">
-
                                     <i class="fab fa-github"></i>
                                     View on GitHub
-
                                 </a>
-
                             </div>
-
                         </article>
-
 
                         <!-- PROJECT 2 -->
                         <article class="project-slide">
-
                             <div class="project-image-box">
-
                                 <img src="images/datawarehouse.png"
                                      alt="SQL Data Warehouse project">
-
                             </div>
-
                             <div class="project-content">
-
-                                <p class="project-label">
-                                    Project 02
-                                </p>
-
-                                <h3>
-                                    SQL Data Warehouse & Power BI
-                                </h3>
-
+                                <p class="project-label">Project 02</p>
+                                <h3>SQL Data Warehouse & Power BI</h3>
                                 <p>
                                     Designed a complete Data Warehouse using
                                     Bronze, Silver and Gold architecture.
@@ -506,11 +308,7 @@
                                     and developed interactive Power BI
                                     dashboards.
                                 </p>
-
-                                <h4>
-                                    Technologies and skills
-                                </h4>
-
+                                <h4>Technologies and skills</h4>
                                 <div class="project-tech">
                                     <span>SQL</span>
                                     <span>MySQL</span>
@@ -518,171 +316,104 @@
                                     <span>Power BI</span>
                                     <span>Data Warehouse</span>
                                 </div>
-
                                 <a href="https://github.com/Seeni-vasan-R/sql-data-warehouse-powerbi"
                                    target="_blank"
                                    rel="noopener"
                                    class="btn primary-btn">
-
                                     <i class="fab fa-github"></i>
                                     View on GitHub
-
                                 </a>
-
                             </div>
-
                         </article>
-
                     </div>
-
                 </div>
 
                 <button class="project-slider-button project-slider-next"
                         type="button"
                         aria-label="Next project">
-
                     <i class="fa-solid fa-chevron-right"></i>
-
                 </button>
-
             </div>
 
-            <div class="project-slider-dots"
-                 aria-label="Project navigation">
-
+            <div class="project-slider-dots" aria-label="Project navigation">
                 <button class="project-dot active"
                         type="button"
                         aria-label="Show Project 1"></button>
-
                 <button class="project-dot"
                         type="button"
                         aria-label="Show Project 2"></button>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- CERTIFICATIONS -->
     <section id="certifications" class="certifications">
-
         <div class="container">
-
             <div class="section-title">
                 <span>Certifications</span>
                 <h2>Professional Certifications</h2>
             </div>
 
             <div class="certificate-grid">
-
                 <div class="certificate-card">
-
                     <i class="fa-solid fa-database"></i>
-
-                    <h3>
-                        Cisco Networking Academy
-                    </h3>
-
-                    <p>
-                        Data Analytics Essentials
-                    </p>
-
+                    <h3>Cisco Networking Academy</h3>
+                    <p>Data Analytics Essentials</p>
                 </div>
-
                 <div class="certificate-card">
-
                     <i class="fa-solid fa-chart-bar"></i>
-
-                    <h3>
-                        Wipro TalentNext
-                    </h3>
-
-                    <p>
-                        Data Science Program
-                    </p>
-
+                    <h3>Wipro TalentNext</h3>
+                    <p>Data Science Program</p>
                 </div>
-
                 <div class="certificate-card">
-
                     <i class="fa-solid fa-cloud"></i>
-
-                    <h3>
-                        Online Courses
-                    </h3>
-
-                    <p>
-                        Python, SQL & AWS Fundamentals
-                    </p>
-
+                    <h3>Online Courses</h3>
+                    <p>Python, SQL & AWS Fundamentals</p>
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- ACHIEVEMENTS -->
     <section class="achievements">
-
         <div class="container">
-
             <div class="section-title">
                 <span>Achievements</span>
                 <h2>Highlights</h2>
             </div>
 
             <div class="achievement-grid">
-
                 <div class="achievement-card">
                     <h2>150+</h2>
                     <p>LeetCode Problems Solved</p>
                 </div>
-
                 <div class="achievement-card">
                     <h2>2+</h2>
                     <p>Major Academic & Personal Projects</p>
                 </div>
-
                 <div class="achievement-card">
                     <h2>3</h2>
-                    <p>Professional & Online Certifications</p>
+                    <p>Professional Certifications</p>
                 </div>
-
                 <div class="achievement-card">
                     <h2>100%</h2>
                     <p>Passion for Continuous Learning</p>
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- CONTACT -->
     <section id="contact" class="contact">
-
         <div class="container">
-
             <div class="section-title">
                 <span>Contact</span>
                 <h2>Let's Connect</h2>
             </div>
 
             <div class="contact-container">
-
                 <div class="contact-info">
-
-                    <h3>
-                        Let's Build Something Amazing Together
-                    </h3>
-
+                    <h3>Let's Build Something Amazing Together</h3>
                     <p>
                         I'm actively seeking internship and full-time
                         opportunities in Data Engineering and Data Analytics.
@@ -691,187 +422,111 @@
                     </p>
 
                     <div class="contact-item">
-
                         <i class="fas fa-envelope"></i>
-
                         <div>
-
                             <h4>Email</h4>
-
-                            <p>
-                                <a href="mailto:iseenivasanr@gmail.com">
-                                    iseenivasanr@gmail.com
-                                </a>
-                            </p>
-
+                            <p><a href="mailto:iseenivasanr@gmail.com">iseenivasanr@gmail.com</a></p>
                         </div>
-
                     </div>
 
                     <div class="contact-item">
-
                         <i class="fab fa-linkedin"></i>
-
                         <div>
-
                             <h4>LinkedIn</h4>
-
                             <p>
                                 <a href="https://www.linkedin.com/in/seenivasan-rajkumar/"
                                    target="_blank"
                                    rel="noopener">
-
                                     linkedin.com/in/seenivasan-rajkumar
-
                                 </a>
                             </p>
-
                         </div>
-
                     </div>
 
                     <div class="contact-item">
-
                         <i class="fab fa-github"></i>
-
                         <div>
-
                             <h4>GitHub</h4>
-
                             <p>
                                 <a href="https://github.com/Seeni-vasan-R"
                                    target="_blank"
                                    rel="noopener">
-
                                     github.com/Seeni-vasan-R
-
                                 </a>
                             </p>
-
                         </div>
-
                     </div>
 
                     <div class="contact-item">
-
                         <i class="fas fa-location-dot"></i>
-
                         <div>
-
                             <h4>Location</h4>
-
-                            <p>
-                                Madurai, Tamilnadu, India
-                            </p>
-
+                            <p>Madurai, Tamilnadu, India</p>
                         </div>
-
                     </div>
-
                 </div>
 
                 <div class="contact-card">
-
-                    <h3>
-                        Quick Links
-                    </h3>
-
+                    <h3>Quick Links</h3>
                     <a href="assets/Seenivasan_Resume.pdf"
                        target="_blank"
                        rel="noopener"
                        class="btn primary-btn">
-
                         <i class="fas fa-download"></i>
                         Download Resume
-
                     </a>
-
                     <a href="mailto:iseenivasanr@gmail.com"
                        class="btn secondary-btn">
-
                         <i class="fas fa-envelope"></i>
                         Email Me
-
                     </a>
-
                 </div>
-
             </div>
-
         </div>
-
     </section>
-
 
     <!-- FOOTER -->
     <footer class="footer">
-
         <div class="container">
-
             <div class="footer-content">
-
-                <h2>
-                    Seenivasan<span>.</span>
-                </h2>
-
-                <p>
-                    Aspiring Data Engineer & Data Analyst
-                </p>
+                <h2>Seenivasan<span>.</span></h2>
+                <p>Aspiring Data Engineer & Data Analyst</p>
 
                 <div class="footer-social">
-
                     <a href="https://github.com/Seeni-vasan-R"
                        target="_blank"
                        rel="noopener"
                        aria-label="GitHub">
-
                         <i class="fab fa-github"></i>
-
                     </a>
-
                     <a href="https://www.linkedin.com/in/seenivasan-rajkumar/"
                        target="_blank"
                        rel="noopener"
                        aria-label="LinkedIn">
-
                         <i class="fab fa-linkedin"></i>
-
                     </a>
-
                     <a href="mailto:iseenivasanr@gmail.com"
                        aria-label="Email">
-
                         <i class="fas fa-envelope"></i>
-
                     </a>
-
                 </div>
 
                 <p class="copyright">
-                    © <span id="year"></span> Seenivasan R.
-                    All Rights Reserved.
+                    © <span id="year"></span> Seenivasan R. All Rights Reserved.
                 </p>
-
             </div>
-
         </div>
-
     </footer>
-
 
     <!-- BACK TO TOP -->
     <button id="backToTop"
             type="button"
             aria-label="Back to top">
-
         <i class="fas fa-arrow-up"></i>
-
     </button>
-
 
     <!-- JAVASCRIPT -->
     <script src="js/script.js"></script>
 
 </body>
-
 </html>
